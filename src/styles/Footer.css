@@ -1,0 +1,21 @@
+.footer{
+    color: white;
+    background-color: #32522f;
+    position: relative;
+}
+.column{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    text-align: center;
+    padding: 1rem ;
+    margin: 2rem;
+    
+}
+
+.col-sm{
+    justify-content: center;
+    display: flex;
+}
+
+
