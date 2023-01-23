@@ -14,3 +14,32 @@
 .nav-link:hover {
     color: #d4af37
 }
+
+#navbarNav {
+    justify-content: end;
+}
+
+@media screen and (max-width: 420px){
+    .nav-link {
+        font-size: 12px;
+    }
+    img {
+        width: 50px;
+    }    
+}
+
+@media screen and (max-width: 320px){
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}  
+#navbarNav {
+    display: grid;
+    justify-content: center;
+    padding: 0;
+}
+#logo {
+    margin: 5px 0px;
+}
+}
