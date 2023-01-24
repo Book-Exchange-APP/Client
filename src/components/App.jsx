@@ -17,7 +17,8 @@ const seedBooks = [
     location: 'l1',
     condition: 'poor',
     genre: 'education',
-    language: 'en'
+    language: 'en', 
+    status: 'active'
   },
   {
     title: 'test 2',
@@ -25,7 +26,8 @@ const seedBooks = [
     location: 'l2',
     condition: 'good',
     genre: 'geo',
-    language: 'ch'
+    language: 'ch',
+    status: 'pending'
   },
   {
     title: 'test 3',
@@ -33,7 +35,8 @@ const seedBooks = [
     location: 'l3',
     condition: 'like new',
     genre: 'art',
-    language: 'fr'
+    language: 'fr',
+    status: 'archived'
   },
   {
     title: 'test 4',
@@ -41,7 +44,8 @@ const seedBooks = [
     location: 'l4',
     condition: 'good',
     genre: 'gardening',
-    language: 'en'
+    language: 'en',
+    status: 'active'
   }
 ]
 
