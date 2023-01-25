@@ -5,6 +5,7 @@
 .navbar {
     padding: 0;
     background-color: #32522f;
+    position: relative;
 }
 
 .nav-link {

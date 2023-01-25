@@ -9,6 +9,7 @@ import Dashboard from './Dashboard'
 import Footer from './Footer'
 import ShowBook from './ShowBook'
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import '../styles/App.css'
 
 const App = () => {
   const [books, setBooks] = useState([])
@@ -101,18 +102,20 @@ const App = () => {
 console.log(displayedBooks)
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/books' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
-        <Route path='/book/:id' element={<ShowBookWrapper />} />
-        <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='*' element={<h4>Page not found!</h4>} />
-      </Routes>
-      <Footer />
+      <body>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/books' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/book/:id' element={<ShowBookWrapper />} />
+          <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='*' element={<h4>Page not found!</h4>} />
+        </Routes>
+        <Footer />
+      </body>
     </>
   )
 }
