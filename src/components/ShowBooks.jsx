@@ -6,7 +6,8 @@ const ShowBooks = ({books}) => {
   console.log(books)
   return (
     <>
-    <div className="books d-flex flex-wrap justify-content-around mt-4 p-3">
+    {/* <div className="books d-flex flex-wrap justify-content-around mt-4 p-3"> */}
+    <div className="books mt-4 p-3">
     {books.map((book, index) => (
         <div key={index} className="card mb-4" style={{ width: '12rem' }}>
           <div id="bookImg">
