@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/Books.css'
 
 const ShowBooks = ({books}) => {
+  console.log(books)
   return (
     <>
     <div className="books d-flex flex-wrap justify-content-around mt-4 p-3">

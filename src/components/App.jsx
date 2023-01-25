@@ -99,7 +99,7 @@ const App = () => {
     return book ? <ShowBook book={book} /> : <h4>Book not found!</h4>
   }
 
-
+console.log(displayedBooks)
   return (
     <>
       <body>
