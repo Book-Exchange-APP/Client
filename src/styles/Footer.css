@@ -9,13 +9,10 @@
 .column{
     display: flex;
     flex-direction: row;
-    justify-content:center;
-    text-align: center;
-    padding: 1rem ;
-    margin: 2rem;
-    
-    
+    justify-content:space-around;
+    text-align: center;    
 }
+
 
 .col-sm{
     justify-content: center;

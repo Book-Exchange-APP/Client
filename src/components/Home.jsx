@@ -1,7 +1,8 @@
 import '../styles/Home.css'
 import React, { useState } from 'react'
 import ShowBooks from './ShowBooks'
-import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 
 
@@ -46,8 +47,13 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
             <main>
                 <div className="Home">
                     <div className="banner text-center">
-                        <h1>How To Use</h1>
+                    <h1>How To Use</h1>  
                     </div>
+                    <div className="intro">
+                        <p>This book exchange store is a not-for-profit community initiative allows readers to swap books at no cost, thereby promoting and increasing access to books and helping the environment at the same time.</p>
+                        <p>In here, you just need to use the search box to see any favourite books you want and give away one of your book for exchange by submitting the appointment.</p>
+                        <p></p>
+                    </div>                     
                     <form className="p-3" role="search" onSubmit={submit}>
                         <input className="title form-control mb-2" type="search" placeholder="Title" aria-label="Search" value={title} onChange={(evt) => setTitle(evt.target.value)}/>
                         <input className="author form-control mb-2" type="search" placeholder="Author" aria-label="Search" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
@@ -80,10 +86,10 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
 
                     <div>
                         <div id="address" className="nav">
-                        
-                            <a className="loc-link" href="https://www.google.com/maps" target="_blank">1 Main St</a>   
-                            <a className="loc-link" href="https://www.google.com/maps" target="_blank">12 Main St</a>
-                            <a className="loc-link" href="https://www.google.com/maps" target="_blank">123 Main St</a>
+                            <h4>Location</h4>
+                            <a className="loc-link" href="https://goo.gl/maps/pgYkj2yxUvoWddbH6" target="_blank">North Brisbane</a>   
+                            <a className="loc-link" href="https://goo.gl/maps/6jTQj1Qtzt2TG3ma7" target="_blank">Brisbane City</a>
+                            <a className="loc-link" href="https://goo.gl/maps/UQCZn6yGuzx8Q6j1A" target="_blank">South Brisbane</a>
                         </div>
                         
                     </div>
