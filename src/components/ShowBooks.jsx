@@ -16,7 +16,7 @@ const ShowBooks = ({books}) => {
                 <h5 className="card-title flex-fill">{book.title}</h5>
                 <p className="card-author fst-italic mb-1">By {book.author}</p>
                 <p className="card-location">@{book.location.location}</p>
-                <a href={`https://localhost:5173/book/${index}`} className="btn details">View details</a>
+                <a href={`https://client-production-4fee.up.railway.app/book/${index}`} className="btn details">View details</a>
             </div>
         </div>
     ))}
