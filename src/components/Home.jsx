@@ -1,7 +1,6 @@
 import '../styles/Home.css'
 import React, { useState } from 'react'
 import ShowBooks from './ShowBooks'
-import Card from 'react-bootstrap/Card';
 
 
 
@@ -60,19 +59,19 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
                         <select className="condition form-select mb-2" id="inputGroupSelect01" value={condition} onChange={(evt) => setCondition(evt.target.value)}>
                             <option>Condition</option>
                             {conditions.map((condition, index) => (
-                                <option key={index} value={condition}>{condition}</option>
+                                <option key={index} value={condition.name}>{condition.name}</option>
                             ))}
                         </select>
                         <select className="language form-select mb-2" id="inputGroupSelect01" value={language} onChange={(evt) => setLanguage(evt.target.value)}>
                             <option>Language</option>
                             {languages.map((language, index) => (
-                                <option key={index} value={language}>{language}</option>
+                                <option key={index} value={language.name}>{language.name}</option>
                             ))}
                         </select>
                         <select className="genre form-select mb-2" id="inputGroupSelect01" value={genre} onChange={(evt) => setGenre(evt.target.value)}>
                             <option>Genre</option>
                             {genres.map((genre, index) => (
-                                <option key={index} value={genre}>{genre}</option>
+                                <option key={index} value={genre.name}>{genre.name}</option>
                             ))}
                         </select>
                         <button className="search btn btn-outline-success fs-6" type="submit">Search</button>
