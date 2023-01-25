@@ -1,7 +1,10 @@
 .footer{
     color: white;
     background-color: #32522f;
-    position: relative;
+    position:absolute;
+    left:0;
+    bottom:0;
+    right:0;
 }
 .column{
     display: flex;
@@ -10,6 +13,7 @@
     text-align: center;
     padding: 1rem ;
     margin: 2rem;
+    
     
 }
 

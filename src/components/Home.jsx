@@ -9,13 +9,42 @@ const Home = () => {
                 <div className="title text-center">
                     <h1>Title Banner</h1>
                 </div>
-                <div className="Search">
-                    <h1>Search Box</h1>
-                </div><div className="Locat">
-                    <h1>Our Location</h1>
+                <div className="SearchNav">
+                    <h2>Search Box</h2>
+                </div><div className="LocatNav">
+                    <h2>Our Location</h2>
                 </div>
-
-                    <h2 className='text-center text info'>Featured Books</h2>
+                    <div className="feature text-center">
+                        <h2>Featured Books</h2>
+                    </div>
+                    <div className='books'>
+                        <img src="../src/assets/logo.png" alt="book" />
+                        <div className='text'>
+                            <span>Book Details</span>
+                        </div>
+                    </div>
+                    <div className='books'>
+                        <img src="../src/assets/logo.png" alt="book" />
+                        <div className='text'>
+                            <span>Book Details</span>
+                        </div>
+                    </div>
+                    <div className='books'>
+                        <img src="../src/assets/logo.png" alt="book" />
+                        <div className='text'>
+                            <span>Book Details</span>
+                        </div>
+                    </div>
+                    <div className='books'>
+                        <img src="../src/assets/logo.png" alt="book" />
+                        <div className='text'>
+                            <span>Book Details</span>
+                        </div>
+                    </div>
+                    <br></br>
+                    <div className="latest text-center">
+                        <h2>Latest Books</h2>
+                    </div>
                     <div className='books'>
                         <img src="../src/assets/logo.png" alt="book" />
                         <div className='text'>
@@ -40,14 +69,6 @@ const Home = () => {
                             <span>Book Details</span>
                         </div>
                     </div>
-                    <div className='container-fluid mx-2'>
-                    <div className='row mt-5 mx-2'>
-                        <div className='col-md-3'>
-
-                        </div>
-                    </div>
-                    </div>
-                    <h2 className='text-center text info'>Latest Arrivals</h2>
             </div>
 
         </>

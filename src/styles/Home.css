@@ -3,7 +3,13 @@
     
 }
 
-.books {
+/* .title{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+} */
+
+/* .books {
     position: relative;
     float: right;
     overflow: hidden;
@@ -48,4 +54,4 @@
 
 .img:hover .txt span {
     opacity: 1;
-}
+} */

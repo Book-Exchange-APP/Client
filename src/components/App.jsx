@@ -8,6 +8,7 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 import Footer from './Footer'
 import { Routes, Route } from 'react-router-dom'
+// import App from '../App.css'
 
 
 const App = () =>{
