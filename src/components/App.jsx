@@ -10,71 +10,6 @@ import Footer from './Footer'
 import ShowBook from './ShowBook'
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 
-// const seedBooks = [
-//   {
-//     title: 'test 1',
-//     author: 'a1',
-//     location: 'l1',
-//     condition: 'poor',
-//     genre: 'education',
-//     language: 'en', 
-//     status: 'active'
-//   },
-//   {
-//     title: 'test 2',
-//     author: 'a2',
-//     location: 'l2',
-//     condition: 'good',
-//     genre: 'geo',
-//     language: 'ch',
-//     status: 'pending'
-//   },
-//   {
-//     title: 'test 3',
-//     author: 'a3',
-//     location: 'l3',
-//     condition: 'like new',
-//     genre: 'art',
-//     language: 'fr',
-//     status: 'archived'
-//   },
-//   {
-//     title: 'test 4',
-//     author: 'a4',
-//     location: 'l4',
-//     condition: 'good',
-//     genre: 'gardening',
-//     language: 'en',
-//     status: 'active'
-//   }
-// ]
-
-const seedLocations = [
-  {
-    location: 'l1',
-    address: '1 Main St',
-    phone: '07123',
-    email: 'l1@test.com'
-  },
-  {
-    location: 'l2',
-    address: '12 Main St',
-    phone: '07123123',
-    email: 'l2@test.com'
-  },
-  {
-    location: 'l3',
-    address: '123 Main St',
-    phone: '07123123123',
-    email: 'l3@test.com'
-  }
-]
-
-const seedLanguages = ['fr', 'en', 'ch']
-const seedConditions = ['good', 'poor', 'like new']
-const seedGenres = ['art', 'gardening', 'geo', 'education']
-
-
 const App = () => {
   const [books, setBooks] = useState([])
   const [displayedBooks, setDisBooks] = useState([])
@@ -92,8 +27,6 @@ const App = () => {
       setDisBooks(data)
     }
     fetchBooks()
-    // setBooks(seedBooks)
-    // setDisBooks(seedBooks)
   }, [])
 
   useEffect(() => {
@@ -103,7 +36,6 @@ const App = () => {
       setLocations(data)
     }
     fetchLocations()
-    // setLocations(data)
   }, [])
 
   useEffect(() => {
@@ -113,7 +45,6 @@ const App = () => {
       setLanguages(data)
     }
     fetchLanguages()
-    // setLanguages(seedLanguages)
   }, [])
 
   useEffect(() => {
@@ -123,7 +54,6 @@ const App = () => {
       setConditions(data)
     }
     fetchConditions()
-    // setConditions(seedConditions)
   }, [])
 
   useEffect(() => {
@@ -133,7 +63,6 @@ const App = () => {
       setGenres(data)
     }
     fetchGenres()
-    // setGenres(seedGenres)
   }, [])
 
   const searchBook = (searchCriteria) => {
