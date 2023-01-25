@@ -1,10 +1,10 @@
 .footer{
     color: white;
     background-color: #32522f;
-    position:absolute;
-    left:0;
+    position: fixed;
+    width: 100%;
     bottom:0;
-    right:0;
+
 }
 .column{
     display: flex;

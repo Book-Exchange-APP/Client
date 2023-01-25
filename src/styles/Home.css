@@ -1,57 +1,52 @@
-.books{
-    float: left;
-    
+@keyframes flash {
+    from { color: blueviolet;
+    }
+    to { color:aqua;
+    }
 }
 
-/* .title{
-    align-items: center;
-    display: flex;
-    justify-content: center;
-} */
-
-/* .books {
-    position: relative;
-    float: right;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 400px;
-    height: 400px;
-    color: white;
-    border-radius: 20%; 
-    box-shadow: 10px 5px 20px rgba(0, 0, 0, 0.877);
-    margin-bottom: 5rem;
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
 }
 
-.books img {
+.banner{
+    border-bottom: solid 2px grey;
+    margin-left: 20%;
+    animation: flash 2s infinite alternate;
+}
+
+.Fbooks{
+    border-bottom: solid 2px grey;
+    margin-left: 20%;
+}
+
+.Lbooks{
+    border-bottom: solid 2px grey;
+    margin-left: 20%;
+}
+
+form {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.txt {
+    top: 120px;
+    width: 20%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Architects Daughter', cursive;
-    font-size: 1rem;
-    color: white;
-    height: 200px;
-    border-radius: 0.5rem 0.5rem 0 0;
-    transform: translateY(0%);
-    
+    flex-direction: column;
 }
 
-.txt span {
-    opacity: 0;
-    transition: opacity 0.5s 0.5s;
-    background: rgba(0, 0, 0, 0.664);
-    padding: 0rem 1rem 0rem 1rem;
+#address {
+    position: absolute;
+    top: 50%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    background-color: #32522f;
+    z-index: 1;
 }
 
-.img:hover .txt span {
-    opacity: 1;
-} */
+
+.loc-link{
+    animation: flash 2s infinite alternate;
+    padding: 6px 8px 6px 16px;
+}
