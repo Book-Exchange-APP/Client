@@ -4,7 +4,7 @@ import '../styles/Navbar.css'
 const Navbar = () => {
     return (
         <>
-            <nav className="navbar navbar-expand fixed-top bg-gradient">
+            <nav className="navbar navbar-expand bg-gradient sticky-top">
                 <div id='logo'>
                     <a className="nav-link" href="/">
                         <img src="../src/assets/logo.png" alt="Logo" width="80" />

@@ -13,7 +13,7 @@
 }
 
 .nav-link:hover {
-    color: #d4af37
+    color: #d4af37;
 }
 
 #navbarNav {
@@ -30,7 +30,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 319px) {
     .navbar {
         display: flex;
         flex-wrap: wrap;
