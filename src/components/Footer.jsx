@@ -12,19 +12,19 @@ const Footer = () => {
                 <div className="column">
                     {/* column 1 FB*/}
                     <div className="col">
-                        <a class="media-link" href="https://facebook.com" target="_blank">
+                        <a className="media-link" href="https://facebook.com" target="_blank">
                             <img src={facebook} alt="Facebook" />
                         </a>
                     </div>
                     {/* column 2 IG*/}
                     <div className="col">
-                        <a class="media-link" href="https://www.instagram.com/" target="_blank">
+                        <a className="media-link" href="https://www.instagram.com/" target="_blank">
                             <img src={instagram} alt="Instagram" />
                         </a>
                     </div>
                     {/* column 3 Twitter*/}
                     <div className="col">
-                        <a class="media-link" href="https://twitter.com/" target="_blank">
+                        <a className="media-link" href="https://twitter.com/" target="_blank">
                             <img src={twitter} alt="Twitter" />
                         </a>
                     </div>
