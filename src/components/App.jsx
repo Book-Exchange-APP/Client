@@ -22,7 +22,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchBooks() {
-      const res = await fetch('http://localhost:4001/books')
+      const res = await fetch('https://server-production-f312.up.railway.app/books')
       const data = await res.json()
       setBooks(data)
       setDisBooks(data)
@@ -32,7 +32,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchLocations() {
-      const res = await fetch('http://localhost:4001/locations')
+      const res = await fetch('https://server-production-f312.up.railway.app/locations')
       const data = await res.json()
       setLocations(data)
     }
@@ -41,7 +41,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchLanguages() {
-      const res = await fetch('http://localhost:4001/languages')
+      const res = await fetch('https://server-production-f312.up.railway.app/languages')
       const data = await res.json()
       setLanguages(data)
     }
@@ -50,7 +50,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchConditions() {
-      const res = await fetch('http://localhost:4001/conditions')
+      const res = await fetch('https://server-production-f312.up.railway.app/conditions')
       const data = await res.json()
       setConditions(data)
     }
@@ -59,7 +59,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchGenres() {
-      const res = await fetch('http://localhost:4001/genres')
+      const res = await fetch('https://server-production-f312.up.railway.app/genres')
       const data = await res.json()
       setGenres(data)
     }
@@ -72,8 +72,15 @@ const App = () => {
     if (Object.keys(searchCriteria).length !== 0) {
       let match = false
       for (const book of books) {
-        for (const con of Object.keys(searchCriteria)) {
-          if (!book[con].includes(searchCriteria[con])) {
+        for (const key of Object.keys(searchCriteria)) {
+          console.log(book[key])
+          let value = ''
+          if (key === 'location') {
+            value = book[key].location
+          } else {
+            value = book[key]
+          }
+          if (!value.includes(searchCriteria[key])) {
             match = false
             break;
           } else {
@@ -87,7 +94,7 @@ const App = () => {
     } else {
       result = books
     }
-
+      console.log(result)
       setDisBooks(result)
     
 
@@ -99,10 +106,10 @@ const App = () => {
     return book ? <ShowBook book={book} /> : <h4>Book not found!</h4>
   }
 
-
+console.log(displayedBooks)
   return (
     <>
-      <body>
+      {/* <body> */}
         <Navbar />
         <Routes>
           <Route path='/' element={<Home books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
@@ -115,7 +122,7 @@ const App = () => {
           <Route path='*' element={<h4>Page not found!</h4>} />
         </Routes>
         <Footer />
-      </body>
+      {/* </body> */}
     </>
   )
 }
