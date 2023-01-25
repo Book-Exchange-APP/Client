@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/Books.css'
+import logo from '../assets/logo.png'
 
 const ShowBooks = ({books}) => {
   console.log(books)
@@ -9,7 +10,7 @@ const ShowBooks = ({books}) => {
     {books.map((book, index) => (
         <div key={index} className="card mb-4" style={{ width: '12rem' }}>
           <div id="bookImg">
-            <img src="../src/assets/logo.png" className="card-img-top" alt="Book image" />
+            <img src={logo} className="card-img-top" alt="Book image" />
             {book.status==='Pending' ? <p className="status text-center fst-italic bg-light text-dark-emphasis bg-opacity-75">Pending</p> : true}
           </div>
             <div className="card-body d-flex flex-column">
