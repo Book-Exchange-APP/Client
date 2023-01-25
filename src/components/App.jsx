@@ -41,7 +41,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchLanguages() {
-      const res = await fetch('https:/server-production-f312.up.railway.app/languages')
+      const res = await fetch('https://server-production-f312.up.railway.app/languages')
       const data = await res.json()
       setLanguages(data)
     }
@@ -72,8 +72,15 @@ const App = () => {
     if (Object.keys(searchCriteria).length !== 0) {
       let match = false
       for (const book of books) {
-        for (const con of Object.keys(searchCriteria)) {
-          if (!book[con].includes(searchCriteria[con])) {
+        for (const key of Object.keys(searchCriteria)) {
+          console.log(book[key])
+          let value = ''
+          if (key === 'location') {
+            value = book[key].location
+          } else {
+            value = book[key]
+          }
+          if (!value.includes(searchCriteria[key])) {
             match = false
             break;
           } else {
@@ -87,7 +94,7 @@ const App = () => {
     } else {
       result = books
     }
-
+      console.log(result)
       setDisBooks(result)
     
 
