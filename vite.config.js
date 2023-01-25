@@ -6,8 +6,7 @@ export default defineConfig({
   plugins: [react()],
   test:{
     environment: 'jsdom', 
-    globals: true,
-    
+    globals: true,    
   },   
   preview: {
     port: process.env.PORT || 8001
