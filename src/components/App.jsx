@@ -102,7 +102,7 @@ const App = () => {
 console.log(displayedBooks)
   return (
     <>
-      <body>
+      {/* <body> */}
         <Navbar />
         <Routes>
           <Route path='/' element={<Home books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
@@ -115,7 +115,7 @@ console.log(displayedBooks)
           <Route path='*' element={<h4>Page not found!</h4>} />
         </Routes>
         <Footer />
-      </body>
+      {/* </body> */}
     </>
   )
 }
