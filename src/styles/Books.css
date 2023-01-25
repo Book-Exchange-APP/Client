@@ -47,6 +47,10 @@ form {
     width: 100%;
 }
 
+.placeholder {
+    color: red;
+}
+
 @media screen and (max-width: 820px) {    
     form {
         border-bottom: solid 2px grey;
@@ -80,5 +84,31 @@ form {
     .books,
     #banner {
         margin: 0px 0px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    p {
+        font-size: 12px;
+    }
+
+    h5 {
+        font-size: 16px;
+    }
+
+    form>* {
+        height: 30px;
+    }
+
+    .form-select, .form-control {
+        font-size: 12px;
+    }
+
+    .fs-6 {
+        font-size: 12px !important;
+    }
+
+    .mb-2 {
+        margin-bottom: 0 !important;
     }
 }
