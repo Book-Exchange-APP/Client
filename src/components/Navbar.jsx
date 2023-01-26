@@ -1,19 +1,31 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { useLogout } from '../auth/useLogout'
 import '../styles/Navbar.css'
 
 const Navbar = () => {
+
+    const { logout } = useLogout()
+    const handleClick = () => { 
+        logout()
+    }
+
+
     return (
         <>
             <nav className="navbar navbar-expand bg-gradient sticky-top">
                 <div id='logo'>
-                    <a className="nav-link" href="/">
+                    <Link to="/" className="nav-link" >
                         <img src="../src/assets/logo.png" alt="Logo" width="80" />
-                    </a>
+                    </Link>
                 </div>
                 <div id="navbarNav" className="nav container-fluid">
-                    <a className="nav-link text-center" href="/books">All Books</a>
-                    <a className="nav-link text-center" href="/login">Admin Login</a>
-                    <a className="nav-link text-center" href="/contact">Contact</a>
+                    <Link to="/books" className="nav-link text-center">All Books</Link>
+                    <Link to="/contact" className="nav-link text-center">Contact</Link>
+                    <Link to="/login" className="nav-link text-center">Login</Link>         
+                </div>
+                <div>
+                    <button onClick={handleClick}>LogOut</button>
                 </div>
             </nav>
         </>
