@@ -1,4 +1,5 @@
 import { createContext, useReducer } from 'react'
+import { useEffect } from 'react'
 
 // 
 const AuthContext =  createContext()
@@ -18,6 +19,14 @@ const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null
   })
+  // Fire once when App first renders on Mount
+  useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem('user'))
+    // If user is logged in
+    if (user) {
+      dispatch({ type: 'LOGIN', payload: user})
+    }
+  }, [])
 // keep track of state in console
   console.log('AuthContext state: ', state)
 

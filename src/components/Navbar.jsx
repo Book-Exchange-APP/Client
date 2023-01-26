@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useLogout } from '../auth/useLogout'
+import { useAuthContext } from '../auth/useAuthContext'
 import '../styles/Navbar.css'
 
 const Navbar = () => {
@@ -9,6 +10,7 @@ const Navbar = () => {
     const handleClick = () => { 
         logout()
     }
+    const { user } = useAuthContext()
 
 
     return (
@@ -22,11 +24,18 @@ const Navbar = () => {
                 <div id="navbarNav" className="nav container-fluid">
                     <Link to="/books" className="nav-link text-center">All Books</Link>
                     <Link to="/contact" className="nav-link text-center">Contact</Link>
-                    <Link to="/login" className="nav-link text-center">Login</Link>         
                 </div>
-                <div>
-                    <button onClick={handleClick}>LogOut</button>
-                </div>
+                {!user && (
+                    <div>
+                        <Link to="/login" className="nav-link text-center">Login</Link> 
+                    </div>
+                )}
+                {user && (
+                    <div>
+                        <span>{user.email}</span>
+                        <button onClick={handleClick}>LogOut</button>
+                    </div>
+                )}
             </nav>
         </>
     )

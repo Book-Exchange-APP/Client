@@ -23,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchBooks() {
-      const res = await fetch('https://server-production-f312.up.railway.app/books')
+      const res = await fetch('http://localhost:4001/books')
       const data = await res.json()
       setBooks(data)
       setDisBooks(data)
@@ -33,7 +33,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchLocations() {
-      const res = await fetch('https://server-production-f312.up.railway.app/locations')
+      const res = await fetch('http://localhost:4001/locations')
       const data = await res.json()
       setLocations(data)
     }
@@ -51,7 +51,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchConditions() {
-      const res = await fetch('https://server-production-f312.up.railway.app/conditions')
+      const res = await fetch('http://localhost:4001/conditions')
       const data = await res.json()
       setConditions(data)
     }
@@ -60,7 +60,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchGenres() {
-      const res = await fetch('https://server-production-f312.up.railway.app/genres')
+      const res = await fetch('http://localhost:4001/genres')
       const data = await res.json()
       setGenres(data)
     }
