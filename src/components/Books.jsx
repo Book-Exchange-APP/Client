@@ -75,7 +75,7 @@ const Books = ({ books, locations, languages, conditions, genres, searchBook }) 
                     <button className="search btn btn-outline-success fs-6" type="submit">Search</button>
                 </form> */}
                 <Search locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook}/>
-                {!books ? <h2 className='text-center pt-5'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books}/> : <h2 className='text-center pt-5 text-danger'>No Books Found!</h2>}
+                {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
             </main>
         </>
     )
