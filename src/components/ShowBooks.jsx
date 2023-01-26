@@ -1,6 +1,7 @@
 import React from 'react'
 import '../styles/Books.css'
 import logo from '../assets/logo.png'
+import { Link } from 'react-router-dom'
 
 const ShowBooks = ({books}) => {
   console.log(books)
@@ -18,7 +19,7 @@ const ShowBooks = ({books}) => {
                 <h5 className="card-title flex-fill">{book.title}</h5>
                 <p className="card-author fst-italic mb-1">By {book.author}</p>
                 <p className="card-location">@{book.location.location}</p>
-                <a href={`https://client-production-4fee.up.railway.app/book/${index}`} className="btn details">View details</a>
+                <Link to={`/book/${index}`} className="btn details">View details</Link>
             </div>
         </div>
     ))}

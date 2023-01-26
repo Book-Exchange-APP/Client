@@ -12,8 +12,6 @@ const Books = ({ books, locations, languages, conditions, genres, searchBook }) 
     const [genre, setGenre] = useState('')
 
 
-
-
     function submit(evt) {
         evt.preventDefault()
         const searchCriteria = {}
@@ -38,6 +36,7 @@ const Books = ({ books, locations, languages, conditions, genres, searchBook }) 
         searchBook(searchCriteria)
     }
 
+    
     return (
         <>
             <main>
