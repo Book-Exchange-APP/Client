@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import { render } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
-import {fireEvent, screen} from '@testing-library/dom'
-import Books from "./Books"
+import {screen} from '@testing-library/dom'
+import Books from "../components/Books"
 
 const displayedBooks = [
     {
