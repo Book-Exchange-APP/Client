@@ -94,13 +94,13 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
                     <div className="feature text-center">
                         <h1 className='Fbooks'>Featured Books</h1>
                         <div className='fourbooks'>
-                            {books.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>}
+                            {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>}
                         </div>
                     </div>
                     <div className="latest text-center">
                         <h1 className='Lbooks'>Latest Book</h1>
                         <div className='fourbooks'>
-                            {books.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>}
+                            {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>}
                         </div>
                     </div>
                         

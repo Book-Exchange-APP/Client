@@ -20,9 +20,9 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand bg-gradient sticky-top">
                 <div id='logo'>
-                    <a className="nav-link" href="/">
+                    <Link className="nav-link" to="/">
                         <img src={logo} alt="Logo" width="80" />
-                    </a>
+                    </Link>
                 </div>
                 <div id="navbarNav" className="nav container-fluid">
                     <Link to="/books" className="nav-link text-center">All Books</Link>
