@@ -19,12 +19,12 @@ const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null
   })
-  // Fire once when App first renders on Mount
-  useEffect(() => {
+// Fires only on mount
+  useEffect (() => {
     const user = JSON.parse(sessionStorage.getItem('user'))
-    // If user is logged in
+
     if (user) {
-      dispatch({ type: 'LOGIN', payload: user})
+      dispatch({type:'LOGIN', payload: user})
     }
   }, [])
 // keep track of state in console

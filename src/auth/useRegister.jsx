@@ -16,7 +16,7 @@ export const useRegister = () => {
             password: password
           }
 
-        const response = await fetch('http://localhost:4001/users', {
+        const response = await fetch('https://server-production-f312.up.railway.app/users', {
             method: 'POST',
             headers: {
                 Accept: "application/json",
@@ -33,7 +33,6 @@ export const useRegister = () => {
         }
         if (response.ok) {
             // Save user to sessionStorage
-            console.log('OK')
             sessionStorage.setItem('user', JSON.stringify(json))
             // Update Auth Context
             dispatch({type: 'LOGIN', payload: json})
