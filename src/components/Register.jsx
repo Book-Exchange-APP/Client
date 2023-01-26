@@ -1,15 +1,18 @@
 import { useState } from "react"
+import { useRegister } from "../auth/useRegister.jsx"
 
 const Register = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const {register, error, isLoading} = useRegister()
+
     const handleSubmit = async (e) => {
         // prevent refresh of page
         e.preventDefault()
 
-        console.log(name, email, password)
+        await register(name, email, password)
     }
 
     return (
@@ -34,7 +37,8 @@ const Register = () => {
             value= { password }
             />
 
-            <button>Submit</button>
+            <button disabled={isLoading}>Submit</button>
+            {error && <div className="error">{error}</div>}
         </form> 
     )
 }
