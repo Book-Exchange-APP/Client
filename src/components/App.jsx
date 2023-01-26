@@ -11,9 +11,11 @@ import ShowBook from './ShowBook'
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import '../styles/App.css'
 
+
+
 const App = () => {
   const [books, setBooks] = useState([])
-  const [displayedBooks, setDisBooks] = useState([])
+  const [displayedBooks, setDisBooks] = useState(null)
   // const nav = useNavigate()
   const [locations, setLocations] = useState([])
   const [languages, setLanguages] = useState([])
@@ -95,15 +97,13 @@ const App = () => {
       result = books
     }
       console.log(result)
-      setDisBooks(result)
-    
-
+      setDisBooks(result)  
   }
 
   const ShowBookWrapper = () => {
     const { id } = useParams()
-    const book = books[id]
-    return book ? <ShowBook book={book} /> : <h4>Book not found!</h4>
+    const selectedBook = books.find(book => book._id === id)
+    return selectedBook ? <ShowBook book={selectedBook} /> : <h4>Book not found!</h4>
   }
 
 console.log(displayedBooks)

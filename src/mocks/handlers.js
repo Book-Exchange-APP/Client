@@ -1,10 +1,6 @@
-import '@testing-library/jest-dom'
-import { render } from "@testing-library/react"
-import { BrowserRouter } from 'react-router-dom'
-import {fireEvent, screen} from '@testing-library/dom'
-import Books from "./Books"
+import { rest } from 'msw'
 
-const displayedBooks = [
+const books = [
     {
         _id: "63d0c625189591d4b10b85b7",
         title: "Test 1",
@@ -108,39 +104,25 @@ const genres = [{
     }
 ]
 
-const searchBook = () => {}
+export const handlers = [
+    rest.get('https://server-production-f312.up.railway.app/books', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(books))
+    }),
 
-describe('Books Component', () => {    
-    let container
+    rest.get('https://server-production-f312.up.railway.app/locations', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(locations))
+    }),
 
-    beforeEach(async function () {
-        container = render(<BrowserRouter><Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} /></BrowserRouter>).container
-        })  
+    rest.get('https://server-production-f312.up.railway.app/languages', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(languages))
+    }),
 
-    it("Shows the Books heading", () => {
-        expect(container.querySelector('h1')).toBeTruthy()
-        expect(container.querySelector('h1')).toHaveTextContent('Books')
+    rest.get('https://server-production-f312.up.railway.app/conditions', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(conditions))
+    }),
 
-    })
+    rest.get('https://server-production-f312.up.railway.app/genres', (req, res, ctx) => {
+        return res(ctx.status(200), ctx.json(genres))
+    }),
 
-    it("Shows the Book Cards", () => {
-        expect(container.querySelector('h2')).toBeFalsy()
-        expect(container.querySelector('h5')).toBeTruthy()
-        expect(container.querySelector('img')).toBeTruthy()
-        expect(screen.getAllByRole('img').length).toBe(3)
-        expect(screen.getAllByRole('img').length).not.toBe(2)
-        expect(screen.getAllByText('View details').length).toBe(3)
-    })
-
-    it("Shows the Search Bar", () => {
-        expect(screen.getAllByRole('search')).toBeTruthy()
-        expect(screen.getAllByRole('search').length).toBe(1)
-        expect(container.querySelector('select')).toBeTruthy()
-        expect(container.querySelector('select').length).toBe(4)
-        expect(screen.getAllByLabelText('Search')).toBeTruthy()
-        expect(screen.getAllByLabelText('Search').length).toBe(2)
-        expect(container.querySelector('button')).toBeTruthy()
-        expect(container.querySelector('button')).toHaveTextContent('Search')
-    })
-})
-
+]
