@@ -15,9 +15,9 @@ import '../styles/App.css'
 
 
 const App = () => {
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState(null)
   const [displayedBooks, setDisBooks] = useState(null)
-  // const nav = useNavigate()
+  const nav = useNavigate()
   const [locations, setLocations] = useState([])
   const [languages, setLanguages] = useState([])
   const [conditions, setConditions] = useState([])
@@ -98,7 +98,8 @@ const App = () => {
       result = books
     }
       console.log(result)
-      setDisBooks(result)  
+      setDisBooks(result)
+      nav('/search')  
   }
 
   const ShowBookWrapper = () => {
@@ -107,14 +108,14 @@ const App = () => {
     return selectedBook ? <ShowBook book={selectedBook} /> : <h4>Book not found!</h4>
   }
 
-console.log(displayedBooks)
   return (
     <>
       {/* <body> */}
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
-          <Route path='/books' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/search' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
           <Route path='/contact' element={<Contact />} />

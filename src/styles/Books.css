@@ -27,8 +27,7 @@ form {
     flex-direction: column;
 }
 
-.books,
-#banner {
+.books, #banner, h2 {
     margin-left: 20%;
     
 }
@@ -92,8 +91,7 @@ form {
         flex-direction: column;
     }
 
-    .books,
-    #banner {
+    .books, #banner, h2 {
         margin: 0px 0px;
     }
 }
