@@ -33,7 +33,7 @@ const Search = ({locations, languages, conditions, genres, searchBook}) => {
         searchBook(searchCriteria)
         return searchCriteria
     }
-    return (<>
+    return (
         <form className="p-3" role="search" onSubmit={submit}>
             <input className="title form-control mb-2" type="search" placeholder="Title" aria-label="Search" value={title} onChange={(evt) => setTitle(evt.target.value)} />
             <input className="author form-control mb-2" type="search" placeholder="Author" aria-label="Search" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
@@ -63,7 +63,6 @@ const Search = ({locations, languages, conditions, genres, searchBook}) => {
             </select>
             <button className="search btn btn-outline-success fs-6" type="submit">Search</button>
         </form>
-    </>
     )
 }
 

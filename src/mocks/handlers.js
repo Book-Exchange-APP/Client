@@ -105,9 +105,11 @@ const genres = [{
     }
 ]
 
+const searchBook = vi.fn()
+
 const handlers = [
     rest.get('https://server-production-f312.up.railway.app/books', (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json(books))
+        return res(ctx.status(200), ctx.json(displayedBooks))
     }),
 
     rest.get('https://server-production-f312.up.railway.app/locations', (req, res, ctx) => {
@@ -128,7 +130,6 @@ const handlers = [
 
 ]
 
-const searchBook = vi.fn()
-// const searchBook = () => {}
+
 
 export { handlers, displayedBooks, locations, languages, conditions, genres, searchBook }

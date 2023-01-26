@@ -13,5 +13,5 @@ export default defineConfig({
   },   
   preview: {
     port: process.env.PORT || 8001
-  }
+  },
 })
