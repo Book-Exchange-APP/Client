@@ -4,6 +4,7 @@ import Home from './Home'
 import Books from './Books'
 import Confirmation from './Confirmation'
 import Contact from './Contact'
+import Register from './Register'
 import Login from './Login'
 import Dashboard from './Dashboard'
 import Footer from './Footer'
@@ -110,6 +111,7 @@ console.log(displayedBooks)
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
           <Route path='/contact' element={<Contact />} />
+          <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='*' element={<h4>Page not found!</h4>} />

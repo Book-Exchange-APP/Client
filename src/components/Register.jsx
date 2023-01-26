@@ -1,6 +1,7 @@
 import { useState } from "react"
 
-const Login = () => {
+const Register = () => {
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -8,12 +9,18 @@ const Login = () => {
         // prevent refresh of page
         e.preventDefault()
 
-        console.log(email, password)
+        console.log(name, email, password)
     }
 
     return (
-        <form className="login" onSubmit= {handleSubmit}>
-            <h3>Login</h3>
+        <form className="register" onSubmit= {handleSubmit}>
+            <h3>Register</h3>
+            <label>Name:</label>
+            <input 
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+            value= { name }
+            />
             <label>Email:</label>
             <input 
             type="email"
@@ -27,9 +34,9 @@ const Login = () => {
             value= { password }
             />
 
-            <button>Login</button>
-        </form>
+            <button>Submit</button>
+        </form> 
     )
 }
 
-export default Login
+export default Register
