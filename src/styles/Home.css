@@ -16,15 +16,24 @@
     margin-left: 20%;
     animation: flash 2s infinite alternate;
 }
+.intro{
+    margin-left: 20%;
+    /* animation: flash 2s infinite alternate; */
+    margin-top: 2%;
+}
 
 .Fbooks{
     border-bottom: solid 2px grey;
     margin-left: 20%;
+    animation: flash 2s infinite alternate;
+
 }
 
 .Lbooks{
     border-bottom: solid 2px grey;
     margin-left: 20%;
+    animation: flash 2s infinite alternate;
+
 }
 
 form {
@@ -43,10 +52,16 @@ form {
     flex-direction: column;
     background-color: #32522f;
     z-index: 1;
+    color: white;
+    
 }
 
 
 .loc-link{
-    animation: flash 2s infinite alternate;
+    color: white;
     padding: 6px 8px 6px 16px;
+}
+
+.loc-link:hover {
+    color: #d4af37;
 }
