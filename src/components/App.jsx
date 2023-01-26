@@ -15,7 +15,7 @@ import '../styles/App.css'
 
 
 const App = () => {
-  const [books, setBooks] = useState([])
+  const [books, setBooks] = useState(null)
   const [displayedBooks, setDisBooks] = useState(null)
   const nav = useNavigate()
   const [locations, setLocations] = useState([])

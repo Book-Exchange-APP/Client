@@ -5,7 +5,7 @@ import { useLogout } from '../auth/useLogout'
 import '../styles/Navbar.css'
 import logo from '../assets/logo.png'
 
-const Navbar = ({books}) => {
+const Navbar = () => {
 
     const { logout } = useLogout()
 
