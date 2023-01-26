@@ -43,19 +43,19 @@ const Search = ({locations, languages, conditions, genres, searchBook}) => {
                     <option key={index} value={location.location}>{location.location}</option>
                 ))}
             </select>
-            <select className="condition form-select mb-2" id="inputGroupSelect01" value={condition} onChange={(evt) => setCondition(evt.target.value)}>
+            <select className="condition form-select mb-2" id="inputGroupSelect02" value={condition} onChange={(evt) => setCondition(evt.target.value)}>
                 <option>Condition</option>
                 {conditions.map((condition, index) => (
                     <option key={index} value={condition.name}>{condition.name}</option>
                 ))}
             </select>
-            <select className="language form-select mb-2" id="inputGroupSelect01" value={language} onChange={(evt) => setLanguage(evt.target.value)}>
+            <select className="language form-select mb-2" id="inputGroupSelect03" value={language} onChange={(evt) => setLanguage(evt.target.value)}>
                 <option>Language</option>
                 {languages.map((language, index) => (
                     <option key={index} value={language.name}>{language.name}</option>
                 ))}
             </select>
-            <select className="genre form-select mb-2" id="inputGroupSelect01" value={genre} onChange={(evt) => setGenre(evt.target.value)}>
+            <select className="genre form-select mb-2" id="inputGroupSelect04" value={genre} onChange={(evt) => setGenre(evt.target.value)}>
                 <option>Genre</option>
                 {genres.map((genre, index) => (
                     <option key={index} value={genre.name}>{genre.name}</option>

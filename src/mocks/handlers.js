@@ -1,6 +1,7 @@
 import { rest } from 'msw'
+import {vi} from 'vitest'
 
-const books = [
+const displayedBooks = [
     {
         _id: "63d0c625189591d4b10b85b7",
         title: "Test 1",
@@ -104,7 +105,7 @@ const genres = [{
     }
 ]
 
-export const handlers = [
+const handlers = [
     rest.get('https://server-production-f312.up.railway.app/books', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(books))
     }),
@@ -126,3 +127,8 @@ export const handlers = [
     }),
 
 ]
+
+const searchBook = vi.fn()
+// const searchBook = () => {}
+
+export { handlers, displayedBooks, locations, languages, conditions, genres, searchBook }
