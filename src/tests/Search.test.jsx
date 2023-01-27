@@ -5,9 +5,6 @@ import Search from "../components/Search"
 import { locations, languages, conditions, genres, searchBook } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 
-
-
-
 describe("Submits the search conditions", () => {
     let container
     const data = {condition: 'Poor'}

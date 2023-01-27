@@ -1,9 +1,9 @@
 .footer{
     color: white;
     background-color: #32522f;
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
-    bottom:0;
+    /* bottom:0; */
 
 }
 .column{

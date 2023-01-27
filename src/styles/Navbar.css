@@ -1,45 +1,29 @@
-#logo {
-    margin: 5px;
-}
-
 .navbar {
-    padding: 0;
     background-color: #32522f;
-    position: relative;
+    --bs-navbar-padding-y: 0;
 }
 
 .nav-link {
-    color: white;
-    font-size: 20px;
+    --bs-nav-link-color: white;
+    --bs-nav-link-hover-color: #d4af37;
 }
 
-.nav-link:hover {
-    color: #d4af37;
+#logo {
+    width: 5rem;
 }
-
-.nav-link:focus {
-    color: white;
-}
-
 
 #navbarNav {
     justify-content: end;
 }
 
-@media screen and (max-width: 500px) {
-    .nav-link {
-        font-size: 18px;
-        padding: 8px;
-    }
-}
-
 @media screen and (max-width: 420px) {
+    #logo {
+        width: 4rem;
+    }
+
     .nav-link {
         font-size: 12px;
-    }
-
-    img {
-        width: 50px;
+        padding: 8px;
     }
 }
 
@@ -54,9 +38,9 @@
         display: grid;
         justify-content: center;
         padding: 0;
-    }
+    } 
 
-    #logo {
-        margin: 5px 0px;
+    .sticky-top {
+        position: static;
     }
 }

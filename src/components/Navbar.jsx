@@ -19,30 +19,28 @@ const Navbar = () => {
     return (
         <>
             <nav className="navbar navbar-expand bg-gradient sticky-top">
-                <div id='logo'>
-                    <Link className="nav-link" to="/">
-                        <img src={logo} alt="Logo" width="80" />
+                <div  className="m-1">
+                    <Link className="nav-brand" to="/">
+                        <img id='logo' src={logo} alt="Logo"/>
                     </Link>
                 </div>
                 <div id="navbarNav" className="nav container-fluid">
-                    <Link to="/books" className="nav-link text-center">Books</Link>
-                    <Link to="/contact" className="nav-link text-center">Contact</Link>
-                </div>
+                    <Link to="/books" className="nav-link fs-4 text-center">Books</Link>
+                    <Link to="/contact" className="nav-link fs-4 text-center">Contact</Link>
+                
                 {user && user.admin && (
-                <div>
-                    <Link to="/dashboard" className="nav-link text-center">Dashboard</Link>
-                </div>
+                
+                    <Link to="/dashboard" className="nav-link fs-4 text-center">Dashboard</Link>
+                
                 )}
                 {!user && (
-                <div>
-                    <Link to="/login" className="nav-link text-center">Login</Link>         
-                </div>
+                    <Link to="/login" className="nav-link fs-4 text-center">Login</Link>         
                 )}
                 {user && (
-                <div>
                     <button onClick={handleClick}>LogOut</button>
-                </div>
                 )}
+                </div>
+                
             </nav>
         </>
     )
