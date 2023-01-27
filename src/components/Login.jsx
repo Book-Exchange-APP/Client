@@ -25,6 +25,7 @@ const Login = ( {nav} ) => {
     }
 
     return (
+        <main>            
         <form className="login" onSubmit= {handleSubmit}>
             <h3>Login</h3>
             <p>Not Signed up?</p>
@@ -41,10 +42,10 @@ const Login = ( {nav} ) => {
             onChange={(e) => setPassword(e.target.value)}
             value= { password }
             />
-
             <button disabled={isLoading}>Submit</button>
             {error && <div className="error">{error}</div>}
         </form>
+        </main>
     )
 }
 
