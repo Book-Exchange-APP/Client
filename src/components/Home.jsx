@@ -11,7 +11,6 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
 
     return (
         <>
-            <main>
                 <div className="Home">
                     <div className="banner text-center">
                         <h1>How To Use</h1>  
@@ -36,7 +35,7 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
                         <a href="./books" class="book-link">See More</a>
                         <div className='fourbooks'>
                             {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
-                            {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
+                            {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books.slice(0,4)}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
                         </div>
                     </div>
                     <div className="latest text-center">
@@ -44,13 +43,10 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
                         <a href="./books" class="book-link">See More</a>
                         <div className='fourbooks'>
                             {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
-                            {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
+                            {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books.slice(0,4)}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
                         </div>
-                    </div>
-                        
-                    
+                    </div>                   
                 </div>
-            </main>
         </>
     )
 }
