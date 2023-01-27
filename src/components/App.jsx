@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar'
 import Home from './Home'
 import Books from './Books'
+import Appointment from './Appointment'
 import Confirmation from './Confirmation'
 import Contact from './Contact'
 import Register from './Register'
@@ -116,6 +117,7 @@ console.log(displayedBooks)
           <Route path='/' element={<Home books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/books' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
+          <Route path='/appointment' element={<Appointment />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/register' element={<Register />} />
