@@ -108,23 +108,23 @@ const genres = [{
 const searchBook = vi.fn()
 
 const handlers = [
-    rest.get('https://server-production-f312.up.railway.app/books', (req, res, ctx) => {
+    rest.get('http://localhost:4001/books', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(displayedBooks))
     }),
 
-    rest.get('https://server-production-f312.up.railway.app/locations', (req, res, ctx) => {
+    rest.get('http://localhost:4001/locations', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(locations))
     }),
 
-    rest.get('https://server-production-f312.up.railway.app/languages', (req, res, ctx) => {
+    rest.get('http://localhost:4001/languages', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(languages))
     }),
 
-    rest.get('https://server-production-f312.up.railway.app/conditions', (req, res, ctx) => {
+    rest.get('http://localhost:4001/conditions', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(conditions))
     }),
 
-    rest.get('https://server-production-f312.up.railway.app/genres', (req, res, ctx) => {
+    rest.get('http://localhost:4001/genres', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(genres))
     }),
 

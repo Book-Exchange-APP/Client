@@ -15,6 +15,8 @@
     border-bottom: solid 2px grey;
     margin-left: 20%;
     animation: flash 2s infinite alternate;
+    font-weight: bold;
+
 }
 .intro{
     margin-left: 20%;
@@ -26,6 +28,7 @@
     border-bottom: solid 2px grey;
     margin-left: 20%;
     animation: flash 2s infinite alternate;
+    font-weight: bold;
 
 }
 
@@ -33,7 +36,20 @@
     border-bottom: solid 2px grey;
     margin-left: 20%;
     animation: flash 2s infinite alternate;
+    font-weight: bold;
 
+}
+
+.book-link{
+    float: right;
+    padding: 1rem;
+    /* background-color: #32522f; */
+    color: black;
+    font-weight: bold;
+}
+
+.book-link:hover {
+    color: #d4af37;
 }
 
 form {

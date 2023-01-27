@@ -24,9 +24,15 @@ const Navbar = () => {
                         <img id='logo' src={logo} alt="Logo"/>
                     </Link>
                 </div>
-                <div id="navbarNav" className="nav container-fluid">                    
+                <div id="navbarNav" className="nav container-fluid">
                     <Link to="/books" className="nav-link fs-4 text-center">Books</Link>
                     <Link to="/contact" className="nav-link fs-4 text-center">Contact</Link>
+                
+                {user && user.admin && (
+                
+                    <Link to="/dashboard" className="nav-link fs-4 text-center">Dashboard</Link>
+                
+                )}
                 {!user && (
                     <Link to="/login" className="nav-link fs-4 text-center">Login</Link>         
                 )}
@@ -34,6 +40,7 @@ const Navbar = () => {
                     <button onClick={handleClick}>LogOut</button>
                 )}
                 </div>
+                
             </nav>
         </>
     )
