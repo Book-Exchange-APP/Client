@@ -61,14 +61,30 @@ const displayedBooks = [
     },
 ]
 
-const locations = [{
-    location: "City",
+const locations = [
+    {
+        _id: "63d3c448265aae5a92ece7a9",
+        location: "City",
+        address: "5 Queen st, Brisbane City",
+        postcode: 4000,
+        phone: "0712341234",
+        email: "location1@bx.com",
     },
     {
-    location: "S Brisbane",
+        _id: "63d3c448265aae5a92ece7aa",
+        location: "S Brisbane",
+        address: "10 Watson st, Acacia Ridge",
+        postcode: 4110,
+        phone: "0743214321",
+        email: "location2@bx.com",
     },
     {
-    location: "N Brisbane",
+        _id: "63d3c448265aae5a92ece7ab",
+        location: "N Brisbane",
+        address: "22 Rainbow st, Sandgate",
+        postcode: 4017,
+        phone: "1357911132",
+        email: "location3@bx.com",
     }
 ]
 
