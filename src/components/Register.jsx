@@ -14,6 +14,14 @@ const Register = () => {
         e.preventDefault()
         
         await register(name, email, password)
+
+        const book = JSON.parse(sessionStorage.getItem('book'))
+
+        if (book) {
+            nav('/appointment')
+        } else {
+            nav('/')
+        }
     }
 
     return (
