@@ -11,7 +11,7 @@ import Footer from './Footer'
 import ShowBook from './ShowBook'
 import Appointment from './Appointment'
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
-// import '../styles/App.css'
+import '../styles/App.css'
 
 
 
@@ -115,13 +115,14 @@ const App = () => {
 
   return (
     <>
+      <body>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/search' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
-          <Route path='/appointment' element={<Appointment />} />
+          <Route path='/appointment/:bookid' element={<Appointment />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
           <Route path='/contact' element={<Contact locations={locations}/>} />
           <Route path='/register' element={<Register />} />
@@ -130,6 +131,8 @@ const App = () => {
           <Route path='*' element={<h4>Page not found!</h4>} />
         </Routes>
         <Footer />
+      </body>
+
     </>
   )
 }

@@ -9,6 +9,7 @@ const Appointment = () => {
             <h1>Appointment Details</h1>
         </div>
         <ShowBook book />
+
     </div>
     
 
@@ -17,5 +18,4 @@ const Appointment = () => {
 
   )
 }
-
 export default Appointment
