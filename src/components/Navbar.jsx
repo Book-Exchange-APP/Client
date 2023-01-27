@@ -27,17 +27,22 @@ const Navbar = () => {
                 <div id="navbarNav" className="nav container-fluid">
                     <Link to="/books" className="nav-link text-center">Books</Link>
                     <Link to="/contact" className="nav-link text-center">Contact</Link>
+                </div>
+                {user && user.admin && (
+                <div>
+                    <Link to="/dashboard" className="nav-link text-center">Dashboard</Link>
+                </div>
+                )}
                 {!user && (
-                // <div>
+                <div>
                     <Link to="/login" className="nav-link text-center">Login</Link>         
-                // </div>
+                </div>
                 )}
                 {user && (
-                // <div>
+                <div>
                     <button onClick={handleClick}>LogOut</button>
-                // </div>
-                )}
                 </div>
+                )}
             </nav>
         </>
     )

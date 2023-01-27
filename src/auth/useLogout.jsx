@@ -5,6 +5,7 @@ export const useLogout = () => {
 
     const logout = () => {
         sessionStorage.removeItem('user')
+        sessionStorage.removeItem('book')
         dispatch({type: 'LOGOUT'})
     }
     return { logout }

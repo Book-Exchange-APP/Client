@@ -22,7 +22,7 @@ const AuthContextProvider = ({ children }) => {
 // Fires only on mount
   useEffect (() => {
     const user = JSON.parse(sessionStorage.getItem('user'))
-
+    // If user is logged in
     if (user) {
       dispatch({type:'LOGIN', payload: user})
     }
