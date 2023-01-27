@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useLogin } from "../auth/useLogin"
+import { Link } from "react-router-dom"
 
-const Login = () => {
+const Login = ( {nav} ) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -12,11 +13,21 @@ const Login = () => {
         e.preventDefault()
 
         await login(email, password)
+
+        const book = JSON.parse(sessionStorage.getItem('book'))
+
+        if (book) {
+            nav('/appointment')
+        } else {
+            nav('/')
+        }
     }
 
     return (
         <form className="login" onSubmit= {handleSubmit}>
             <h3>Login</h3>
+            <p>Not Signed up?</p>
+            <Link to='/register'>Register Here</Link>
             <label>Email:</label>
             <input 
             type="email"
@@ -30,7 +41,8 @@ const Login = () => {
             value= { password }
             />
 
-            <button>Login</button>
+            <button disabled={isLoading}>Submit</button>
+            {error && <div className="error">{error}</div>}
         </form>
     )
 }

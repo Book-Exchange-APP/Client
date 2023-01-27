@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useRegister } from "../auth/useRegister.jsx"
+import { Link } from "react-router-dom"
 
 const Register = () => {
     const [name, setName] = useState('')
@@ -11,13 +12,15 @@ const Register = () => {
     const handleSubmit = async (e) => {
         // prevent refresh of page
         e.preventDefault()
-
+        
         await register(name, email, password)
     }
 
     return (
         <form className="register" onSubmit= {handleSubmit}>
             <h3>Register</h3>
+            <p>Already registered?</p>
+            <Link to='/login'>Login Here</Link>
             <label>Name:</label>
             <input 
             type="text"

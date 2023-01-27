@@ -9,6 +9,7 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 import Footer from './Footer'
 import ShowBook from './ShowBook'
+import Appointment from './Appointment'
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import '../styles/App.css'
 
@@ -25,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchBooks() {
-      const res = await fetch('https://server-production-f312.up.railway.app/books')
+      const res = await fetch('http://localhost:4001/books')
       const data = await res.json()
       setBooks(data)
       setDisBooks(data)
@@ -35,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchLocations() {
-      const res = await fetch('https://server-production-f312.up.railway.app/locations')
+      const res = await fetch('http://localhost:4001/locations')
       const data = await res.json()
       setLocations(data)
     }
@@ -44,7 +45,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchLanguages() {
-      const res = await fetch('https://server-production-f312.up.railway.app/languages')
+      const res = await fetch('http://localhost:4001/languages')
       const data = await res.json()
       setLanguages(data)
     }
@@ -53,7 +54,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchConditions() {
-      const res = await fetch('https://server-production-f312.up.railway.app/conditions')
+      const res = await fetch('http://localhost:4001/conditions')
       const data = await res.json()
       setConditions(data)
     }
@@ -62,7 +63,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchGenres() {
-      const res = await fetch('https://server-production-f312.up.railway.app/genres')
+      const res = await fetch('http://localhost:4001/genres')
       const data = await res.json()
       setGenres(data)
     }
@@ -118,9 +119,10 @@ const App = () => {
           <Route path='/search' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
+          <Route path='/appointment' element={<Appointment />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login nav={nav} />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='*' element={<h4>Page not found!</h4>} />
         </Routes>

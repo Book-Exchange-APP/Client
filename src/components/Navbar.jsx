@@ -28,6 +28,11 @@ const Navbar = () => {
                     <Link to="/books" className="nav-link text-center">All Books</Link>
                     <Link to="/contact" className="nav-link text-center">Contact</Link>
                 </div>
+                {user && user.admin && (
+                <div>
+                    <Link to="/dashboard" className="nav-link text-center">Dashboard</Link>
+                </div>
+                )}
                 {!user && (
                 <div>
                     <Link to="/login" className="nav-link text-center">Login</Link>         
