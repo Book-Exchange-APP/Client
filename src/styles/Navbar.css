@@ -10,7 +10,7 @@
 
 .nav-link {
     color: white;
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 
 .nav-link:hover {
@@ -21,25 +21,17 @@
     color: white;
 }
 
+img {
+    width: 5rem;
+}
 
 #navbarNav {
     justify-content: end;
 }
 
-@media screen and (max-width: 500px) {
-    .nav-link {
-        font-size: 18px;
-        padding: 8px;
-    }
-}
-
 @media screen and (max-width: 420px) {
-    .nav-link {
-        font-size: 12px;
-    }
-
     img {
-        width: 50px;
+        width: 4rem;
     }
 }
 
@@ -56,7 +48,7 @@
         padding: 0;
     }
 
-    #logo {
-        margin: 5px 0px;
+    img {
+        width: 3rem;
     }
 }
