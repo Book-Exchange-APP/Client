@@ -20,24 +20,24 @@ const Navbar = () => {
         <>
             <nav className="navbar navbar-expand bg-gradient sticky-top">
                 <div id='logo'>
-                    <a className="nav-link" href="/">
+                    <Link className="nav-link" to="/">
                         <img src={logo} alt="Logo" width="80" />
-                    </a>
+                    </Link>
                 </div>
                 <div id="navbarNav" className="nav container-fluid">
-                    <Link to="/books" className="nav-link text-center">All Books</Link>
+                    <Link to="/books" className="nav-link text-center">Books</Link>
                     <Link to="/contact" className="nav-link text-center">Contact</Link>
-                </div>
                 {!user && (
-                <div>
+                // <div>
                     <Link to="/login" className="nav-link text-center">Login</Link>         
-                </div>
+                // </div>
                 )}
                 {user && (
-                <div>
+                // <div>
                     <button onClick={handleClick}>LogOut</button>
-                </div>
+                // </div>
                 )}
+                </div>
             </nav>
         </>
     )

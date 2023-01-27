@@ -13,9 +13,11 @@ import ShowBook from './ShowBook'
 import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import '../styles/App.css'
 
+
+
 const App = () => {
-  const [books, setBooks] = useState([])
-  const [displayedBooks, setDisBooks] = useState([])
+  const [books, setBooks] = useState(null)
+  const [displayedBooks, setDisBooks] = useState(null)
   const nav = useNavigate()
   const [locations, setLocations] = useState([])
   const [languages, setLanguages] = useState([])
@@ -98,24 +100,23 @@ const App = () => {
     }
       console.log(result)
       setDisBooks(result)
-    
-
+      nav('/search')  
   }
 
   const ShowBookWrapper = () => {
     const { id } = useParams()
-    const book = books[id]
-    return book ? <ShowBook book={book} /> : <h4>Book not found!</h4>
+    const selectedBook = books.find(book => book._id === id)
+    return selectedBook ? <ShowBook book={selectedBook} /> : <h4>Book not found!</h4>
   }
 
-console.log(displayedBooks)
   return (
     <>
       {/* <body> */}
         <Navbar />
         <Routes>
-          <Route path='/' element={<Home books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
-          <Route path='/books' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/search' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           <Route path='/appointment' element={<Appointment />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />

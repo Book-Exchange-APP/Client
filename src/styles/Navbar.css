@@ -17,6 +17,11 @@
     color: #d4af37;
 }
 
+.nav-link:focus {
+    color: white;
+}
+
+
 #navbarNav {
     justify-content: end;
 }
