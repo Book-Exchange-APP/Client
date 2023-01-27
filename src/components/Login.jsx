@@ -15,8 +15,9 @@ const Login = ( {nav} ) => {
         await login(email, password)
 
         const book = JSON.parse(sessionStorage.getItem('book'))
+        const user = JSON.parse(sessionStorage.getItem('user'))
 
-        if (book) {
+        if (book && user) {
             nav('/appointment')
         } else {
             nav('/')
