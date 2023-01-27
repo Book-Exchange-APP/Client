@@ -111,7 +111,7 @@ const App = () => {
 
   return (
     <>
-      {/* <body> */}
+      <body>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
@@ -127,7 +127,7 @@ const App = () => {
           <Route path='*' element={<h4>Page not found!</h4>} />
         </Routes>
         <Footer />
-      {/* </body> */}
+      </body>
     </>
   )
 }

@@ -6,6 +6,7 @@ import Search from './Search'
 
 
 
+
 const Home = ({ books, locations, languages, conditions, genres, searchBook }) => {
     // const [author, setAuthor] = useState('')
     // const [title, setTitle] = useState('')
@@ -94,6 +95,9 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
                     </div>
                     <div className="feature text-center">
                         <h1 className='Fbooks'>Featured Books</h1>
+                        {/* <div>
+                        <Button onClick={clickMe}>See More</Button>
+                        </div> */}
                         <div className='fourbooks'>
                             {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
                             {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
