@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom'
 import { render, fireEvent, screen } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
-// import { screen } from '@testing-library/dom'
 import Search from "../components/Search"
 import { locations, languages, conditions, genres, searchBook } from "../mocks/handlers"
+import { AuthContextProvider } from '../auth/AuthContext'
+
 
 
 
@@ -12,7 +13,7 @@ describe("Submits the search conditions", () => {
     const data = {condition: 'Poor'}
 
     beforeEach(async function () {
-        container = render(<BrowserRouter><Search locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} /></BrowserRouter>).container
+        container = render(<BrowserRouter><AuthContextProvider><Search locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} /></AuthContextProvider></BrowserRouter>).container
     })
 
     it("Shows the Search button", () => {

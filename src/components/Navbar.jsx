@@ -25,7 +25,7 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <div id="navbarNav" className="nav container-fluid">
-                    <Link to="/books" className="nav-link text-center">All Books</Link>
+                    <Link to="/books" className="nav-link text-center">Books</Link>
                     <Link to="/contact" className="nav-link text-center">Contact</Link>
                 </div>
                 {user && user.admin && (
