@@ -1,9 +1,8 @@
-import { render } from "@testing-library/react"
-import App from "./App"
-import { BrowserRouter } from 'react-router-dom'
 import '@testing-library/jest-dom'
-
-
+import { render } from "@testing-library/react"
+import App from "../components/App"
+import { BrowserRouter } from 'react-router-dom'
+import { AuthContextProvider } from '../auth/AuthContext'
 
 
 describe('Home Component', () => {
@@ -12,7 +11,9 @@ describe('Home Component', () => {
     beforeEach(function () {
         container = render(
             <BrowserRouter>
-                <App />
+                <AuthContextProvider>
+                    <App />
+                </AuthContextProvider>
             </BrowserRouter>
         ).container
     })
