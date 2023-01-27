@@ -111,13 +111,14 @@ const App = () => {
 
   return (
     <>
-      {/* <body> */}
+      <body>
         <Navbar />
         <Routes>
           <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/search' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
+          <Route path='/appointment' element={<Appointment />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
           <Route path='/appointment' element={<Appointment />} />
           <Route path='/contact' element={<Contact />} />
@@ -127,7 +128,7 @@ const App = () => {
           <Route path='*' element={<h4>Page not found!</h4>} />
         </Routes>
         <Footer />
-      {/* </body> */}
+      </body>
     </>
   )
 }
