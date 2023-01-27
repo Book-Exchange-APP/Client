@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import '../styles/Search.css'
+// import * as searchStyles from '../styles/Search.module.css'
 
 const Search = ({locations, languages, conditions, genres, searchBook}) => {
-    const [author, setAuthor] = useState('')
     const [title, setTitle] = useState('')
+    const [author, setAuthor] = useState('')
     const [location, setLocation] = useState('')
     const [language, setLanguage] = useState('')
     const [condition, setCondition] = useState('')
@@ -31,10 +32,16 @@ const Search = ({locations, languages, conditions, genres, searchBook}) => {
             searchCriteria.genre = genre
         }
         searchBook(searchCriteria)
+        setTitle('')
+        setAuthor('')
+        setLocation('Location')
+        setLanguage('Language')
+        setCondition('Condition')
+        setGenre('Genre')
         return searchCriteria
     }
     return (
-        <form id="search-form" className=" p-3" role="search" onSubmit={submit}>
+        <form id="search-form" className="p-3" role="search" onSubmit={submit}>
             <input id="input-title" className="title form-control mb-2" type="search" placeholder="Title" aria-label="Search" value={title} onChange={(evt) => setTitle(evt.target.value)} />
             <input id="input-author" className="author form-control mb-2" type="search" placeholder="Author" aria-label="Search" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
             <select id="select-location" className="location form-select mb-2" value={location} onChange={(evt) => setLocation(evt.target.value)}>
@@ -61,7 +68,7 @@ const Search = ({locations, languages, conditions, genres, searchBook}) => {
                     <option key={index} value={genre.name}>{genre.name}</option>
                 ))}
             </select>
-            <button id="search-btn" className="btn btn-outline-success fs-6" type="submit">Search</button>
+            <button id="search-btn" className="btn w-100 text-white btn-outline-success fs-6" type="submit">Search</button>
         </form>
     )
 }

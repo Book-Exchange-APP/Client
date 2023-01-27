@@ -3,7 +3,7 @@ import '../styles/Contact.css'
 
 const Contact = ({ locations }) => {
     return (
-        <div>
+        <main id="contact">
             <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3"> Contact Us</h1>
             {locations.map((location, index) => (
                 <div id="contact-card" key={location._id} className="card mx-auto w-75 mb-3">
@@ -19,7 +19,7 @@ const Contact = ({ locations }) => {
                     </div>
                 </div>
             ))}
-            </div>
+            </main>
     )
 }
 

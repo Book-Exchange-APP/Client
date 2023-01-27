@@ -1,27 +1,14 @@
-#logo {
-    margin: 5px;
-}
-
 .navbar {
-    padding: 0;
     background-color: #32522f;
-    position: relative;
+    --bs-navbar-padding-y: 0;
 }
 
 .nav-link {
-    color: white;
-    font-size: 1.3rem;
+    --bs-nav-link-color: white;
+    --bs-nav-link-hover-color: #d4af37;
 }
 
-.nav-link:hover {
-    color: #d4af37;
-}
-
-.nav-link:focus {
-    color: white;
-}
-
-img {
+#logo {
     width: 5rem;
 }
 
@@ -30,8 +17,13 @@ img {
 }
 
 @media screen and (max-width: 420px) {
-    img {
+    #logo {
         width: 4rem;
+    }
+
+    .nav-link {
+        font-size: 12px;
+        padding: 8px;
     }
 }
 
@@ -46,9 +38,5 @@ img {
         display: grid;
         justify-content: center;
         padding: 0;
-    }
-
-    img {
-        width: 3rem;
-    }
+    } 
 }
