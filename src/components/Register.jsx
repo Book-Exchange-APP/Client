@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useRegister } from "../auth/useRegister.jsx"
 import { Link } from "react-router-dom"
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
+
 
 const Register = () => {
     const [name, setName] = useState('')
@@ -8,6 +10,8 @@ const Register = () => {
     const [password, setPassword] = useState('')
 
     const {register, error, isLoading} = useRegister()
+
+    const nav = useNavigate()
 
     const handleSubmit = async (e) => {
         // prevent refresh of page
@@ -18,13 +22,15 @@ const Register = () => {
         const book = JSON.parse(sessionStorage.getItem('book'))
 
         if (book) {
-            nav('/appointment')
+            // nav('/appointment')
+            nav(`/book/${book._id}`)
         } else {
             nav('/')
         }
     }
 
     return (
+        <main>        
         <form className="register" onSubmit= {handleSubmit}>
             <h3>Register</h3>
             <p>Already registered?</p>
@@ -51,6 +57,7 @@ const Register = () => {
             <button disabled={isLoading}>Submit</button>
             {error && <div className="error">{error}</div>}
         </form> 
+        </main>
     )
 }
 

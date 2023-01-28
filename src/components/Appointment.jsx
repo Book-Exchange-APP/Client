@@ -4,13 +4,13 @@ import ShowBook from './ShowBook'
 
 const Appointment = () => {
   return (
-    <div>
+    <main>
         <div className='title'>
             <h1>Appointment Details</h1>
         </div>
         <ShowBook book />
 
-    </div>
+    </main>
     
 
 

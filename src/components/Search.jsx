@@ -56,7 +56,7 @@ const Search = ({ locations, languages, conditions, genres, searchBook }) => {
                     ))}
                 </select>
                 <select id="selectCondition" name="condition" className="form-select mb-2" value={condition} onChange={(evt) => setCondition(evt.target.value)}>
-                    <option selected>Condition</option>
+                    <option>Condition</option>
                     {conditions.map((condition, index) => (
                         <option key={index} value={condition.name}>{condition.name}</option>
                     ))}
@@ -64,13 +64,13 @@ const Search = ({ locations, languages, conditions, genres, searchBook }) => {
             </div>
             <div className="options">
                 <select id="selectLanguage" name="language" className="form-select mb-2" value={language} onChange={(evt) => setLanguage(evt.target.value)}>
-                    <option selected>Language</option>
+                    <option>Language</option>
                     {languages.map((language, index) => (
                         <option key={index} value={language.name}>{language.name}</option>
                     ))}
                 </select>
                 <select id="selectGenre" name="genre" className="form-select mb-2" value={genre} onChange={(evt) => setGenre(evt.target.value)}>
-                    <option selected>Genre</option>
+                    <option>Genre</option>
                     {genres.map((genre, index) => (
                         <option key={index} value={genre.name}>{genre.name}</option>
                     ))}
