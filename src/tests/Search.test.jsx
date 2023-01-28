@@ -7,14 +7,13 @@ import { AuthContextProvider } from '../auth/AuthContext'
 import userEvent from '@testing-library/user-event';
 
 describe("Submits the search conditions", () => {
-    let container
     let form
     let submitBtn
     let inputs
     let selects
 
-    beforeEach(async function () {
-        container = render(<BrowserRouter><AuthContextProvider><Search locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} /></AuthContextProvider></BrowserRouter>).container
+    beforeEach(function () {
+        render(<BrowserRouter><AuthContextProvider><Search locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} /></AuthContextProvider></BrowserRouter>)
         form = screen.getByRole('search')
         submitBtn = screen.getAllByRole('button')
         inputs = screen.getAllByLabelText('Search')
@@ -22,11 +21,8 @@ describe("Submits the search conditions", () => {
     })
 
     it("Shows two input fields, four select fields, one submit button", () => {
-        expect(inputs).toBeTruthy()
-        expect(inputs.length).toBe(2)
-        expect(selects).toBeTruthy()
-        expect(selects.length).toBe(4)
-        expect(submitBtn).toBeTruthy()
+        expect(inputs).toHaveLength(2)
+        expect(selects).toHaveLength(4)
         expect(submitBtn).toHaveLength(1)
         expect(submitBtn[0]).toHaveTextContent('Search')
         expect(form)
@@ -40,9 +36,20 @@ describe("Submits the search conditions", () => {
             })
     })
 
-    it("Search button works", () => {
-        fireEvent.submit(form)
-        expect(searchBook).toHaveBeenCalledTimes(1)
+    it("Search button works", async () => {
+        const user = userEvent.setup()
+
+        await user.click(submitBtn[0])
+
+        expect(form)
+        .toHaveFormValues({
+            title: '',
+            author: '',
+            location: 'Location',
+            language: 'Language',
+            condition: 'Condition',
+            genre: 'Genre',
+        })        
     })
 
     it(('Updates the form'), async () => {
@@ -107,9 +114,23 @@ describe("Submits the search conditions", () => {
         
     })
 
-    it('Resets the form after submisstion', () => {
-        fireEvent.submit(form)
-        expect(searchBook).toHaveBeenCalledTimes(2)
+    it('Resets the form after submission', async () => {
+        const user = userEvent.setup()
+
+        await user.selectOptions(selects[1], 'Poor')
+        expect(selects[1]).toHaveValue('Poor')
+        expect(form)
+        .toHaveFormValues({
+            title: '',
+            author: '',
+            location: 'Location',
+            language: 'Language',
+            condition: 'Poor',
+            genre: 'Genre',
+        })        
+
+        await user.click(submitBtn[0])
+
         expect(form)
         .toHaveFormValues({
             title: '',

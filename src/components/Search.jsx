@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import '../styles/Search.css'
-// import * as searchStyles from '../styles/Search.module.css'
 
 const Search = ({ locations, languages, conditions, genres, searchBook }) => {
     const [title, setTitle] = useState('')
@@ -12,36 +11,51 @@ const Search = ({ locations, languages, conditions, genres, searchBook }) => {
 
     function submit(evt) {
         evt.preventDefault()
-        const searchCriteria = {}
-        if (author.length > 0) {
-            searchCriteria.author = author
+        
+        try {
+            const author = evt.target.author.value
+            const title = evt.target.title.value
+            const location = evt.target.location.value
+            const language = evt.target.language.value
+            const condition = evt.target.condition.value
+            const genre = evt.target.genre.value
+
+            const searchCriteria = {}
+
+            if (author) {
+                searchCriteria.author = author
+            }
+            if (title) {
+                searchCriteria.title = title
+            }
+            if (location && location !== 'Location') {
+                searchCriteria.location = location
+            }
+            if (language && language !== 'Language') {
+                searchCriteria.language = language
+            }
+            if (condition && condition !== 'Condition') {
+                searchCriteria.condition = condition
+            }
+            if (genre && genre !== 'Genre') {
+                searchCriteria.genre = genre
+            }
+            searchBook(searchCriteria)
         }
-        if (title.length > 0) {
-            searchCriteria.title = title
+        catch (err) {
+            console.error(err)
         }
-        if (location.length > 0 && location !== 'Location') {
-            searchCriteria.location = location
-        }
-        if (language.length > 0 && language !== 'Language') {
-            searchCriteria.language = language
-        }
-        if (condition.length > 0 && condition !== 'Condition') {
-            searchCriteria.condition = condition
-        }
-        if (genre.length > 0 && genre !== 'Genre') {
-            searchCriteria.genre = genre
-        }
-        searchBook(searchCriteria)
+
         setTitle('')
         setAuthor('')
         setLocation('Location')
         setLanguage('Language')
         setCondition('Condition')
         setGenre('Genre')
-        return searchCriteria
     }
+
     return (
-        <form id="search-form" className="p-3" role="search" onSubmit={submit}>
+        <form id="search-form" className="p-3" role="search" onSubmit={(evt) => submit(evt)}>
             <input id="input-title" name="title" className="form-control mb-2" type="search" placeholder="Title" aria-label="Search" value={title} onChange={(evt) => setTitle(evt.target.value)} />
             <input id="input-author" name="author" className="form-control mb-2" type="search" placeholder="Author" aria-label="Search" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
             <div className="options">

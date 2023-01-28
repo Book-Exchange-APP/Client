@@ -89,7 +89,7 @@ const App = () => {
           } else {
             value = book[key]
           }
-          if (!value.includes(searchCriteria[key])) {
+          if (!value.toLowerCase().includes(searchCriteria[key].toLowerCase())) {
             match = false
             break;
           } else {
