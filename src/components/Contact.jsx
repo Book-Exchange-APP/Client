@@ -10,11 +10,11 @@ const Contact = ({ locations }) => {
                     <div className="row flex-shrink-1 g-0">
                         <h2 className="card-header p-3 fs-3 col-sm-4 bg-success-subtle fw-semibold">{location.location}</h2>
                         <div className="col-sm-8">
-                            <div className="card-body">
+                            <address className="card-body">
                                 <p className="card-text mb-2 fs-4">Address: {location.address} {location.postcode}</p>
                                 <p className="card-text mb-2 fs-4">Phone: {location.phone}</p>
                                 <p className="card-text mb-2 fs-4">Email: {location.email}</p>
-                            </div>
+                            </address>
                         </div>
                     </div>
                 </div>

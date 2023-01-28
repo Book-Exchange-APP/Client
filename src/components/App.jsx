@@ -126,7 +126,7 @@ const App = () => {
       }
       setDisBooks(result)
       nav('/search')
-    }
+    } 
 
     const ShowBookWrapper = () => {
       const { id } = useParams()
@@ -138,7 +138,7 @@ const App = () => {
     return (
       <>
         <Navbar />
-        {!error ? <Routes>
+        {!error.error ? <Routes>
           <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/search' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
