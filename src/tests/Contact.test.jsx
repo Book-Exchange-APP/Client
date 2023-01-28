@@ -5,35 +5,34 @@ import Contact from "../components/Contact"
 import { locations } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 
-describe('Books Component', () => {    
-    let container
+describe('Contact Component', () => {    
+    let h1
+    let h2
+    let address
+    let email
+    let phone
 
-    beforeEach(async function () {
-        container = render(<BrowserRouter><AuthContextProvider><Contact locations={locations}/></AuthContextProvider></BrowserRouter>).container
-        })  
+    beforeEach(function (){
+        render(<BrowserRouter><AuthContextProvider><Contact locations={locations}/></AuthContextProvider></BrowserRouter>)          
+        h1 = screen.getAllByRole('heading', {level:1})
+        h2 = screen.getAllByRole('heading', {level:2})
+        address = screen.getAllByText(/Address:/)
+        email = screen.getAllByText(/Email:/)
+        phone = screen.getAllByText(/Phone:/)
+    })
 
     it("Shows the Contact Us heading", () => {
-        expect(container.querySelector('h1')).toBeTruthy()
-        expect(screen.getAllByRole('heading', {level:1}).length).toBe(1)
-        expect(container.querySelector('h1')).toHaveTextContent('Contact Us')
+        expect(h1).toHaveLength(1)
+        expect(h1[0]).toHaveTextContent('Contact Us')
     })
 
     it("Shows three location cards", () => {
-        expect(container.querySelector('h2')).toBeTruthy()
-        expect(screen.getAllByRole('heading', {level:2}).length).toBe(3)
-        expect(screen.getAllByRole('heading', {level:2})[0]).toHaveTextContent('City')
-        expect(screen.getAllByRole('heading', {level:2})[1]).toHaveTextContent('S Brisbane')
-        expect(screen.getAllByRole('heading', {level:2})[2]).toHaveTextContent('N Brisbane')
-        expect(screen.getAllByText(/Address:/)).toBeTruthy()
-        expect(screen.getAllByText(/Address:/).length).toBe(3)
-        expect(screen.queryAllByText(/Address: \/a-zA-Z\//)).toStrictEqual([])
-        expect(screen.getAllByText(/Email:/)).toBeTruthy()
-        expect(screen.getAllByText(/Email:/)).toHaveLength(3)
-        expect(screen.queryAllByText(/Email: a/)).toStrictEqual([])
-        expect(screen.getAllByText(/Phone:/)).toBeTruthy()
-        expect(screen.getAllByText(/Phone:/)).toHaveLength(3)
-        expect(screen.queryAllByText(/Phone: 2/)).toStrictEqual([])
-
-
+        expect(h2).toHaveLength(3)
+        expect(h2[0]).toHaveTextContent('City')
+        expect(h2[1]).toHaveTextContent('S Brisbane')
+        expect(h2[2]).toHaveTextContent('N Brisbane')
+        expect(address).toHaveLength(3)
+        expect(email).toHaveLength(3)
+        expect(phone).toHaveLength(3)
     })
 })
