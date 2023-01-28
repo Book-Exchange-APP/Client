@@ -76,13 +76,11 @@ const App = () => {
   }, [])
 
   const searchBook = (searchCriteria) => {
-    console.log(searchCriteria)
     let result = []
     if (Object.keys(searchCriteria).length !== 0) {
       let match = false
       for (const book of books) {
         for (const key of Object.keys(searchCriteria)) {
-          console.log(book[key])
           let value = ''
           if (key === 'location') {
             value = book[key].location
