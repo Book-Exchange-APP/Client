@@ -19,7 +19,7 @@ const ShowBook = ({ book }) => {
     }
 
     return (
-        <>
+        <main>
             <h5>{book.title}</h5>
             <p>test</p>
             <p>test</p>
@@ -33,7 +33,7 @@ const ShowBook = ({ book }) => {
                 redirect to appointment page with book ID passed as params.
                 
                 if not logged in, redirect to login page.*/}
-        </>
+        </main>
     ) 
 }
 

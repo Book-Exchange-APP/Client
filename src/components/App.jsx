@@ -125,13 +125,16 @@ const App = () => {
         result = books
       }
       setDisBooks(result)
-      nav('/search')
+      nav('/books/search')
     } 
 
     const ShowBookWrapper = () => {
       const { id } = useParams()
-      const selectedBook = books.find(book => book._id === id)
-      return selectedBook ? <ShowBook book={selectedBook} /> : <h4>Book not found!</h4>
+      if(!books) {
+        return <main><h1 className="my-5 text-center">Loading the book...</h1></main>
+      }
+      const selectedBook = books?.find(book => book._id === id)
+      return selectedBook ? <ShowBook book={selectedBook} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>     
     }
 
 
@@ -141,7 +144,7 @@ const App = () => {
         {!error.error ? <Routes>
           <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
-          <Route path='/search' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
+          <Route path='/books/search' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           <Route path='/appointment/:bookid' element={<Appointment />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
@@ -149,7 +152,7 @@ const App = () => {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login nav={nav} />} />
           <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='*' element={<h4>Page not found!</h4>} />
+          <Route path='*' element={<main><h1 className="my-5 text-center">Page not found!</h1></main>} />
         </Routes> : 
         <main>
           <h1 className='my-5 text-center'>We will get back to you ASAP. <br></br>Sorry for the inconvenience caused!</h1>
