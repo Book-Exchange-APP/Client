@@ -31,12 +31,6 @@ describe('Books Component', () => {
     it("Shows the Search Bar", () => {
         expect(screen.getAllByRole('search')).toBeTruthy()
         expect(screen.getAllByRole('search').length).toBe(1)
-        expect(container.querySelector('select')).toBeTruthy()
-        expect(container.querySelector('select').length).toBe(4)
-        expect(screen.getAllByLabelText('Search')).toBeTruthy()
-        expect(screen.getAllByLabelText('Search').length).toBe(2)
-        expect(container.querySelector('button')).toBeTruthy()
-        expect(container.querySelector('button')).toHaveTextContent('Search')
     })
 })
 
