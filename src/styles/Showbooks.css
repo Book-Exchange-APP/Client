@@ -1,11 +1,11 @@
-#showbooks {
+#showBooks {
     margin-left: 20%; 
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-items: center;
 }
 
 @media screen and (max-width: 820px) {    
-    #showbooks {
+    #showBooks {
         margin: 0px;
     }
 }

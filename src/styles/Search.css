@@ -1,4 +1,4 @@
-#search-form {
+#searchForm {
     position: absolute;
     top: 150px;
     width: 20%;
@@ -12,7 +12,7 @@
 }
 
 @media screen and (max-width: 820px) {    
-    #search-form {
+    #searchForm {
         border-bottom: solid 2px grey;
         position: static;
         width: 100%;
@@ -21,19 +21,19 @@
         /* gap: 0.5rem; */
     }
 
-    .options, #search-form {
+    .options, #searchForm {
         gap:0.3rem;
     }
 
-    #input-title, #input-author, .options {
+    #inputTitle, #inputAuthor, .options {
         flex: 1 0 40%;
         min-width: 120px;
     }
 
-    #select-location,
-    #select-condition,
-    #select-language,
-    #select-genre {
+    #selectLocation,
+    #selectCondition,
+    #selectLanguage,
+    #selectGenre {
         flex: 1 0 20%;
         min-width: 120px;
     }
