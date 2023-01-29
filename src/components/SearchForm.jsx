@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/Search.css'
 
-const Search = ({ locations, languages, conditions, genres, searchBook }) => {
+const SearchForm = ({ locations, languages, conditions, genres, searchBook }) => {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [location, setLocation] = useState('')
@@ -81,4 +81,4 @@ const Search = ({ locations, languages, conditions, genres, searchBook }) => {
     )
 }
 
-export default Search
+export default SearchForm

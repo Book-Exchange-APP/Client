@@ -1,7 +1,7 @@
 import '../styles/Home.css'
 import React from 'react'
 import ShowBooks from './ShowBooks'
-import Search from './Search'
+import SearchForm from './SearchForm'
 
 
 
@@ -20,7 +20,7 @@ const Home = ({ books, locations, languages, conditions, genres, searchBook }) =
                         <p>In here, you just need to use the search box to see any favourite books you want and give away one of your book for exchange by submitting the appointment.</p>
                         <p>We provide some latest and feature books for suggestion. If you want more information of each book, you can click for more details or click the 'All Book' on the top right to have a look of all the books.</p>
                     </div>                     
-                    <Search locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook}/>
+                    <SearchForm locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook}/>
                     <div>
                         <div id="address" className="nav">
                             <h4>Location</h4>

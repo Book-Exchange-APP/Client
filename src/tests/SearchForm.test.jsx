@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
-import Search from "../components/Search"
+import SearchForm from "../components/SearchForm"
 import { locations, languages, conditions, genres, searchBook } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 import userEvent from '@testing-library/user-event';
@@ -13,7 +13,7 @@ describe("Submits the search conditions", () => {
     let selects
 
     beforeEach(function () {
-        render(<BrowserRouter><AuthContextProvider><Search locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} /></AuthContextProvider></BrowserRouter>)
+        render(<BrowserRouter><AuthContextProvider><SearchForm locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} /></AuthContextProvider></BrowserRouter>)
         form = screen.getByRole('search')
         submitBtn = screen.getAllByRole('button')
         inputs = screen.getAllByLabelText('Search')
