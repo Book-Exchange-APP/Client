@@ -22,6 +22,8 @@ const App = () => {
   const [languages, setLanguages] = useState([])
   const [conditions, setConditions] = useState([])
   const [genres, setGenres] = useState([])
+  const [bookStatus, setBookStatus] = useState([])
+  const [appointmentStatus, setAppointmentStatus] = useState([])
 
   const nav = useNavigate()
   
@@ -96,6 +98,32 @@ const App = () => {
       }
     }
     fetchGenres()
+  }, [])
+
+  useEffect(() => {
+    async function fetchBookStatus() {
+      try {
+        const res = await fetch('http://localhost:4001/status/books')
+        const data = await res.json()
+        setBookStatus(data)
+      } catch (err) {
+        setError({ error: err.message + ' Book Status' })
+      }
+    }
+    fetchBookStatus()
+  }, [])
+
+  useEffect(() => {
+    async function fetchAppointmentStatus() {
+      try {
+        const res = await fetch('http://localhost:4001/status/appointments')
+        const data = await res.json()
+        setAppointmentStatus(data)
+      } catch (err) {
+        setError({ error: err.message + ' Appointment Status' })
+      }
+    }
+    fetchAppointmentStatus()
   }, [])
 
 
