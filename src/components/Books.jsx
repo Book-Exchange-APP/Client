@@ -4,7 +4,9 @@ import ShowBooks from './ShowBooks'
 import Search from './Search'
 
 
-const Books = ({ books, locations, languages, conditions, genres, searchBook }) => {    
+
+const Books = ({ books, locations, languages, conditions, genres, searchBook }) => {
+    console.log('Books called')    
     return (
             <main id="books">
                 <h1 className="text-center p-3">Books</h1>
