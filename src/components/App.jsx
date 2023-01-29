@@ -10,7 +10,8 @@ import Dashboard from './Dashboard'
 import Footer from './Footer'
 import ShowBook from './ShowBook'
 import Appointment from './Appointment'
-import { Routes, Route, useNavigate, useParams, createSearchParams } from 'react-router-dom'
+import Search from './Search'
+import { Routes, Route, useNavigate, useParams, useSearchParams, createSearchParams } from 'react-router-dom'
 import '../styles/App.css'
 
 
@@ -24,7 +25,7 @@ const App = () => {
   const [genres, setGenres] = useState([])
 
   const nav = useNavigate()
-
+  
   const [error, setError] = useState({ error: false })
 
 
@@ -99,36 +100,6 @@ const App = () => {
     fetchGenres()
   }, [])
 
-  const searchBook = (searchCriteria) => {
-    console.log('searchBook called')
-    let result = []
-    if (Object.keys(searchCriteria).length !== 0) {
-      let match = false
-      for (const book of books) {
-        for (const key of Object.keys(searchCriteria)) {
-          let value = ''
-          if (key === 'location') {
-            value = book[key].location
-          } else {
-            value = book[key]
-          }
-          if (!value.toLowerCase().includes(searchCriteria[key].toLowerCase())) {
-            match = false
-            break;
-          } else {
-            match = true
-          }
-        }
-        if (match) {
-          result.push(book)
-        }
-      }
-    } else {
-      result = books
-    }
-    setDisBooks(result)
-    nav({ pathname: '/books', search: `?${createSearchParams(searchCriteria)}` })
-  }
 
   const ShowBookWrapper = () => {
     const { id } = useParams()
@@ -139,15 +110,14 @@ const App = () => {
     return selectedBook ? <ShowBook book={selectedBook} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
 
-
   return (
     <>
       <Navbar />
       {!error.error ?
         <Routes>
-          <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
-          <Route path='/books' element={<Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook} />} />
-          {/* <Route path='/books/search' element={<></>} /> */}
+          <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
+          <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
+          <Route path='/books/search' element={<Search books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           <Route path='/appointment/:bookid' element={<Appointment />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />

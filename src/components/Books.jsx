@@ -5,12 +5,11 @@ import SearchForm from './SearchForm'
 
 
 
-const Books = ({ books, locations, languages, conditions, genres, searchBook }) => {
-    console.log('Books called')    
+const Books = ({ books, locations, languages, conditions, genres }) => {
     return (
             <main id="books">
                 <h1 className="text-center p-3">Books</h1>
-                <SearchForm locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook}/>
+                <SearchForm locations={locations} languages={languages} conditions={conditions} genres={genres}/>
                 {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
             </main>
     )

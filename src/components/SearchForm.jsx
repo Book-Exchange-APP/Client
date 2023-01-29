@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
-import '../styles/Search.css'
+import '../styles/SearchForm.css'
+import { useNavigate, createSearchParams } from 'react-router-dom'
 
-const SearchForm = ({ locations, languages, conditions, genres, searchBook }) => {
+const SearchForm = ({ locations, languages, conditions, genres }) => {
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [location, setLocation] = useState('')
     const [language, setLanguage] = useState('')
     const [condition, setCondition] = useState('')
     const [genre, setGenre] = useState('')
+
+    const nav = useNavigate()
 
     function submit(evt) {
         evt.preventDefault()
@@ -32,7 +35,6 @@ const SearchForm = ({ locations, languages, conditions, genres, searchBook }) =>
         if (genre !== 'Genre') {
             searchCriteria.genre = genre
         }
-        searchBook(searchCriteria)
 
         setTitle('')
         setAuthor('')
@@ -41,7 +43,7 @@ const SearchForm = ({ locations, languages, conditions, genres, searchBook }) =>
         setCondition('')
         setGenre('')
 
-        return searchCriteria
+        nav({ pathname: '/books/search', search: `?${createSearchParams(searchCriteria)}` })
     }
 
     return (
