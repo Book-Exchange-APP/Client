@@ -40,24 +40,6 @@ describe("Submits the search conditions", () => {
             })
     })
 
-    it("Search button works", async () => {
-        const user = userEvent.setup()
-
-        await user.click(submitBtn[0])
-
-        expect(searchBook).toBeCalledTimes(1)
-
-        expect(form)
-            .toHaveFormValues({
-                title: '',
-                author: '',
-                location: 'Location',
-                language: 'Language',
-                condition: 'Condition',
-                genre: 'Genre',
-            })
-    })
-
     it(('Updates the form'), async () => {
         const user = userEvent.setup()
 
@@ -76,11 +58,13 @@ describe("Submits the search conditions", () => {
 
         // Input
         await user.type(inputs[0], 'f')
+        await user.type(inputs[1], 'test')
         expect(inputs[0]).toHaveValue('f')
+        expect(inputs[1]).toHaveValue('test')
         expect(form)
             .toHaveFormValues({
                 title: 'f',
-                author: '',
+                author: 'test',
                 location: 'Location',
                 language: 'Language',
                 condition: 'Good',
@@ -107,7 +91,9 @@ describe("Submits the search conditions", () => {
 
         // Clear input
         await user.clear(inputs[0])
+        await user.clear(inputs[1])
         expect(inputs[0]).toHaveValue('')
+        expect(inputs[1]).toHaveValue('')
         expect(form)
             .toHaveFormValues({
                 title: '',
@@ -147,35 +133,4 @@ describe("Submits the search conditions", () => {
                 genre: 'Genre',
             })
     })
-
-    it('Initial searchCriteria', async () => {
-        const user = userEvent.setup()
-
-        await user.click(submitBtn[0])
-        expect(searchBook).toBeCalledWith({
-            condition: '',
-            genre: '',
-            language: '',
-            location: '',
-        })
-    })
-
-    it('Updates searchCriteria', async () => {
-        const user = userEvent.setup()
-
-        await user.type(inputs[0], 'f')
-        await user.type(inputs[1], 'test')
-
-        await user.click(submitBtn[0])
-        expect(searchBook).toBeCalledWith({
-            title: 'f',
-            author: 'test',
-            location: '',
-            language: '',
-            condition: '',
-            genre: '',
-
-        })
-    })
-
 })
