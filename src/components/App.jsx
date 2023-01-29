@@ -107,7 +107,7 @@ const App = () => {
     const selectedBook = books?.find(book => book._id === id)
     return selectedBook ? <ShowBook book={selectedBook} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
-  console.log(books)
+
   return (
     <>
       <Navbar />
