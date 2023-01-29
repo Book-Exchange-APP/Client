@@ -1,5 +1,4 @@
 import { rest } from 'msw'
-import {vi} from 'vitest'
 
 const displayedBooks = [
     {
@@ -121,8 +120,6 @@ const genres = [{
     }
 ]
 
-const searchBook = vi.fn()
-
 const handlers = [
     rest.get('http://localhost:4001/books', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(displayedBooks))
@@ -148,4 +145,4 @@ const handlers = [
 
 
 
-export { handlers, displayedBooks, locations, languages, conditions, genres, searchBook }
+export { handlers, displayedBooks, locations, languages, conditions, genres }

@@ -1,84 +1,45 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../styles/Search.css'
+import ShowBooks from './ShowBooks'
+import SearchForm from './SearchForm'
+import { useSearchParams } from 'react-router-dom'
 
-const Search = ({ locations, languages, conditions, genres, searchBook }) => {
-    const [title, setTitle] = useState('')
-    const [author, setAuthor] = useState('')
-    const [location, setLocation] = useState('')
-    const [language, setLanguage] = useState('')
-    const [condition, setCondition] = useState('')
-    const [genre, setGenre] = useState('')
-
-    function submit(evt) {
-        evt.preventDefault()
-
-        const searchCriteria = {}
-
-        if (author) {
-            searchCriteria.author = author
+const Search = ({ books, locations, languages, conditions, genres }) => {
+    const [searchParams] = useSearchParams()
+    const query = Object.fromEntries([...searchParams])
+    let strings = []
+    if (books) {
+        let validQuery = {}
+        for (const [key, value] of Object.entries(query)) {
+            if (value.length > 0) {
+                validQuery[key] = value
+                strings.push(value)
+            }
         }
-        if (title) {
-            searchCriteria.title = title
+        for (const [key, value] of Object.entries(validQuery)) {
+            if (key === 'location') {
+                books = books.filter(book => book.location.location.toLowerCase().includes(value.toLowerCase()))
+            } else if (['location', 'language', 'condition', 'genre'].includes(key)) {
+                books = books.filter(book => book[key].name.toLowerCase().includes(value.toLowerCase()))
+            }
+            else {
+                console.log(key)
+                books = books.filter(book => book[key].toLowerCase().includes(value.toLowerCase()))
+            }
         }
-        if (location !== 'Location') {
-            searchCriteria.location = location
-        }
-        if (language !== 'Language') {
-            searchCriteria.language = language
-        }
-        if (condition !== 'Condition') {
-            searchCriteria.condition = condition
-        }
-        if (genre !== 'Genre') {
-            searchCriteria.genre = genre
-        }
-        searchBook(searchCriteria)
-
-        setTitle('')
-        setAuthor('')
-        setLocation('')
-        setLanguage('')
-        setCondition('')
-        setGenre('')
-
-        return searchCriteria
     }
 
-    return (
-        <form id="searchForm" className="p-3" role="search" onSubmit={(evt) => submit(evt)} value={1}>
-            <input id="inputTitle" name="title" className="form-control mb-2" type="search" placeholder="Title" aria-label="Search" value={title} onChange={(evt) => setTitle(evt.target.value)} />
-            <input id="inputAuthor" name="author" className="form-control mb-2" type="search" placeholder="Author" aria-label="Search" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
-            <div className="options">
-                <select id="selectLocation" name="location" className="form-select mb-2" value={location} onChange={(evt) => setLocation(evt.target.value)}>
-                    <option>Location</option>
-                    {locations.map((location, index) => (
-                        <option key={index} value={location.location}>{location.location}</option>
-                    ))}
-                </select>
-                <select id="selectCondition" name="condition" className="form-select mb-2" value={condition} onChange={(evt) => setCondition(evt.target.value)}>
-                    <option>Condition</option>
-                    {conditions.map((condition, index) => (
-                        <option key={index} value={condition.name}>{condition.name}</option>
-                    ))}
-                </select>
-            </div>
-            <div className="options">
-                <select id="selectLanguage" name="language" className="form-select mb-2" value={language} onChange={(evt) => setLanguage(evt.target.value)}>
-                    <option>Language</option>
-                    {languages.map((language, index) => (
-                        <option key={index} value={language.name}>{language.name}</option>
-                    ))}
-                </select>
-                <select id="selectGenre" name="genre" className="form-select mb-2" value={genre} onChange={(evt) => setGenre(evt.target.value)}>
-                    <option>Genre</option>
-                    {genres.map((genre, index) => (
-                        <option key={index} value={genre.name}>{genre.name}</option>
-                    ))}
-                </select>
-            </div>
-            <button id="search-btn" className="btn w-100 text-white btn-outline-success fs-6" type="submit">Search</button>
-        </form>
-    )
+return (
+    <main id="search">
+        <div >
+        <h1 className="text-center pt-3">Books</h1>
+        {strings.length > 0 ? <p className="text-center p-3">Searched for '{strings.join(" + ")}'</p> : <p></p>}
+        </div>
+        <SearchForm locations={locations} languages={languages} conditions={conditions} genres={genres} />
+        {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length > 0 ? <ShowBooks books={books} /> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
+    </main>
+)
+
 }
 
 export default Search

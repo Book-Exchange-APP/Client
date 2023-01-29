@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
 import Books from "../components/Books"
-import { displayedBooks, locations, languages, conditions, genres, searchBook } from "../mocks/handlers"
+import { displayedBooks, locations, languages, conditions, genres } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 
 
@@ -15,7 +15,7 @@ describe('Books Component', () => {
     let searchBar
 
     beforeEach(function () {
-        render(<BrowserRouter><AuthContextProvider><Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} searchBook={searchBook}/></AuthContextProvider></BrowserRouter>)
+        render(<BrowserRouter><AuthContextProvider><Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres}/></AuthContextProvider></BrowserRouter>)
         h1 = screen.getAllByRole('heading', { level: 1 })
         h2 = screen.queryAllByRole('heading', { level: 2 })
         h5 = screen.getAllByRole('heading', { level: 5 })

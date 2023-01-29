@@ -1,40 +1,23 @@
-#searchForm {
-    position: absolute;
-    top: 150px;
-    width: 20%;
+#search {
     display: flex;
     flex-direction: column;
 }
 
-.options {
-    display: flex;
-    flex-direction: column;
+#search>div:nth-child(1), #search>h2 {
+    margin-left: 20%;    
+}
+
+#search>div:nth-child(1) {
+    border-bottom: solid 2px grey;
 }
 
 @media screen and (max-width: 820px) {    
-    #searchForm {
-        border-bottom: solid 2px grey;
-        position: static;
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        /* gap: 0.5rem; */
+    #search {
+        display: flex;
+        flex-direction: column;
     }
 
-    .options, #searchForm {
-        gap:0.3rem;
-    }
-
-    #inputTitle, #inputAuthor, .options {
-        flex: 1 0 40%;
-        min-width: 120px;
-    }
-
-    #selectLocation,
-    #selectCondition,
-    #selectLanguage,
-    #selectGenre {
-        flex: 1 0 20%;
-        min-width: 120px;
+    #search>h2, #search>div:nth-child(1) {
+        margin: 0px 0px;
     }
 }

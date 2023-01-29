@@ -21,11 +21,12 @@ const ShowBook = ({ book }) => {
     return (
         <main>
             <h5>{book.title}</h5>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
+            <p>{book.author}</p>
+            <p>{book.location.location}</p>
+            <p>{book.condition.name}</p>
+            <p>{book.language.name}</p>
+            <p>{book.genre.name}</p>
+            <p>{book.status.name}</p>
             <div>
                 <button onClick={handleClick}>Book Appointment</button>
             </div>
