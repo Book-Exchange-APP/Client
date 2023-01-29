@@ -10,7 +10,7 @@ const ShowBooks = ({ books }) => {
           <div key={index} className="card mb-4" style={{ width: '12rem' }}>
             <div className="position-relative">
               <img src={logo} className="card-img-top" alt="Book image" />
-              {book.status === 'Pending' ? <p className="position-absolute bottom-0 text-center m-0 w-100 fst-italic bg-light text-dark-emphasis bg-opacity-75">Pending</p> : true}
+              {book.status.name === 'Pending' ? <p className="position-absolute bottom-0 text-center m-0 w-100 fst-italic bg-light text-dark-emphasis bg-opacity-75">Pending</p> : true}
             </div>
             <div className="card-body d-flex flex-column">
               <h5 className="flex-fill">{book.title}</h5>

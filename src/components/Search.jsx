@@ -19,8 +19,11 @@ const Search = ({ books, locations, languages, conditions, genres }) => {
         for (const [key, value] of Object.entries(validQuery)) {
             if (key === 'location') {
                 books = books.filter(book => book.location.location.toLowerCase().includes(value.toLowerCase()))
+            } else if (['location', 'language', 'condition', 'genre'].includes(key)) {
+                books = books.filter(book => book[key].name.toLowerCase().includes(value.toLowerCase()))
             }
             else {
+                console.log(key)
                 books = books.filter(book => book[key].toLowerCase().includes(value.toLowerCase()))
             }
         }
@@ -30,7 +33,7 @@ return (
     <main id="search">
         <div >
         <h1 className="text-center pt-3">Books</h1>
-        {strings.length > 0 ? <p className="text-center">Searched for '{strings.join(" + ")}'</p> : <p></p>}
+        {strings.length > 0 ? <p className="text-center p-3">Searched for '{strings.join(" + ")}'</p> : <p></p>}
         </div>
         <SearchForm locations={locations} languages={languages} conditions={conditions} genres={genres} />
         {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length > 0 ? <ShowBooks books={books} /> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}

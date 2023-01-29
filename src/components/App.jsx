@@ -18,7 +18,6 @@ import '../styles/App.css'
 
 const App = () => {
   const [books, setBooks] = useState(null)
-  const [displayedBooks, setDisBooks] = useState(null)
   const [locations, setLocations] = useState([])
   const [languages, setLanguages] = useState([])
   const [conditions, setConditions] = useState([])
@@ -36,7 +35,6 @@ const App = () => {
         const res = await fetch('http://localhost:4001/books')
         const data = await res.json()
         setBooks(data)
-        setDisBooks(data)
       } catch (err) {
         setError({ error: err.message + ' Books' })
       }
@@ -109,7 +107,7 @@ const App = () => {
     const selectedBook = books?.find(book => book._id === id)
     return selectedBook ? <ShowBook book={selectedBook} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
-
+  console.log(books)
   return (
     <>
       <Navbar />
@@ -117,7 +115,7 @@ const App = () => {
         <Routes>
           <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
-          <Route path='/books/search' element={<Search books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
+          <Route path='/books/search' element={<Search books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           <Route path='/appointment/:bookid' element={<Appointment />} />
           <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
