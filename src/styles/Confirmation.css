@@ -1,0 +1,37 @@
+#confirmation {
+    width: 50%;
+}
+
+#backToHome {
+    width: 25%
+}
+
+@media screen and (max-width: 820px) {
+    #confirmation {
+        width: 75%;
+    }
+
+    #backToHome {
+        width: 35%
+    }
+}
+
+@media screen and (max-width: 540px) {
+    #confirmation {
+        width: 85%;
+    }
+
+    #backToHome {
+        width: 45%
+    }
+}
+
+@media screen and (max-width: 319px) {
+    #confirmation {
+        width: 95%;
+    }
+
+    #backToHome {
+        width: 95%
+    }
+}
