@@ -22,6 +22,7 @@ const App = () => {
   const [languages, setLanguages] = useState([])
   const [conditions, setConditions] = useState([])
   const [genres, setGenres] = useState([])
+  const [appointments, setAppointments] = useState([])
 
   const nav = useNavigate()
   
@@ -98,6 +99,20 @@ const App = () => {
     fetchGenres()
   }, [])
 
+  useEffect(() => {
+    async function fetchAppointments() {
+      try {
+        // const res = await fetch('https://server-production-f312.up.railway.app/appointments')
+        const res = await fetch('http://localhost:4001/appointments')
+        const data = await res.json()
+        setAppointments(data)
+      } catch (err) {
+        setError({ error: err.message + ' Books' })
+      }
+    }
+    fetchAppointments()
+  }, [])
+
 
   const ShowBookWrapper = () => {
     const { id } = useParams()
@@ -122,7 +137,7 @@ const App = () => {
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login nav={nav} />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/dashboard' element={<Dashboard appointments={appointments} />} />
           <Route path='*' element={<main><h1 className="my-5 text-center">Page not found!</h1></main>} />
         </Routes> :
         <main>

@@ -10,9 +10,9 @@ const ShowBook = ({ book }) => {
     const handleClick = () => {
         const user = JSON.parse(sessionStorage.getItem('user'))
         sessionStorage.setItem('book', JSON.stringify(book))
-        
+
         if (user) {
-            nav('/appointment')
+            nav(`/appointment`)
         } else {
             nav('/login')
         }
