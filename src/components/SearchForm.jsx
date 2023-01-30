@@ -47,7 +47,7 @@ const SearchForm = ({ locations, languages, conditions, genres }) => {
     }
 
     return (
-        <form id="searchForm" className="p-3" role="search" onSubmit={(evt) => submit(evt)} value={1}>
+        <form id="searchForm" className="p-3" role="search" onSubmit={(evt) => submit(evt)}>
             <input id="inputTitle" name="title" className="form-control mb-2" type="search" placeholder="Title" aria-label="Search" value={title} onChange={(evt) => setTitle(evt.target.value)} />
             <input id="inputAuthor" name="author" className="form-control mb-2" type="search" placeholder="Author" aria-label="Search" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
             <div className="options">

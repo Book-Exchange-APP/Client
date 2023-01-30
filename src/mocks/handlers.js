@@ -120,6 +120,30 @@ const genres = [{
     }
 ]
 
+const appointment = {
+    first_name: "Tom",
+    last_name: "Cruise",
+    inc_book: {
+        _id: "63d65d8a6939a735511d015d",
+        title: "Winnie the Pooh",
+        author: "A. A. Milne"
+    },
+    out_book: {
+        _id: "63d65d8a6939a735511d015f",
+        title: "BFG",
+        author: "Roald Dahl"
+    },
+    time: "13:00",
+    date: "2023-12-01T14:00:00.000Z",
+    status: "63d65d8a6939a735511d0154",
+    location: {
+        _id: "63d65d8a6939a735511d0158",
+        location: "South Brisbane"
+    },
+    _id: "63d719962a43e1e5f472c335",
+    __v: 0
+}
+
 const handlers = [
     rest.get('http://localhost:4001/books', (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(displayedBooks))
@@ -145,4 +169,4 @@ const handlers = [
 
 
 
-export { handlers, displayedBooks, locations, languages, conditions, genres }
+export { handlers, displayedBooks, locations, languages, conditions, genres, appointment }

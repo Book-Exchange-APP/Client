@@ -24,9 +24,10 @@ const App = () => {
   const [genres, setGenres] = useState([])
   const [bookStatus, setBookStatus] = useState([])
   const [appointmentStatus, setAppointmentStatus] = useState([])
+  const [appointment, setAppointment] = useState()
 
   const nav = useNavigate()
-  
+
   const [error, setError] = useState({ error: false })
 
 
@@ -133,7 +134,12 @@ const App = () => {
       return <main><h1 className="my-5 text-center">Loading the book...</h1></main>
     }
     const selectedBook = books?.find(book => book._id === id)
-    return selectedBook ? <ShowBook book={selectedBook} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
+    return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
+  }
+
+  const generateApp = (app) => {
+    setAppointment(app)
+    nav('/confirmation')
   }
 
   return (
@@ -146,7 +152,7 @@ const App = () => {
           <Route path='/books/search' element={<Search books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           <Route path='/appointment/:bookid' element={<Appointment />} />
-          <Route path='/appointment/:id/confirmation' element={<Confirmation />} />
+          <Route path='/confirmation' element={<Confirmation appointment={appointment} />} />
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login nav={nav} />} />
