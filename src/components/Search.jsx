@@ -22,7 +22,7 @@ const Search = ({ books, locations, languages, conditions, genres }) => {
             } else if (['location', 'language', 'condition', 'genre'].includes(key)) {
                 books = books.filter(book => book[key].name.toLowerCase().includes(value.toLowerCase()))
             }
-            else {
+            else if (['title', 'author'].includes(key)) {
                 console.log(key)
                 books = books.filter(book => book[key].toLowerCase().includes(value.toLowerCase()))
             }

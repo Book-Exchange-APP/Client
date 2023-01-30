@@ -5,7 +5,7 @@ const displayedBooks = [
         _id: "63d0c625189591d4b10b85b7",
         title: "Test 1",
         author: "A 1",
-        condition: "Good",
+        condition: {name: "Good"},
         location: {
             _id: "63d0c625189591d4b10b85b4",
             location: "S Brisbane",
@@ -13,18 +13,18 @@ const displayedBooks = [
             postcode: 4110,
             phone: 24681012
         },
-        language: "English",
+        language: {name: "English"},
         img: "IMAGE",
-        genre: "Fantasy",
+        genre: {name: "Fantasy"},
         description: "One ring to rule them all",
         time_stamp: 1674626596545,
-        status: "Available"
+        status: {name: "Available"}
     },
     {
         _id: "63d0c625189591d4b10b85b7",
         title: "Test 2",
         author: "A2",
-        condition: "Poor",
+        condition: {name: "Poor"},
         location: {
             _id: "63d0c625189591d4b10b85b4",
             location: "City",
@@ -32,18 +32,18 @@ const displayedBooks = [
             postcode: 4111,
             phone: 246810120
         },
-        language: "Chinese",
+        language: {name: "Chinese"},
         img: "IMAGE",
-        genre: "Gardening",
+        genre: {name: "Gardening"},
         description: "Fruit trees",
         time_stamp: 1674626596545,
-        status: "Unavailable"
+        status: {name: "Unavailable"}
     },
     {
         _id: "63d0c625189591d4b10b85b7",
         title: "Test 3",
         author: "A3",
-        condition: "Excellent",
+        condition: {name: "Excellent"},
         location: {
             _id: "63d0c625189591d4b10b85b4",
             location: "N Brisbane",
@@ -51,12 +51,12 @@ const displayedBooks = [
             postcode: 4112,
             phone: 2468101200
         },
-        language: "Korean",
+        language: {name: "Korean"},
         img: "IMAGE",
-        genre: "Science",
+        genre: {name: "Science"},
         description: "Stone",
         time_stamp: 1674626596545,
-        status: "Pending"
+        status: {name: "Pending"}
     },
 ]
 
