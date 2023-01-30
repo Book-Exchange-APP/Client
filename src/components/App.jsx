@@ -142,6 +142,11 @@ const App = () => {
     nav('/confirmation')
   }
 
+  // const AppointmentWrapper = () =>{
+  //   const { id } = useParams()
+  //   if
+  // }
+
   return (
     <>
       <Navbar />
@@ -151,7 +156,7 @@ const App = () => {
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books/search' element={<Search books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
-          <Route path='/appointment/:bookid' element={<Appointment />} />
+          <Route path='/appointment' element={<Appointment />} />
           <Route path='/confirmation' element={<Confirmation appointment={appointment} />} />
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
