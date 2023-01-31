@@ -1,31 +1,58 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/Dashboard.css'
 
-const Dashboard = ({ appointments }) => {
-    console.log(appointments)
+const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks }) => {
+
+
+    const pendingAppointments = appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
+
+    const approveExchange = (appointment) => {
+        swapBooks(appointment)
+    }
+
+    const denyExchange = (appointment) => {
+        denyBooks(appointment)
+    }
 
     return    (    
-    <main id="Dasboard">
-        <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3">Admin Dashboard</h1>
-        {appointments.map((appointment, index) => (
-            <div key={appointment._id} className="appointment-card">
-                    <div>
-                        <h3>Incoming Book</h3>
-                        <p>{appointment.inc_book.title}</p>
-                        <p>{appointment.inc_book.location.location}</p>
-                        <p>{appointment._id}</p>
-                        <p>{appointment._id}</p>
-                    </div>
-                    <div>
-                        <h3>Outgoing book</h3>
-                    </div>
-                    <div>
-                        <h3>Appointment Details</h3>
-                    </div>
-            </div>
-        ))}
+    <main id="main">
+        <div id ="dashboard-container">
+            <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3">Admin Dashboard</h1>
+            {pendingAppointments.map((appointment, index) => (
+                <div key={appointment._id} id="appointment-container">
+                        <div className="appointment-card">
+                            <h3>Incoming Book</h3>
+                            <p>{appointment.inc_book.img}</p>
+                            <p>Title: {appointment.inc_book.title}</p>
+                            <p>Author: {appointment.inc_book.author}</p>
+                            
+                        </div>
+                        <div className="appointment-card">
+                            <h3>Outgoing book</h3>
+                            <p>{appointment.out_book.img}</p>
+                            <p>Title: {appointment.out_book.title}</p>
+                            <p>Author: {appointment.inc_book.author}</p>
+
+                        </div>
+                        <div className="appointment-card">
+                            <h3>Appointment Details</h3>
+                            <p>{appointment.date.slice(0, 10)}</p>
+                            <p>{appointment.time}</p>
+                            <p>Name: {appointment.first_name} {appointment.last_name}</p>
+                            <p>Location: {appointment.inc_book.location}</p>
+
+                        </div>
+                        <div className="button-container">
+                            <button onClick ={() => {approveExchange(appointment)} }>Approve</button>
+                            <button onClick ={() => {denyExchange(appointment)} }>Deny</button>
+                        </div>
+                </div>
+                ))}
+        </div>
     </main>
     )
 }
+
+
 
 export default Dashboard
