@@ -1,42 +1,52 @@
 import React, { useState} from 'react'
 import ShowBook from './ShowBook'
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css"
+import AppointmentForm from './AppointmentForm';
+import Books from './Books';
 
+const Appointment = (locations, languages, conditions, genres) => {
 
-const Appointment = () => {
+  // const [startDate, setStartDate] = useState(new Date());
 
-  const [startDate, setStartDate] = useState(new Date());
+  // let handleColor = (time) => {
+  //   return time.getHours() > 12 ? "text-success" : "text-error";
+  // }
 
-  let handleColor = (time) => {
-    return time.getHours() > 12 ? "text-success" : "text-error";
-  }
+  // const [inputs, setInputs] = useState({});
 
-  const [inputs, setInputs] = useState({});
+  // const handleChange = (event) => {
+  //   const name = event.target.name;
+  //   const value = event.target.value;
+  //   setInputs(values => ({...values, [name]: value}))
+  // }
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs(values => ({...values, [name]: value}))
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // console.log(inputs);
-  }
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   // console.log(inputs);
+  // }
 
   
   return (
     <main>
-        <div className='title'>
+      {/* <AppointmentForm locations={locations} languages={languages} conditions={conditions} genres={genres}/> */}
+        {/* <div className='title'>
             <h1>Appointment Details</h1>
         </div>
         <form onSubmit={handleSubmit}>
-          <label>Enter your Full Name:
+          <label>Enter your First Name:
           <input 
             type="text" 
-            name="fullName" 
-            value={inputs.fullName || ""} 
+            name="first_name" 
+            value={inputs.first_name || ""} 
+            onChange={handleChange}
+          />
+          </label>
+          <label>Enter your Last Name:
+          <input 
+            type="text" 
+            name="last_name" 
+            value={inputs.last_name || ""} 
             onChange={handleChange}
           />
           </label>
@@ -63,7 +73,7 @@ const Appointment = () => {
               value={inputs.book || ""} 
               onChange={handleChange}
             />
-          </label>
+          </label> */}
 
           {/* <select value={language} onChange={handleChange}>
             <p>Choose the language of the book</p>
@@ -74,7 +84,7 @@ const Appointment = () => {
 
 
 
-          <div>
+          {/* <div>
             <p>Date and Time for Exchange</p>
             <label>
               <DatePicker
@@ -87,12 +97,10 @@ const Appointment = () => {
             </label>        
           </div>
           <input type="submit" />
-        </form>
+        </form> */}
         
-        <div>
           {/* books details */}
-          {/* <ShowBook /> */}
-        </div>
+        <ShowBook book/>
     </main>
     
 

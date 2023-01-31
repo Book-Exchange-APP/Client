@@ -128,6 +128,21 @@ const App = () => {
   }, [])
 
 
+  // useEffect(() => {
+  //   async function fetchAppointment() {
+  //     try {
+
+  //       const res = await fetch('http://localhost:4001/appointment')
+  //       const data = await res.json()
+  //       setAppointment(data)
+  //     } catch (err) {
+  //       setError({ error: err.message + ' Appointment' })
+  //     }
+  //   }
+  //   fetchAppointment()
+  // }, [])
+
+
   const ShowBookWrapper = () => {
     const { id } = useParams()
     if (!books) {
