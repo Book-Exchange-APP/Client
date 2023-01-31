@@ -152,6 +152,15 @@ const App = () => {
     return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
 
+  // const AppointmentWrapper = () => {
+  //   const { id } = useParams()
+  //   if (!books) {
+  //     return <main><h1 className="my-5 text-center">Loading the book...</h1></main>
+  //   }
+  //   const selectedBook = books?.find(book => book._id === id)
+  //   return selectedBook ? <Appointment book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
+  // }
+
   const generateApp = (app) => {
     setAppointment(app)
     nav('/confirmation')
