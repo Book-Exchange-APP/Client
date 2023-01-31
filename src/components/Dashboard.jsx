@@ -3,7 +3,6 @@ import '../styles/Dashboard.css'
 
 const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks }) => {
 
-
     const pendingAppointments = appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
 
     const approveExchange = (appointment) => {
@@ -51,7 +50,7 @@ const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks }) =>
         </div>
     </main>
     )
-}
+    }
 
 
 

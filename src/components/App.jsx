@@ -11,7 +11,8 @@ import Footer from './Footer'
 import ShowBook from './ShowBook'
 import Appointment from './Appointment'
 import Search from './Search'
-import { Routes, Route, useNavigate, useParams, useSearchParams, createSearchParams } from 'react-router-dom'
+import { useAuthContext } from '../auth/useAuthContext'
+import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom'
 import '../styles/App.css'
 
 
@@ -28,6 +29,7 @@ const App = () => {
   const [appointment, setAppointment] = useState()
 
   const nav = useNavigate()
+  const { user } = useAuthContext()
 
   const [error, setError] = useState({ error: false })
 
@@ -150,13 +152,19 @@ const App = () => {
   }
 
 
-    const fetchBook = async(id) => {
+    const updateBooks = async () => {
         // const res = await fetch('https://server-production-f312.up.railway.app/books')
-        const res = await fetch(`http://localhost:4001/books/${id}`)
+        const res = await fetch('http://localhost:4001/books')
         const data = await res.json()
-
-        return data  
+        setBooks(data)
     }
+
+    const updateAppointments = async () => {
+      // const res = await fetch('https://server-production-f312.up.railway.app/appointments')
+      const res = await fetch('http://localhost:4001/appointments')
+      const data = await res.json()
+      setAppointments(data)
+  }
 
 
   const swapBooks = async (appointment) => {
@@ -164,6 +172,7 @@ const App = () => {
     let inc_book = books.find(book => book._id === appointment.inc_book._id)
     let out_book = books.find(book => book._id === appointment.out_book._id)
     let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
+
 
     const updatedIncBook = {
       title: inc_book.title,
@@ -177,26 +186,15 @@ const App = () => {
       status: bookStatus[0]._id
     }
 
+    if (user) {
     const returnedIncBook = await fetch(`http://localhost:4001/books/${inc_book._id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(updatedIncBook)
-    })
-    
-    const incData = await returnedIncBook.json()
-    
-    // books.map((book) => {
-    //   book._id === inc_book._id ? { ...book, inc_book : incData} : book
-    //   })
-    // setBooks(books)
-
-    // console.log(incData)
-    // const inc_bookIndex = books.findIndex( (bookId) => bookId._id === inc_book._id )
-    // books.splice(inc_bookIndex, 1 , incData)
-    // setBooks(books)
+    })}
 
     const updatedOutBook = {
       title: out_book.title,
@@ -214,13 +212,10 @@ const App = () => {
       method: "PUT",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`,
       },
       body: JSON.stringify(updatedOutBook)
     })
-    const outData = await returnedOutBook.json()
-    //Set books function to change in state.
-  
 
     const updatedAppointment = {
       first_name: thisAppointment.first_name,
@@ -237,12 +232,14 @@ const App = () => {
       method: "PUT",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(updatedAppointment)
     })
-    const appData = await returnedAppointment.json()
-    //Set books function to change in state.
+
+    updateBooks()
+    updateAppointments()
+
     }
 
     const denyBooks = async (appointment) => {
@@ -250,6 +247,7 @@ const App = () => {
     let inc_book = books.find(book => book._id === appointment.inc_book._id)
     let out_book = books.find(book => book._id === appointment.out_book._id)
     let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
+
     
     const updatedIncBook = {
       title: inc_book.title,
@@ -267,13 +265,11 @@ const App = () => {
       method: "PUT",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(updatedIncBook)
     })
     
-    const incData = await returnedIncBook.json()
-    //Set books function to change in state.
 
     const updatedOutBook = {
       title: out_book.title,
@@ -291,12 +287,10 @@ const App = () => {
       method: "PUT",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(updatedOutBook)
     })
-    const outData = await returnedOutBook.json()
-    //Set books function to change in state.
   
 
     const updatedAppointment = {
@@ -314,12 +308,14 @@ const App = () => {
       method: "PUT",
       headers: {
         Accept: "application/json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
       },
       body: JSON.stringify(updatedAppointment)
     })
-    const appData = await returnedAppointment.json()
-    //Set books function to change in state.
+
+    updateBooks()
+    updateAppointments()
+
     }
 
     const generateApp = (app) => {
@@ -341,7 +337,7 @@ const App = () => {
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login nav={nav} />} />
-          <Route path='/dashboard' element={<Dashboard appointments={appointments} appointmentStatus={appointmentStatus} swapBooks={swapBooks} denyBooks={denyBooks} />} />
+          <Route path='/dashboard' element={user ? <Dashboard appointments={appointments} appointmentStatus={appointmentStatus} swapBooks={swapBooks} denyBooks={denyBooks} /> : <Navigate to='/Login'/>} />
           <Route path='*' element={<main><h1 className="my-5 text-center">Page not found!</h1></main>} />
         </Routes> :
         <main>
