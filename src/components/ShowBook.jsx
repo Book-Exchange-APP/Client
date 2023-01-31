@@ -14,16 +14,17 @@ const ShowBook = ({ book, generateApp, locations, languages, conditions, genres 
     const nav = useNavigate()
 
 
-    // const handleClick = () => {
-    //     const user = JSON.parse(sessionStorage.getItem('user'))
-    //     sessionStorage.setItem('book', JSON.stringify(book))
-        
-    //     if (user) {
-    //         nav('/appointment')
-    //     } else {
-    //         nav('/login')
-    //     }
-    // }
+    const handleClick = () => {
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        sessionStorage.setItem('book', JSON.stringify(book))
+
+        if (user) {
+            nav(`/appointment`)
+        } else {
+            nav('/login')
+        }
+    }
+
 
     // function submit(evt) {
     //     evt.preventDefault()
