@@ -11,7 +11,6 @@ import Footer from './Footer'
 import ShowBook from './ShowBook'
 import Appointment from './Appointment'
 import Search from './Search'
-import { useAuthContext } from '../auth/useAuthContext'
 import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom'
 import '../styles/App.css'
 
@@ -29,8 +28,7 @@ const App = () => {
   const [appointment, setAppointment] = useState()
 
   const nav = useNavigate()
-  const { user } = useAuthContext()
-
+  const user = JSON.parse(sessionStorage.getItem('user'))
   const [error, setError] = useState({ error: false })
 
 
@@ -151,15 +149,19 @@ const App = () => {
     return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
 
+  const fetchPendingAppointments = async () => {
+    const pendingAppointments = appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
+    
+  }
 
-    const updateBooks = async () => {
+  const updateBooks = async () => {
         // const res = await fetch('https://server-production-f312.up.railway.app/books')
         const res = await fetch('http://localhost:4001/books')
         const data = await res.json()
         setBooks(data)
     }
 
-    const updateAppointments = async () => {
+  const updateAppointments = async () => {
       // const res = await fetch('https://server-production-f312.up.railway.app/appointments')
       const res = await fetch('http://localhost:4001/appointments')
       const data = await res.json()
@@ -172,7 +174,7 @@ const App = () => {
     let inc_book = books.find(book => book._id === appointment.inc_book._id)
     let out_book = books.find(book => book._id === appointment.out_book._id)
     let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
-
+    // const user = JSON.parse(sessionStorage.getItem('user'))
 
     const updatedIncBook = {
       title: inc_book.title,
@@ -247,7 +249,7 @@ const App = () => {
     let inc_book = books.find(book => book._id === appointment.inc_book._id)
     let out_book = books.find(book => book._id === appointment.out_book._id)
     let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
-
+    // const user = JSON.parse(sessionStorage.getItem('user'))
     
     const updatedIncBook = {
       title: inc_book.title,
