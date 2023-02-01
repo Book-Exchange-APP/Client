@@ -206,10 +206,10 @@ const App = () => {
 
   const ShowBookWrapper = () => {
     const { id } = useParams()
-    if (!books) {
+    if (!displayBooks) {
       return <main><h1 className="my-5 text-center">Loading the book...</h1></main>
     }
-    const selectedBook = books?.find(book => book.book._id === id)
+    const selectedBook = displayBooks?.find(book => book.book._id === id)
     return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
 
@@ -393,7 +393,7 @@ const App = () => {
       <Navbar />
       {!error.error ?
         <Routes>
-          <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
+          <Route path='/' element={<Home books={displayBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books' element={<Books books={displayBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books/search' element={<Search books={displayBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
