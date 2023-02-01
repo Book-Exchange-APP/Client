@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
 import '../styles/Dashboard.css'
 
-const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks }) => {
+const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks, pendingAppointments }) => {
 
-    const pendingAppointments = appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
+    // const fetchPendingAppointments = async () => {
+    //     return await appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
+    // }
+    
+    // const pendingAppointments = appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
+
+    console.log(pendingAppointments)
 
     const approveExchange = (appointment) => {
         swapBooks(appointment)
@@ -17,7 +23,8 @@ const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks }) =>
     <main id="main">
         <div id ="dashboard-container">
             <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3">Admin Dashboard</h1>
-            {pendingAppointments.map((appointment, index) => (
+
+            {pendingAppointments.length > 0 ? pendingAppointments.map((appointment, index) => (
                 <div key={appointment._id} id="appointment-container">
                         <div className="appointment-card">
                             <h3>Incoming Book</h3>
@@ -46,7 +53,7 @@ const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks }) =>
                             <button onClick ={() => {denyExchange(appointment)} }>Deny</button>
                         </div>
                 </div>
-                ))}
+                )): <h2 className='text-center px-3 pt-5 text-danger'>No Pending Appointments Found!</h2>}
         </div>
     </main>
     )
