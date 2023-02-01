@@ -229,25 +229,25 @@ const App = () => {
 
   const swapBooks = async (appointment) => {
 
-    let inc_book = books.find(book => book.book._id === appointment.inc_book._id)
-    let out_book = books.find(book => book.book._id === appointment.out_book._id)
-    let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
+    // let inc_book = books.find(book => book.book._id === appointment.inc_book._id)
+    // let out_book = books.find(book => book.book._id === appointment.out_book._id)
+    // let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
     // const user = JSON.parse(sessionStorage.getItem('user'))
 
     const updatedIncBook = {
-      title: inc_book.title,
-      author: inc_book.author,
-      condition: inc_book.condition,
-      location: inc_book.location,
-      language: inc_book.language,
-      img: inc_book.img,
-      genre: inc_book.genre,
-      description: inc_book.description,
+      title: appointment.appointment.inc_book.title,
+      author: appointment.appointment.inc_book.author,
+      condition: appointment.appointment.inc_book.condition,
+      location: appointment.appointment.inc_book.location,
+      language: appointment.appointment.inc_book.language,
+      img: appointment.appointment.inc_book.img,
+      genre: appointment.appointment.inc_book.genre,
+      description: appointment.appointment.inc_book.description,
       status: bookStatus[0]._id
     }
 
     if (user) {
-      const returnedIncBook = await fetch(`http://localhost:4001/books/${inc_book._id}`, {
+      const returnedIncBook = await fetch(`http://localhost:4001/books/${appointment.appointment.inc_book._id}`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -257,18 +257,18 @@ const App = () => {
       })}
 
     const updatedOutBook = {
-      title: out_book.title,
-      author: out_book.author,
-      condition: out_book.condition,
-      location: out_book.location,
-      language: out_book.language,
-      img: out_book.img,
-      genre: out_book.genre,
-      description: out_book.description,
+      title: appointment.appointment.out_book.title,
+      author: appointment.appointment.out_book.author,
+      condition: appointment.appointment.out_book.condition,
+      location: appointment.appointment.out_book.location,
+      language: appointment.appointment.out_book.language,
+      img: appointment.appointment.out_book.img,
+      genre: appointment.appointment.out_book.genre,
+      description: appointment.appointment.out_book.description,
       status: bookStatus[1]._id
     }
 
-    const returnedOutBook = await fetch(`http://localhost:4001/books/${out_book._id}`, {
+    const returnedOutBook = await fetch(`http://localhost:4001/books/${appointment.appointment.out_book._id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -278,14 +278,14 @@ const App = () => {
     })
 
     const updatedAppointment = {
-      first_name: thisAppointment.first_name,
-      last_name: thisAppointment.last_name,
-      inc_book: thisAppointment.inc_book,
-      out_book: thisAppointment.out_book,
-      time: thisAppointment.time,
-      date: thisAppointment.date,
+      first_name: appointment.appointment.first_name,
+      last_name: appointment.appointment.last_name,
+      inc_book: appointment.appointment.inc_book,
+      out_book: appointment.appointment.out_book,
+      time: appointment.appointment.time,
+      date: appointment.appointment.date,
       status: appointmentStatus[1],
-      location: thisAppointment.location
+      location: appointment.appointment.location
     }
 
     const returnedAppointment = await fetch(`http://localhost:4001/appointments/${appointment._id}`, {
