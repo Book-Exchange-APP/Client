@@ -19,7 +19,7 @@ const Search = ({ books, locations, languages, conditions, genres }) => {
         for (const [key, value] of Object.entries(validQuery)) {
             if (key === 'location') {
                 books = books.filter(book => book.book.location.location.toLowerCase().includes(value.toLowerCase()))
-            } else if (['location', 'language', 'condition', 'genre'].includes(key)) {
+            } else if (['language', 'condition', 'genre'].includes(key)) {
                 books = books.filter(book => book.book[key].name.toLowerCase().includes(value.toLowerCase()))
             }
             else if (['title', 'author'].includes(key)) {
