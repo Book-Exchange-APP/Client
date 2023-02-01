@@ -212,8 +212,8 @@ const App = () => {
 
   const swapBooks = async (appointment) => {
 
-    let inc_book = books.find(book => book._id === appointment.inc_book._id)
-    let out_book = books.find(book => book._id === appointment.out_book._id)
+    let inc_book = books.find(book => book.book._id === appointment.inc_book._id)
+    let out_book = books.find(book => book.book._id === appointment.out_book._id)
     let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
     // const user = JSON.parse(sessionStorage.getItem('user'))
 
