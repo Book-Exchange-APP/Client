@@ -8,7 +8,26 @@ import SearchForm from './SearchForm'
 
 
 const Home = ({ books, locations, languages, conditions, genres }) => {
-
+    let featureBooks = null
+    let latestBooks = null
+    if (books) {
+        const availableBooks = books.filter(book => book.book.status.name === 'Available')
+        featureBooks = []
+        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[0].name))
+        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[1].name))
+        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[2].name))
+        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[3].name))
+        const sortedBooksByTime = availableBooks.sort((a, b) => {
+            if (a.book.time_stamp > b.book.time_stamp) {
+                return -1
+            }
+            if (a.book.time_stamp < b.book.time_stamp) {
+                return 1
+            }
+            return 0
+        })
+        latestBooks = sortedBooksByTime.slice(0, 4)
+    }
     return (
         <>
                 <div className="Home">
@@ -35,7 +54,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
                         <a href="./books" className="book-link">See More</a>
                         <div className='fourbooks'>
                             {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
-                            {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books.slice(0,4)}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
+                            {!featureBooks ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : featureBooks.length>0 ? <ShowBooks books={featureBooks}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
                         </div>
                     </div>
                     <div className="latest text-center">
@@ -43,7 +62,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
                         <a href="./books" className="book-link">See More</a>
                         <div className='fourbooks'>
                             {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
-                            {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books.slice(0,4)}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
+                            {!latestBooks ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : latestBooks.length>0 ? <ShowBooks books={latestBooks}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
                         </div>
                     </div>                   
                 </div>
