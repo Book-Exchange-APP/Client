@@ -3,10 +3,14 @@ import { Link } from 'react-router-dom'
 import { useLogout } from '../auth/useLogout'
 import { useNavigate } from 'react-router-dom'
 import Confirmation from './Confirmation'
-import Appointment from './Appointment'
+// import Appointment from './Appointment'
+import AppointmentForm from './AppointmentForm'
+import '../styles/Appointment.css'
 
 
-const ShowBook = ({ book, generateApp }) => {
+
+
+const ShowBook = ({ book, generateApp, locations, languages, conditions, genres }) => {
     const nav = useNavigate()
     const [image, setImage] = useState(null)
 
@@ -16,7 +20,7 @@ const ShowBook = ({ book, generateApp }) => {
         sessionStorage.setItem('book', JSON.stringify(book))
 
         if (user) {
-            nav('/appointment')
+            nav(`/appointment`)
         } else {
             nav('/login')
         }
@@ -60,15 +64,19 @@ const ShowBook = ({ book, generateApp }) => {
 
     return (
         <main>
-            <h5>{book.book.title}</h5>
-            <p>{book.book.author}</p>
-            <p>{book.book.location.location}</p>
-            <p>{book.book.condition.name}</p>
-            <p>{book.book.language.name}</p>
-            <p>{book.book.genre.name}</p>
-            <p>{book.book.status.name}</p>
-            {/* <p>{book.imgString}</p> */}
-            <img src={`data:image/jpeg;base64, ${book.path}`} className="card-img-top w-50" alt="Book image" />
+            <div className="out_book">
+                <h5>Title: {book.book.title}</h5>
+                <p>Author: {book.book.author}</p>
+                <p>Exchange Location: {book.book.location.location}</p>
+                <p>Book Condition: {book.book.condition.name}</p>
+                <p>Language: {book.book.language.name}</p>
+                <p>Genre: {book.book.genre.name}</p>
+                <p>Status: {book.book.status.name}</p>
+                <img src={`data:image/jpeg;base64, ${book.path}`} alt="Book image" />
+            </div>
+            {/* <div className='form'> */}
+            {/* <AppointmentForm /> */}
+            {/* <div className="submit"> */}
             {book.book.status.name === "Pending" ?
                 <p>This book is pending for an exchange!</p> :
                 <form onSubmit={(evt) => submit(evt)} encType="multipart/form-data">
@@ -76,10 +84,14 @@ const ShowBook = ({ book, generateApp }) => {
                     <button type="submit">Book Appointment</button>
                 </form>
             }
+            {/* </div> */}
+            {/* </div> */}
+
+
             {/* if user logged in
                 redirect to appointment page with book ID passed as params.
                 
-                if not logged in, redirect to login page.*/}
+                if not logged in, redirect to login page. */}
         </main>
     )
 }
