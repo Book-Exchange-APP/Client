@@ -28,6 +28,7 @@ const App = () => {
   const [appointmentStatus, setAppointmentStatus] = useState([])
   const [appointment, setAppointment] = useState()
   const [pendingAppointments, setPendingAppointments] = useState([])
+  const [displayBooks, setDisplayBooks] = useState(null)
 
 
   const nav = useNavigate()
@@ -41,16 +42,17 @@ const App = () => {
         // const res = await fetch('https://server-production-f312.up.railway.app/books')
         const res = await fetch('http://localhost:4001/books')
         const data = await res.json()
-        const ableToDisplay = data.filter( book => book.book.status.name === 'Available' || book.book.status.name === 'Pending') 
+        setBookStatus(data)
+        const ableToDisplay = data.filter(book => book.book.status.name === 'Available' || book.book.status.name === 'Pending')
         let sortedBooks = ableToDisplay.sort((a, b) => {
-            if (a.book.title > b.book.title) {
-              return 1
-            }
-            if (a.book.title < b.book.title) {
-              return -1
-            }
-            return 0
-      })
+          if (a.book.title > b.book.title) {
+            return 1
+          }
+          if (a.book.title < b.book.title) {
+            return -1
+          }
+          return 0
+        })
         sortedBooks = sortedBooks.
           sort((a, b) => {
             if (a.book.status.name > b.book.status.name && a.book.title.name > b.book.title.name) {
@@ -61,7 +63,7 @@ const App = () => {
             }
             return 0
           })
-        setBooks(sortedBooks)
+        setDisplayBooks(sortedBooks)
       } catch (err) {
         setError({ error: err.message + ' Books' })
       }
@@ -150,14 +152,14 @@ const App = () => {
     fetchBookStatus()
 
     async function fetchAppointmentStatus() {
-          try {
-            const res = await fetch('http://localhost:4001/status/appointments')
-            const data = await res.json()
-            setAppointmentStatus(data)
-          } catch (err) {
-            setError({ error: err.message + ' Appointment Status' })
-          }
-        }
+      try {
+        const res = await fetch('http://localhost:4001/status/appointments')
+        const data = await res.json()
+        setAppointmentStatus(data)
+      } catch (err) {
+        setError({ error: err.message + ' Appointment Status' })
+      }
+    }
     fetchAppointmentStatus()
 
     async function fetchPendingAppointments() {
@@ -170,7 +172,7 @@ const App = () => {
       }
     }
     fetchPendingAppointments()
-    }, [])  
+  }, [])
 
 
   // useEffect(() => {
@@ -204,19 +206,19 @@ const App = () => {
 
   const ShowBookWrapper = () => {
     const { id } = useParams()
-    if (!books) {
+    if (!displayBooks) {
       return <main><h1 className="my-5 text-center">Loading the book...</h1></main>
     }
-    const selectedBook = books?.find(book => book.book._id === id)
+    const selectedBook = displayBooks?.find(book => book.book._id === id)
     return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
 
   const updateBooks = async () => {
-        // const res = await fetch('https://server-production-f312.up.railway.app/books')
-        const res = await fetch('http://localhost:4001/books')
-        const data = await res.json()
-        setBooks(data)
-    }
+    // const res = await fetch('https://server-production-f312.up.railway.app/books')
+    const res = await fetch('http://localhost:4001/books')
+    const data = await res.json()
+    setBooks(data)
+  }
 
   const updateAppointments = async () => {
     const res = await fetch('http://localhost:4001/appointments/status/pending')
@@ -245,14 +247,14 @@ const App = () => {
     }
 
     if (user) {
-    const returnedIncBook = await fetch(`http://localhost:4001/books/${inc_book._id}`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
-      },
-      body: JSON.stringify(updatedIncBook)
-    })}
+      const returnedIncBook = await fetch(`http://localhost:4001/books/${inc_book._id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify(updatedIncBook)
+      })}
 
     const updatedOutBook = {
       title: out_book.title,
@@ -282,7 +284,7 @@ const App = () => {
       out_book: thisAppointment.out_book,
       time: thisAppointment.time,
       date: thisAppointment.date,
-      status: appointmentStatus[1], 
+      status: appointmentStatus[1],
       location: thisAppointment.location
     }
 
@@ -298,15 +300,15 @@ const App = () => {
     updateBooks()
     updateAppointments()
 
-    }
+  }
 
-    const denyBooks = async (appointment) => {
-    
+  const denyBooks = async (appointment) => {
+
     let inc_book = books.find(book => book._id === appointment.inc_book._id)
     let out_book = books.find(book => book._id === appointment.out_book._id)
     let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
     // const user = JSON.parse(sessionStorage.getItem('user'))
-    
+
     const updatedIncBook = {
       title: inc_book.title,
       author: inc_book.author,
@@ -327,7 +329,7 @@ const App = () => {
       },
       body: JSON.stringify(updatedIncBook)
     })
-    
+
 
     const updatedOutBook = {
       title: out_book.title,
@@ -349,7 +351,7 @@ const App = () => {
       },
       body: JSON.stringify(updatedOutBook)
     })
-  
+
 
     const updatedAppointment = {
       first_name: thisAppointment.first_name,
@@ -358,7 +360,7 @@ const App = () => {
       out_book: thisAppointment.out_book,
       time: thisAppointment.time,
       date: thisAppointment.date,
-      status: appointmentStatus[2], 
+      status: appointmentStatus[2],
       location: thisAppointment.location
     }
 
@@ -374,11 +376,11 @@ const App = () => {
     updateBooks()
     updateAppointments()
 
-    }
+  }
 
-    const generateApp = (app) => {
-      setAppointment(app)
-      nav('/confirmation')
+  const generateApp = (app) => {
+    setAppointment(app)
+    nav('/confirmation')
   }
 
   // const AppointmentWrapper = () =>{
@@ -391,9 +393,9 @@ const App = () => {
       <Navbar />
       {!error.error ?
         <Routes>
-          <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
-          <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
-          <Route path='/books/search' element={<Search books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
+          <Route path='/' element={<Home books={displayBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
+          <Route path='/books' element={<Books books={displayBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
+          <Route path='/books/search' element={<Search books={displayBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
           {/* <Route path='/appointment' element={<Appointment />} /> */}
           <Route path='/confirmation' element={<Confirmation appointment={appointment} />} />
