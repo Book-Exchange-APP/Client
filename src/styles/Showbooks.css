@@ -1,11 +1,29 @@
 #showBooks {
-    margin-left: 20%; 
+    margin-left: 20%;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     justify-items: center;
 }
 
-@media screen and (max-width: 820px) {    
+#bookCardImg {
+    object-fit: contain;
+    height: 12rem;
+    min-height: 100%;
+    min-width: 100%;
+
+}
+
+@media screen and (max-width: 820px) {
     #showBooks {
         margin: 0px;
+    }
+}
+
+@media screen and (max-width: 446px) {
+    #bookCard {
+        width: 15rem !important;
+    }
+
+    #bookCardImg {
+        height: 15rem;
     }
 }
