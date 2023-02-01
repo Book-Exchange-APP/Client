@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useLogin } from "../auth/useLogin"
 import { Link } from "react-router-dom"
+import '../styles/Login.css'
 
 const Login = ( {nav} ) => {
     const [email, setEmail] = useState('')
@@ -25,26 +26,26 @@ const Login = ( {nav} ) => {
     }
 
     return (
-        <main>            
-        <form className="login" onSubmit= {handleSubmit}>
-            <h3>Login</h3>
-            <p>Not Signed up?</p>
-            <Link to='/register'>Register Here</Link>
-            <label>Email:</label>
-            <input 
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value= { email }
-            />
-            <label>Password:</label>
-            <input 
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value= { password }
-            />
-            <button disabled={isLoading}>Submit</button>
-            {error && <div className="error">{error}</div>}
-        </form>
+        <main id="main">
+            <form className="login" onSubmit= {handleSubmit}>
+                <h3 className="login-title">Login</h3>
+                <p>Not Signed up?</p>
+                <Link to='/register'>Register Here</Link>
+                <label>Email:</label>
+                <input 
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    value= { email }
+                />
+                <label>Password:</label>
+                <input 
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    value= { password }
+                />
+                <button className="submit-button" disabled={isLoading}>Submit</button>
+                {error && <div className="error">{error}</div>}
+            </form>
         </main>
     )
 }
