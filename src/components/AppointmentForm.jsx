@@ -5,13 +5,20 @@ import "react-datepicker/dist/react-datepicker.css"
 
 
 
-const AppointmentForm = ({ first_name, last_name, email, phone, inc_book, out_book, time, date, locations, languages, conditions, genres }) => {
+const AppointmentForm = ({locations, languages, conditions, genres }) => {
+    const [first_name, setFirstName] = useState('')
+    const [last_name, setLastName] = useState('')
+    const [email, setEmail] = useState('')
+    const [phone, setPhone] = useState('')
+    const [time, setTime] = useState('')
+    const [date, setDate] = useState('')
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
     const [location, setLocation] = useState('')
     const [language, setLanguage] = useState('')
     const [condition, setCondition] = useState('')
     const [genre, setGenre] = useState('')
+
 
     const nav = useNavigate()
 
@@ -62,7 +69,6 @@ const AppointmentForm = ({ first_name, last_name, email, phone, inc_book, out_bo
         setPhone('')
         setTime('')
         setDate('')
-        set('')
         setTitle('')
         setAuthor('')
         setLocation('')
@@ -70,8 +76,7 @@ const AppointmentForm = ({ first_name, last_name, email, phone, inc_book, out_bo
         setCondition('')
         setGenre('')
 
-        nav({ pathname: '/confirmation', search: `?${createSearchParams(submitForm)}` })
-        console.log(location)
+        // nav({ pathname: '/confirmation', search: `?${createSearchParams(submitForm)}` })
     }
 
     const [startDate, setStartDate] = useState(new Date());
@@ -79,20 +84,24 @@ const AppointmentForm = ({ first_name, last_name, email, phone, inc_book, out_bo
         <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        style={{ border: "solid 1px pink" }}
+        style={{ border: "solid 1px black" }}
         />
     );
 
     return (
         <form id="Form" onSubmit={(evt) => submit(evt)}>
-            <input id="inputTitle" name="first_name" className="form-control mb-2"  placeholder="First name" value={first_name} onChange={(evt) => setFirstName(evt.target.value)} />
-            <input id="inputTitle" name="last_name" className="form-control mb-2"  placeholder="Last name" value={last_name} onChange={(evt) => setLastName(evt.target.value)} />
-            <input id="inputTitle" name="email" className="form-control mb-2"  placeholder="Email" value={email} onChange={(evt) => setEmail(evt.target.value)} />
-            <input id="inputTitle" name="phone" className="form-control mb-2"  placeholder="Phone" value={phone} onChange={(evt) => setPhone(evt.target.value)} />
+            <label>
+                <input id="inputTitle" className="form-control mb-2" name="first_name" type="text" placeholder="First name" value={first_name } onChange={(evt) => setFirstName(evt.target.value)} />
+            </label>
+            <input id="inputTitle" name="last_name" className="form-control mb-2" type="text" placeholder="Last name" value={last_name} onChange={(evt) => setLastName(evt.target.value)} />
+            <input id="inputTitle" name="email" className="form-control mb-2" type="text" placeholder="Email" value={email} onChange={(evt) => setEmail(evt.target.value)} />
+            <input id="inputTitle" name="phone" className="form-control mb-2" type="text" placeholder="Phone" value={phone} onChange={(evt) => setPhone(evt.target.value)} />
+
             <div>
                 <p>Date and Time for Exchange</p>
                 <label>
                 <DatePicker
+                    className="form-control mb-2"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     showTimeInput
@@ -100,8 +109,10 @@ const AppointmentForm = ({ first_name, last_name, email, phone, inc_book, out_bo
                 />
                 </label>        
             </div>
-            <input id="inputTitle" name="title" className="form-control mb-2"  placeholder="Title" value={title} onChange={(evt) => setTitle(evt.target.value)} />
-            <input id="inputAuthor" name="author" className="form-control mb-2"  placeholder="Author" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
+
+            <input id="inputTitle" name="title" className="form-control mb-2" type="text" placeholder="Title" value={title} onChange={(evt) => setTitle(evt.target.value)} />
+            <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Author" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
+
             {/* <div className="options">
                 <select id="selectLocation" name="location" className="form-select mb-2" value={location} onChange={(evt) => setLocation(evt.target.value)}>
                     <option>Location</option>

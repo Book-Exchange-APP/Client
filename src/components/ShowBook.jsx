@@ -57,7 +57,7 @@ const ShowBook = ({ book, generateApp, locations, languages, conditions, genres 
     return (
         <main>
             <div className="out_book">
-                <h5>Title: {book.title}</h5>
+                <h5><b>Title: {book.title}</b></h5>
                 <p>Author: {book.author}</p>
                 <p>Exchange Location: {book.location.location}</p>
                 <p>Book Condition: {book.condition.name}</p>
