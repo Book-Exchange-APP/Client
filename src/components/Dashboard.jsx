@@ -23,7 +23,6 @@ const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks, pend
     <main id="main">
         <div id ="dashboard-container">
             <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3">Admin Dashboard</h1>
-
             {pendingAppointments.length > 0 ? pendingAppointments.map((appointment, index) => (
                 <div key={appointment._id} id="appointment-container">
                         <div className="appointment-card">
