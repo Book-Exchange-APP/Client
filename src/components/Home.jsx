@@ -12,12 +12,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
     let latestBooks = null
     if (books) {
         const availableBooks = books.filter(book => book.book.status.name === 'Available')
-        featureBooks = []
-        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[0].name))
-        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[1].name))
-        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[2].name))
-        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[3].name))
-        const sortedBooksByTime = availableBooks.sort((a, b) => {
+        availableBooks.sort((a, b) => {
             if (a.book.time_stamp > b.book.time_stamp) {
                 return -1
             }
@@ -26,7 +21,12 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
             }
             return 0
         })
-        latestBooks = sortedBooksByTime.slice(0, 4)
+        featureBooks = []
+        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[0].name))
+        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[1].name))
+        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[2].name))
+        featureBooks.push(availableBooks.find( book => book.book.genre.name === genres[3].name))
+        latestBooks = availableBooks.slice(0, 4)
     }
     return (
         <>
