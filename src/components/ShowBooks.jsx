@@ -9,7 +9,7 @@ const ShowBooks = ({ books }) => {
         {books.map((book, index) => (
           <div id="bookCard" key={index} className="card mb-4" style={{ width: '12rem' }}>
             <div className="position-relative border-bottom">              
-              <img id="bookCardImg" src={`data:image/jpeg;base64, ${book.path}`} className="card-img-top" alt="Book image"/>
+              <img id="bookCardImg" src={`data:image/jpeg;base64, ${book.path}`} className="card-img-top py-1" alt="Book image"/>
               {book.book.status.name === 'Pending' ? <p className="position-absolute bottom-0 text-center m-0 w-100 fst-italic bg-light text-dark-emphasis bg-opacity-75">Pending</p> : true}
             </div>
             <div className="card-body d-flex flex-column">

@@ -5,7 +5,7 @@
 }
 
 #bookCardImg {
-    object-fit: cover;
+    object-fit: contain;
     height: 12rem;
     min-height: 100%;
     min-width: 100%;
