@@ -140,6 +140,21 @@ const App = () => {
   }, [])
 
 
+  // useEffect(() => {
+  //   async function fetchAppointment() {
+  //     try {
+
+  //       const res = await fetch('http://localhost:4001/appointment')
+  //       const data = await res.json()
+  //       setAppointment(data)
+  //     } catch (err) {
+  //       setError({ error: err.message + ' Appointment' })
+  //     }
+  //   }
+  //   fetchAppointment()
+  // }, [])
+
+
   const ShowBookWrapper = () => {
     const { id } = useParams()
     if (!books) {
@@ -148,6 +163,8 @@ const App = () => {
     const selectedBook = books?.find(book => book._id === id)
     return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
+
+
 
   const fetchPendingAppointments = async () => {
     const pendingAppointments = appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
