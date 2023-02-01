@@ -11,6 +11,7 @@ import Footer from './Footer'
 import ShowBook from './ShowBook'
 import Appointment from './Appointment'
 import Search from './Search'
+import { useAuthContext } from '../auth/useAuthContext'
 import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom'
 import '../styles/App.css'
 
@@ -26,9 +27,10 @@ const App = () => {
   const [bookStatus, setBookStatus] = useState([])
   const [appointmentStatus, setAppointmentStatus] = useState([])
   const [appointment, setAppointment] = useState()
+  const [pendingAppointments, setPendingAppointments] = useState([])
 
   const nav = useNavigate()
-  const user = JSON.parse(sessionStorage.getItem('user'))
+  const { user } = useAuthContext()
   const [error, setError] = useState({ error: false })
 
 
@@ -113,6 +115,7 @@ const App = () => {
         setError({ error: err.message + ' Books' })
       }
     }
+
     fetchAppointments()
     async function fetchBookStatus() {
       try {
@@ -124,20 +127,43 @@ const App = () => {
       }
     }
     fetchBookStatus()
-  }, [])
 
-  useEffect(() => {
     async function fetchAppointmentStatus() {
+          try {
+            const res = await fetch('http://localhost:4001/status/appointments')
+            const data = await res.json()
+            setAppointmentStatus(data)
+          } catch (err) {
+            setError({ error: err.message + ' Appointment Status' })
+          }
+        }
+    fetchAppointmentStatus()
+
+    async function fetchPendingAppointments() {
       try {
-        const res = await fetch('http://localhost:4001/status/appointments')
+        const res = await fetch('http://localhost:4001/appointments/status/pending')
         const data = await res.json()
-        setAppointmentStatus(data)
+        setPendingAppointments(data)
       } catch (err) {
-        setError({ error: err.message + ' Appointment Status' })
+        setError({ error: err.message + ' Pending Appointments' })
       }
     }
-    fetchAppointmentStatus()
-  }, [])
+    fetchPendingAppointments()
+    }, [])  
+
+
+  // useEffect(() => {
+  //   async function fetchAppointmentStatus() {
+  //     try {
+  //       const res = await fetch('http://localhost:4001/status/appointments')
+  //       const data = await res.json()
+  //       setAppointmentStatus(data)
+  //     } catch (err) {
+  //       setError({ error: err.message + ' Appointment Status' })
+  //     }
+  //   }
+  //   fetchAppointmentStatus()
+  // }, [])
 
 
   // useEffect(() => {
@@ -164,13 +190,6 @@ const App = () => {
     return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
 
-
-
-  const fetchPendingAppointments = async () => {
-    const pendingAppointments = appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
-    
-  }
-
   const updateBooks = async () => {
         // const res = await fetch('https://server-production-f312.up.railway.app/books')
         const res = await fetch('http://localhost:4001/books')
@@ -179,10 +198,9 @@ const App = () => {
     }
 
   const updateAppointments = async () => {
-      // const res = await fetch('https://server-production-f312.up.railway.app/appointments')
-      const res = await fetch('http://localhost:4001/appointments')
-      const data = await res.json()
-      setAppointments(data)
+    const res = await fetch('http://localhost:4001/appointments/status/pending')
+    const data = await res.json()
+    setPendingAppointments(data)
   }
 
 
@@ -361,7 +379,7 @@ const App = () => {
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login nav={nav} />} />
-          <Route path='/dashboard' element={user ? <Dashboard appointments={appointments} appointmentStatus={appointmentStatus} swapBooks={swapBooks} denyBooks={denyBooks} /> : <Navigate to='/Login'/>} />
+          <Route path='/dashboard' element={ user ? <Dashboard appointments={appointments} appointmentStatus={appointmentStatus} swapBooks={swapBooks} denyBooks={denyBooks} pendingAppointments={pendingAppointments}/> : <Navigate to='/login'/>} />
           <Route path='*' element={<main><h1 className="my-5 text-center">Page not found!</h1></main>} />
         </Routes> :
         <main>
