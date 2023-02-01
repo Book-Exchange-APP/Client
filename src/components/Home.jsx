@@ -32,7 +32,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
                     </div>
                     <div className="feature text-center">
                         <h1 className='Fbooks'>Featured Books</h1>
-                        <a href="./books" class="book-link">See More</a>
+                        <a href="./books" className="book-link">See More</a>
                         <div className='fourbooks'>
                             {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
                             {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books.slice(0,4)}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
@@ -40,7 +40,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
                     </div>
                     <div className="latest text-center">
                         <h1 className='Lbooks'>Latest Book</h1>
-                        <a href="./books" class="book-link">See More</a>
+                        <a href="./books" className="book-link">See More</a>
                         <div className='fourbooks'>
                             {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
                             {!books ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : books.length>0 ? <ShowBooks books={books.slice(0,4)}/> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
