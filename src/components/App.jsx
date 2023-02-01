@@ -153,6 +153,54 @@ const App = () => {
 
 
   // useEffect(() => {
+  //   async function fetchAppointments() {
+  //     try {
+  //       // const res = await fetch('https://server-production-f312.up.railway.app/appointments')
+  //       const res = await fetch('http://localhost:4001/appointments')
+  //       const data = await res.json()
+  //       setAppointments(data)
+  //     } catch (err) {
+  //       setError({ error: err.message + ' Books' })
+  //     }
+  //   }
+
+  //   fetchAppointments()
+  //   async function fetchBookStatus() {
+  //     try {
+  //       const res = await fetch('http://localhost:4001/status/books')
+  //       const data = await res.json()
+  //       setBookStatus(data)
+  //     } catch (err) {
+  //       setError({ error: err.message + ' Book Status' })
+  //     }
+  //   }
+  //   fetchBookStatus()
+
+  //   async function fetchAppointmentStatus() {
+  //         try {
+  //           const res = await fetch('http://localhost:4001/status/appointments')
+  //           const data = await res.json()
+  //           setAppointmentStatus(data)
+  //         } catch (err) {
+  //           setError({ error: err.message + ' Appointment Status' })
+  //         }
+  //       }
+  //   fetchAppointmentStatus()
+
+  //   async function fetchPendingAppointments() {
+  //     try {
+  //       const res = await fetch('http://localhost:4001/appointments/status/pending')
+  //       const data = await res.json()
+  //       setPendingAppointments(data)
+  //     } catch (err) {
+  //       setError({ error: err.message + ' Pending Appointments' })
+  //     }
+  //   }
+  //   fetchPendingAppointments()
+  //   }, [])  
+
+
+  // useEffect(() => {
   //   async function fetchAppointmentStatus() {
   //     try {
   //       const res = await fetch('http://localhost:4001/status/appointments')
@@ -163,21 +211,6 @@ const App = () => {
   //     }
   //   }
   //   fetchAppointmentStatus()
-  // }, [])
-
-
-  // useEffect(() => {
-  //   async function fetchAppointment() {
-  //     try {
-
-  //       const res = await fetch('http://localhost:4001/appointment')
-  //       const data = await res.json()
-  //       setAppointment(data)
-  //     } catch (err) {
-  //       setError({ error: err.message + ' Appointment' })
-  //     }
-  //   }
-  //   fetchAppointment()
   // }, [])
 
 
