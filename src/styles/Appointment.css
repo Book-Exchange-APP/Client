@@ -1,0 +1,20 @@
+.out_book{
+    position: relative;
+    top: 5vh;
+    left: 0;
+}
+
+.form{
+    position: relative;
+    top: 10vh;
+    right: 0;
+}
+
+.submit{
+    position: relative;
+    top: 50vh;
+}
+
+.submit>p{
+    font-weight: bold;
+}
