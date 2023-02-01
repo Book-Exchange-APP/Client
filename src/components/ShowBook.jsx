@@ -65,7 +65,7 @@ const ShowBook = ({ book, generateApp, locations, languages, conditions, genres 
     return (
         <main>
             <div className="out_book">
-                <h5>Title: {book.book.title}</h5>
+                <h5><b>Title: {book.book.title}</b></h5>
                 <p>Author: {book.book.author}</p>
                 <p>Exchange Location: {book.book.location.location}</p>
                 <p>Book Condition: {book.book.condition.name}</p>
@@ -74,18 +74,21 @@ const ShowBook = ({ book, generateApp, locations, languages, conditions, genres 
                 <p>Status: {book.book.status.name}</p>
                 <img src={`data:image/jpeg;base64, ${book.path}`} alt="Book image" />
             </div>
-            {/* <div className='form'> */}
-            {/* <AppointmentForm /> */}
-            {/* <div className="submit"> */}
+
+            <div className='form'>
+            <AppointmentForm />
+
+
+            <div className="submit">
             {book.book.status.name === "Pending" ?
                 <p>This book is pending for an exchange!</p> :
                 <form onSubmit={(evt) => submit(evt)} encType="multipart/form-data">
-                    <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} />
-                    <button type="submit">Book Appointment</button>
+                    {/* <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} /> */}
+                    <button id="submit-btn" className="btn w-100 text-white btn-outline-success fs-6" type="submit">Submit The Appointment</button>
                 </form>
             }
-            {/* </div> */}
-            {/* </div> */}
+            </div>
+            </div>
 
 
             {/* if user logged in
