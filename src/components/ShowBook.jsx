@@ -74,18 +74,21 @@ const ShowBook = ({ book, generateApp, locations, languages, conditions, genres 
                 <p>Status: {book.book.status.name}</p>
                 <img src={`data:image/jpeg;base64, ${book.path}`} alt="Book image" />
             </div>
-            {/* <div className='form'> */}
-            {/* <AppointmentForm /> */}
-            {/* <div className="submit"> */}
+
+            <div className='form'>
+            <AppointmentForm />
+
+
+            <div className="submit">
             {book.book.status.name === "Pending" ?
                 <p>This book is pending for an exchange!</p> :
                 <form onSubmit={(evt) => submit(evt)} encType="multipart/form-data">
-                    <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} />
-                    <button type="submit">Book Appointment</button>
+                    {/* <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} /> */}
+                    <button id="submit-btn" className="btn w-100 text-white btn-outline-success fs-6" type="submit">Submit The Appointment</button>
                 </form>
             }
-            {/* </div> */}
-            {/* </div> */}
+            </div>
+            </div>
 
 
             {/* if user logged in
