@@ -10,13 +10,14 @@ const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
     const denyExchange = (appointment) => {
         denyBooks(appointment)
     }
-
+    console.log(pendingAppointments)
     return    (    
     <main id="main">
         <div id ="dashboard-container">
             <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3">Admin Dashboard</h1>
 
             {pendingAppointments.length > 0 ? pendingAppointments.map((appointment, index) => (
+                
                 <div key={appointment._id} id="appointment-container">
                         <div className="appointment-card">
                             <h3>Incoming Book</h3>
@@ -37,7 +38,7 @@ const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
                             <p><b>Date:</b> {appointment.date.slice(0, 10)}</p>
                             <p><b>Time:</b> {appointment.time}</p>
                             <p><b>Name:</b> {appointment.first_name} {appointment.last_name}</p>
-                            <p><b>Location:</b> {appointment.inc_book.location}</p>
+                            <p><b>Location:</b> {appointment.location.location}</p>
 
                         </div>
                         <div className="button-container">
@@ -46,6 +47,7 @@ const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
                         </div>
                 </div>
                 )): <h2 className='text-center px-3 pt-5 text-danger'>No Pending Appointments Found!</h2>}
+                
         </div>
     </main>
     )

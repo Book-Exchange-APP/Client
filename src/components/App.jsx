@@ -9,7 +9,7 @@ import Login from './Login'
 import Dashboard from './Dashboard'
 import Footer from './Footer'
 import ShowBook from './ShowBook'
-import Appointment from './Appointment'
+// import Appointment from './Appointment'
 import Search from './Search'
 import { useAuthContext } from '../auth/useAuthContext'
 import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom'
@@ -374,7 +374,7 @@ const App = () => {
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books/search' element={<Search books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/book/:id' element={<ShowBookWrapper />} />
-          <Route path='/appointment' element={<Appointment />} />
+          {/* <Route path='/appointment' element={<Appointment />} /> */}
           <Route path='/confirmation' element={<Confirmation appointment={appointment} />} />
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
