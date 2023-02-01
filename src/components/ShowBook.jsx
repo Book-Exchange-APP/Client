@@ -6,15 +6,15 @@ import Confirmation from './Confirmation'
 import Appointment from './Appointment'
 
 
-
 const ShowBook = ({ book, generateApp }) => {
     const nav = useNavigate()
+    const [image, setImage] = useState(null)
 
 
     const handleClick = () => {
         const user = JSON.parse(sessionStorage.getItem('user'))
         sessionStorage.setItem('book', JSON.stringify(book))
-        
+
         if (user) {
             nav('/appointment')
         } else {
@@ -22,8 +22,16 @@ const ShowBook = ({ book, generateApp }) => {
         }
     }
 
-    function submit(evt) {
+    async function submit(evt) {
         evt.preventDefault()
+        const formData = new FormData()
+        formData.append('file', image)
+        const returnedData = await fetch('http://localhost:4001/upload', {
+            method: 'POST',
+            body: formData
+        })
+        const test = await returnedData.json()
+        console.log(test)
         const data = {
             first_name: "Tom",
             last_name: "Cruise",
@@ -47,30 +55,33 @@ const ShowBook = ({ book, generateApp }) => {
             _id: "63d719962a43e1e5f472c335",
             __v: 0
         }
-        generateApp(data)               
+        generateApp(data)
     }
 
     return (
         <main>
-            <h5>{book.title}</h5>
-            <p>{book.author}</p>
-            <p>{book.location.location}</p>
-            <p>{book.condition.name}</p>
-            <p>{book.language.name}</p>
-            <p>{book.genre.name}</p>
-            <p>{book.status.name}</p>
-            { book.status.name === "Pending" ? 
-            <p>This book is pending for an exchange!</p> :                
-            <form onSubmit={(evt) => submit(evt)}>
-                <button type="submit">Book Appointment</button>
-            </form>
+            <h5>{book.book.title}</h5>
+            <p>{book.book.author}</p>
+            <p>{book.book.location.location}</p>
+            <p>{book.book.condition.name}</p>
+            <p>{book.book.language.name}</p>
+            <p>{book.book.genre.name}</p>
+            <p>{book.book.status.name}</p>
+            {/* <p>{book.imgString}</p> */}
+            <img src={`data:image/jpeg;base64, ${book.path}`} className="card-img-top w-50" alt="Book image" />
+            {book.book.status.name === "Pending" ?
+                <p>This book is pending for an exchange!</p> :
+                <form onSubmit={(evt) => submit(evt)} encType="multipart/form-data">
+                    <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} />
+                    <button type="submit">Book Appointment</button>
+                </form>
             }
             {/* if user logged in
                 redirect to appointment page with book ID passed as params.
                 
                 if not logged in, redirect to login page.*/}
         </main>
-    ) 
+    )
 }
 
 export default ShowBook

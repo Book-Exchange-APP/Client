@@ -26,6 +26,7 @@ const App = () => {
   const [appointmentStatus, setAppointmentStatus] = useState([])
   const [appointment, setAppointment] = useState()
 
+
   const nav = useNavigate()
 
   const [error, setError] = useState({ error: false })
@@ -37,7 +38,27 @@ const App = () => {
         // const res = await fetch('https://server-production-f312.up.railway.app/books')
         const res = await fetch('http://localhost:4001/books')
         const data = await res.json()
-        setBooks(data)
+        const ableToDisplay = data.filter( book => book.book.status.name === 'Available' || book.book.status.name === 'Pending') 
+        let sortedBooks = ableToDisplay.sort((a, b) => {
+            if (a.book.title > b.book.title) {
+              return 1
+            }
+            if (a.book.title < b.book.title) {
+              return -1
+            }
+            return 0
+      })
+        sortedBooks = sortedBooks.
+          sort((a, b) => {
+            if (a.book.status.name > b.book.status.name && a.book.title.name > b.book.title.name) {
+              return 1
+            }
+            if (a.book.status.name < b.book.status.name) {
+              return -1
+            }
+            return 0
+          })
+        setBooks(sortedBooks)
       } catch (err) {
         setError({ error: err.message + ' Books' })
       }
@@ -133,7 +154,7 @@ const App = () => {
     if (!books) {
       return <main><h1 className="my-5 text-center">Loading the book...</h1></main>
     }
-    const selectedBook = books?.find(book => book._id === id)
+    const selectedBook = books?.find(book => book.book._id === id)
     return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
   }
 
