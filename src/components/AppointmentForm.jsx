@@ -18,6 +18,7 @@ const AppointmentForm = ({generateApp, locations, languages, conditions, genres 
     const [language, setLanguage] = useState('')
     const [condition, setCondition] = useState('')
     const [genre, setGenre] = useState('')
+    const [image, setImage] = useState(null)
 
 
     const nav = useNavigate()
@@ -89,32 +90,29 @@ const AppointmentForm = ({generateApp, locations, languages, conditions, genres 
 
     return (
         <form id="Form" onSubmit={(evt) => submit(evt)}>
-            <label>
-                <input id="inputFirst" className="form-control mb-2" name="first_name" type="text" placeholder="First name" value={first_name } onChange={(evt) => setFirstName(evt.target.value)} />
-            </label>
+            <input id="inputFirst" className="form-control mb-2" name="first_name" type="text" placeholder="First name" value={first_name } onChange={(evt) => setFirstName(evt.target.value)} />
             <input id="inputLast" name="last_name" className="form-control mb-2" type="text" placeholder="Last name" value={last_name} onChange={(evt) => setLastName(evt.target.value)} />
             <input id="inputEmail" name="email" className="form-control mb-2" type="text" placeholder="Email" value={email} onChange={(evt) => setEmail(evt.target.value)} />
             <input id="inputPhone" name="phone" className="form-control mb-2" type="text" placeholder="Phone" value={phone} onChange={(evt) => setPhone(evt.target.value)} />
 
             <div>
-                <p>Date and Time for Exchange</p>
-                <label>
+                <p>Date for Exchange</p>
                 <DatePicker
                     className="form-control mb-2"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
-                    showTimeInput
-                    customTimeInput={<ExampleCustomTimeInput />}
+
                 />
-                </label>        
             </div>
+            <input id="inputTime" name="time" className="form-control mb-2" type="text" placeholder="Time" value={time} onChange={(evt) => setTime(evt.target.value)} />
+
 
             <input id="inputTitle" name="title" className="form-control mb-2" type="text" placeholder="Title" value={title} onChange={(evt) => setTitle(evt.target.value)} />
             <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Author" value={author} onChange={(evt) => setAuthor(evt.target.value)} />
-            <input id="inputLocat" name="author" className="form-control mb-2" type="text" placeholder="Location" value={author} onChange={(evt) => setLocation(evt.target.value)} />
-            <input id="inputCond" name="author" className="form-control mb-2" type="text" placeholder="Condition" value={author} onChange={(evt) => setCondition(evt.target.value)} />
-            <input id="inputLang" name="author" className="form-control mb-2" type="text" placeholder="Language" value={author} onChange={(evt) => setLanguage(evt.target.value)} />
-            <input id="inputGenre" name="author" className="form-control mb-2" type="text" placeholder="Genre" value={author} onChange={(evt) => setGenre(evt.target.value)} />
+            <input id="inputLocat" name="location" className="form-control mb-2" type="text" placeholder="Location" value={location} onChange={(evt) => setLocation(evt.target.value)} />
+            {/* <input id="inputCond" name="condition" className="form-control mb-2" type="text" placeholder="Condition" value={condition} onChange={(evt) => setCondition(evt.target.value)} />
+            <input id="inputLang" name="language" className="form-control mb-2" type="text" placeholder="Language" value={language} onChange={(evt) => setLanguage(evt.target.value)} />
+            <input id="inputGenre" name="Genre" className="form-control mb-2" type="text" placeholder="Genre" value={genre} onChange={(evt) => setGenre(evt.target.value)} /> */}
 
             {/* <div className="options">
                 <select id="selectLocation" name="location" className="form-select mb-2" value={location} onChange={(evt) => setLocation(evt.target.value)}>
