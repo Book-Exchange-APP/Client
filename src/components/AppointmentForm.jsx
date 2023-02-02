@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate, createSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 
@@ -65,14 +65,6 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
 
         nav('/confirmation')
     }
-
-    // const ExampleCustomTimeInput = ({ date, value, onChange }) => (
-    //     <input
-    //         value={value}
-    //         onChange={(e) => onChange(e.target.value)}
-    //         style={{ border: "solid 1px black" }}
-    //     />
-    // );
 
     return (
         <form id="Form" onSubmit={(evt) => submit(evt)} encType="multipart/form-data">
