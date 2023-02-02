@@ -10,7 +10,7 @@ import '../styles/Appointment.css'
 
 
 
-const ShowBook = ({ book, generateApp, locations, languages, conditions, genres }) => {
+const ShowBook = ({ book, generateApp}) => {
     const nav = useNavigate()
     const [image, setImage] = useState(null)
 
@@ -37,29 +37,33 @@ const ShowBook = ({ book, generateApp, locations, languages, conditions, genres 
         const test = await returnedData.json()
         console.log(test)
         const data = {
-            first_name: "Tom",
-            last_name: "Cruise",
+            first_name: AppointmentForm.first_name,
+            last_name: AppointmentForm.last_name,
+            email: AppointmentForm.email,
+            phone: AppointmentForm.phone,
             inc_book: {
-                _id: "63d65d8a6939a735511d015d",
-                title: "Winnie the Pooh",
-                author: "A. A. Milne"
+                _id: "",
+                title: AppointmentForm.title,
+                author: AppointmentForm.author
             },
             out_book: {
-                _id: "63d65d8a6939a735511d015f",
-                title: "BFG",
-                author: "Roald Dahl"
+                _id: book.book._id,
+                title: book.book.title,
+                author: book.book.author
             },
-            time: "13:00",
-            date: "2023-12-01T14:00:00.000Z",
-            status: "63d65d8a6939a735511d0154",
+            time: AppointmentForm.time,
+            date: AppointmentForm.date,
+            status: AppointmentForm.status,
             location: {
                 _id: "63d65d8a6939a735511d0158",
-                location: "South Brisbane"
+                location: AppointmentForm.location
             },
             _id: "63d719962a43e1e5f472c335",
             __v: 0
         }
         generateApp(data)
+
+        nav('/confirmation')
     }
 
     return (
