@@ -1,15 +1,7 @@
 import React, { useState } from 'react'
 import '../styles/Dashboard.css'
 
-const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks, pendingAppointments }) => {
-
-    // const fetchPendingAppointments = async () => {
-    //     return await appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
-    // }
-    
-    // const pendingAppointments = appointments.filter(appointment => appointment.status._id === appointmentStatus[0]._id)
-
-    console.log(pendingAppointments)
+const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
 
     const approveExchange = (appointment) => {
         swapBooks(appointment)
@@ -18,7 +10,7 @@ const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks, pend
     const denyExchange = (appointment) => {
         denyBooks(appointment)
     }
-
+    
     return    (    
     <main id="main">
         <div id ="dashboard-container">
@@ -53,6 +45,7 @@ const Dashboard = ({ appointments, appointmentStatus, swapBooks, denyBooks, pend
                         </div>
                 </div>
                 )): <h2 className='text-center px-3 pt-5 text-danger'>No Pending Appointments Found!</h2>}
+                
         </div>
     </main>
     )
