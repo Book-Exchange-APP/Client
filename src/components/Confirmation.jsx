@@ -5,6 +5,7 @@ import '../styles/Confirmation.css'
 
 
 const Confirmation = ( {appointment} ) => {
+    console.log(appointment)
     if (!appointment) {
         const nav = useNavigate()
         nav('/')
