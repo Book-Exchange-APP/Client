@@ -23,8 +23,7 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
             </div>
             <div className="out_book">
                 <h5><b>Title: {book.book.title}</b></h5>
-                <p><strong>Author:</strong> {book.book.author}</p>
-                
+                <p><strong>Author:</strong> {book.book.author}</p>               
                 <p><strong>Book Condition:</strong> {book.book.condition.name}</p>
                 <p><strong>Language:</strong> {book.book.language.name}</p>
                 <p><strong>Genre:</strong> {book.book.genre.name}</p>
