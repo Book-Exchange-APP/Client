@@ -28,7 +28,7 @@ const App = () => {
   const [bookStatus, setBookStatus] = useState([])
   const [appointmentStatus, setAppointmentStatus] = useState([])
   const [appointment, setAppointment] = useState()
-  const [pendingAppointments, setPendingAppointments] = useState([])
+  const [pendingAppointments, setPendingAppointments] = useState(null)
 
 
   const nav = useNavigate()
@@ -215,14 +215,15 @@ const App = () => {
   // }, [])
 
 
-  const ShowBookWrapper = () => {
-    const { id } = useParams()
-    if (!books) {
-      return <main><h1 className="my-5 text-center">Loading the book...</h1></main>
-    }
-    const selectedBook = books?.find(book => book.book._id === id)
-    return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} /> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
-  }
+  // const ShowBookWrapper = ({languages, conditions, genres}) => {
+  //   console.log(languages)
+  //   const { id } = useParams()
+  //   if (!books) {
+  //     return <main><h1 className="my-5 text-center">Loading the book...</h1></main>
+  //   }
+  //   const selectedBook = books?.find(book => book.book._id === id)
+  //   return selectedBook ? <ShowBook book={selectedBook} generateApp={generateApp} languages={languages} conditions={conditions} genres={genres}/> : <main><h1 className="my-5 text-center">Book not found!</h1></main>
+  // }
 
   const updateBooks = async () => {
     // const res = await fetch('https://server-production-f312.up.railway.app/books')
@@ -394,11 +395,6 @@ const App = () => {
     nav('/confirmation')
   }
 
-  // const AppointmentWrapper = () =>{
-  //   const { id } = useParams()
-  //   if
-  // }
-
   return (
     <>
       <Navbar />
@@ -407,12 +403,12 @@ const App = () => {
           <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books/search' element={<Search books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
-          <Route path='/book/:id' element={<ShowBookWrapper />} />
+          <Route path='/book/:id' element={<ShowBook books={books} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp}/>} />
           <Route path='/confirmation' element={<Confirmation appointment={appointment} />} />
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login nav={nav} />} />
-          <Route path='/dashboard' element={ user && user.admin ? <Dashboard denyBooks={denyBooks} swapBooks={swapBooks} pendingAppointments={pendingAppointments} /> : <Unauthorised /> } />
+          <Route path='/dashboard' element={user ? user.admin ? <Dashboard denyBooks={denyBooks} swapBooks={swapBooks} pendingAppointments={pendingAppointments} /> : <Unauthorised /> : <main></main>} />
           <Route path='*' element={<main><h1 className="my-5 text-center">Page not found!</h1></main>} />
         </Routes> :
         <main>

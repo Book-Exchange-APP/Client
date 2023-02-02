@@ -37,7 +37,7 @@ const Navbar = () => {
                         <Link to="/login" className="nav-link text-center">Login</Link>
                     )}
                     {user && (
-                        <Link className="nav-link text-center" onClick={handleClick}>Logout</Link>
+                        <Link to="/" className="nav-link text-center" onClick={handleClick}>Logout</Link>
                     )}
                 </div>
 
