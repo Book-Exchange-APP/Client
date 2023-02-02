@@ -68,10 +68,10 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
 
     return (
         <form id="Form" onSubmit={(evt) => submit(evt)} encType="multipart/form-data" className="d-grid">
-            <label for="first_name">First name: </label>
-            <input id="inputFirst" className="form-control mb-2" name="first_name" type="text"  placeholder="Please type in ..." value={first_name} onChange={(evt) => setFirstName(evt.target.value)} />
-            <label for="last_name">Last name: </label>
-            <input id="inputLast" name="last_name" className="form-control mb-2" type="text" placeholder="Please type in ..." value={last_name} onChange={(evt) => setLastName(evt.target.value)} />
+            <label htmlFor="first_name">First name: </label>
+            <input id="inputFirst" className="form-control mb-2" name="first_name" type="text" maxLength={50} placeholder="Please type in ..." value={first_name} onChange={(evt) => setFirstName(evt.target.value)} required/>
+            <label htmlFor="last_name">Last name: </label>
+            <input id="inputLast" name="last_name" className="form-control mb-2" type="text" maxLength={50} placeholder="Please type in ..." value={last_name} onChange={(evt) => setLastName(evt.target.value)} required/>
             <div>
                 <p>Date</p>
                 <DatePicker name='date'
@@ -80,41 +80,41 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
                     onChange={(date) => setStartDate(date)}
                 />
             </div>
-            <label for="time">Time: </label>
-            <input id="inputTime" name="time" className="form-control mb-2" type="text" placeholder="Time" value={time} onChange={(evt) => setTime(evt.target.value)} />
-            <label for="location">Location: </label>
-            <input id="location" name="location" className="form-control mb-2" type="text" value={book.book.location.location} disabled={true} />
+            <label htmlFor="time">Time: </label>
+            <input id="appt-time" type="time" name="time" min="08:30" max="18:00" onChange={(evt) => setTime(evt.target.value)} required/>
+            <label htmlFor="location">Location: </label>
+            <input id="location" name="location" className="form-control mb-2" type="text" value={book.book.location.location} disabled={true} required/>
             <section className="incBookInfo">
                 <h2>Please provide your book's details:</h2>
-                <label for="title">Title: </label>
-                <input id="inputTitle" name="title" className="form-control mb-2" type="text" placeholder="Please type in ..." value={title} onChange={(evt) => setTitle(evt.target.value)} />
-                <label for="author">Author: </label>
-                <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Please type in ..." value={author} onChange={(evt) => setAuthor(evt.target.value)} />
-                <label for="language">Language: </label>
-                <select id="selectLanguage" name="language" className="form-select mb-2" value={language} onChange={(evt) => setLanguage(evt.target.value)}>
-                    <option>Select a language</option>
+                <label htmlFor="title">Title: </label>
+                <input id="inputTitle" name="title" className="form-control mb-2" type="text" placeholder="Please type in ..." value={title} onChange={(evt) => setTitle(evt.target.value)} required/>
+                <label htmlFor="author">Author: </label>
+                <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Please type in ..." value={author} onChange={(evt) => setAuthor(evt.target.value)} required/>
+                <label htmlFor="language">Language: </label>
+                <select id="selectLanguage" name="language" className="form-select mb-2" defaultValue={""} value={language} onChange={(evt) => setLanguage(evt.target.value)} required>
+                    <option value="">Select a language</option>
                     {languages.map((language, index) => (
                         <option key={index} value={language._id}>{language.name}</option>
                     ))}
                 </select>
-                <label for="genre">Genre: </label>
-                <select id="selectGenre" name="genre" className="form-select mb-2" value={genre} onChange={(evt) => setGenre(evt.target.value)}>
-                    <option>Select a genre</option>
+                <label htmlFor="genre">Genre: </label>
+                <select id="selectGenre" name="genre" className="form-select mb-2" defaultValue={""} value={genre} onChange={(evt) => setGenre(evt.target.value)} required>
+                    <option value="">Select a genre</option>
                     {genres.map((genre, index) => (
                         <option key={index} value={genre._id}>{genre.name}</option>
                     ))}
                 </select>
-                <label for="condition">Condition: </label>
-                <select id="selectCondition" name="condition" className="form-select mb-2" value={condition} onChange={(evt) => setCondition(evt.target.value)}>
-                    <option>Select a condition</option>
+                <label htmlFor="condition">Condition: </label>
+                <select id="selectCondition" name="condition" className="form-select mb-2" defaultValue={""} value={condition} onChange={(evt) => setCondition(evt.target.value)} required>
+                    <option value="">Select a condition</option>
                     {conditions.map((condition, index) => (
                         <option key={index} value={condition._id}>{condition.name}</option>
                     ))}
                 </select>
-                <label for="description">Description: </label>
-                <input name="description" className="form-control mb-2" type="text" placeholder="Please type in ..." value={description} onChange={(evt) => setDescription(evt.target.value)} />
-                <label for="file">Upload book's cover: </label>
-                <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} />
+                <label htmlFor="description">Description: </label>
+                <input name="description" className="form-control mb-2" type="text" maxLength={100} placeholder="Please type in ..." value={description} onChange={(evt) => setDescription(evt.target.value)} required/>
+                <label htmlFor="file">Upload book's cover: </label>
+                <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} required/>
             </section>
             <button id="submit-btn" className="btn w-100 text-white btn-outline-success fs-6" type="submit">Submit The Appointment</button>
         </form>
