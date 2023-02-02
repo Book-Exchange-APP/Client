@@ -391,9 +391,12 @@ const App = () => {
   }
 
   const generateApp = (app) => {
+    updateBooks()
+    updateAppointments()
     setAppointment(app)
     nav('/confirmation')
   }
+
 
   return (
     <>
