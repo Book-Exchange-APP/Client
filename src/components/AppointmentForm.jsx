@@ -91,22 +91,22 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
                 <label htmlFor="author">Author: </label>
                 <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Please type in ..." value={author} onChange={(evt) => setAuthor(evt.target.value)} required/>
                 <label htmlFor="language">Language: </label>
-                <select id="selectLanguage" name="language" className="form-select mb-2" value={language} onChange={(evt) => setLanguage(evt.target.value)} required>
-                    <option value="" selected>Select a language</option>
+                <select id="selectLanguage" name="language" className="form-select mb-2" defaultValue={""} value={language} onChange={(evt) => setLanguage(evt.target.value)} required>
+                    <option value="">Select a language</option>
                     {languages.map((language, index) => (
                         <option key={index} value={language._id}>{language.name}</option>
                     ))}
                 </select>
                 <label htmlFor="genre">Genre: </label>
-                <select id="selectGenre" name="genre" className="form-select mb-2" value={genre} onChange={(evt) => setGenre(evt.target.value)} required>
-                    <option value="" selected>Select a genre</option>
+                <select id="selectGenre" name="genre" className="form-select mb-2" defaultValue={""} value={genre} onChange={(evt) => setGenre(evt.target.value)} required>
+                    <option value="">Select a genre</option>
                     {genres.map((genre, index) => (
                         <option key={index} value={genre._id}>{genre.name}</option>
                     ))}
                 </select>
                 <label htmlFor="condition">Condition: </label>
-                <select id="selectCondition" name="condition" className="form-select mb-2" value={condition} onChange={(evt) => setCondition(evt.target.value)} required>
-                    <option value="" selected>Select a condition</option>
+                <select id="selectCondition" name="condition" className="form-select mb-2" defaultValue={""} value={condition} onChange={(evt) => setCondition(evt.target.value)} required>
+                    <option value="">Select a condition</option>
                     {conditions.map((condition, index) => (
                         <option key={index} value={condition._id}>{condition.name}</option>
                     ))}
