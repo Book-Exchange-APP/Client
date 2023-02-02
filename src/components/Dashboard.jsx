@@ -10,7 +10,7 @@ const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
     const denyExchange = (appointment) => {
         denyBooks(appointment)
     }
-    console.log(pendingAppointments)
+    
     return    (    
     <main id="main">
         <div id ="dashboard-container">

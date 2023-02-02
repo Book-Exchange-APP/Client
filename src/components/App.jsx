@@ -237,80 +237,80 @@ const App = () => {
   }
 
 
-  // const swapBooks = async (appointment) => {
+  const swapBooks = async (appointment) => {
 
-  //   // let inc_book = books.find(book => book.book._id === appointment.inc_book._id)
-  //   // let out_book = books.find(book => book.book._id === appointment.out_book._id)
-  //   // let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
-  //   // const user = JSON.parse(sessionStorage.getItem('user'))
+    let inc_book = books.find(book => book.book._id === appointment.inc_book._id)
+    let out_book = books.find(book => book.book._id === appointment.out_book._id)
+    let thisAppointment = appointments.find(appointment => appointment._id === appointment._id)
+    // const user = JSON.parse(sessionStorage.getItem('user'))
+    console.log(appointment)
+    const updatedIncBook = {
+      title: appointment.inc_book.title,
+      author: appointment.inc_book.author,
+      condition: appointment.inc_book.condition,
+      location: appointment.inc_book.location,
+      language: appointment.inc_book.language,
+      img: appointment.inc_book.img,
+      genre: appointment.inc_book.genre,
+      description: appointment.inc_book.description,
+      status: bookStatus[0]._id
+    }
 
-  //   const updatedIncBook = {
-  //     title: appointment.appointment.inc_book.title,
-  //     author: appointment.appointment.inc_book.author,
-  //     condition: appointment.appointment.inc_book.condition,
-  //     location: appointment.appointment.inc_book.location,
-  //     language: appointment.appointment.inc_book.language,
-  //     img: appointment.appointment.inc_book.img,
-  //     genre: appointment.appointment.inc_book.genre,
-  //     description: appointment.appointment.inc_book.description,
-  //     status: bookStatus[0]._id
-  //   }
+    if (user) {
+      const returnedIncBook = await fetch(`http://localhost:4001/books/${appointment.inc_book._id}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
+        },
+        body: JSON.stringify(updatedIncBook)
+      })}
 
-  //   if (user) {
-  //     const returnedIncBook = await fetch(`http://localhost:4001/books/${appointment.appointment.inc_book._id}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
-  //       },
-  //       body: JSON.stringify(updatedIncBook)
-  //     })}
+    const updatedOutBook = {
+      title: appointment.out_book.title,
+      author: appointment.out_book.author,
+      condition: appointment.out_book.condition,
+      location: appointment.out_book.location,
+      language: appointment.out_book.language,
+      img: appointment.out_book.img,
+      genre: appointment.out_book.genre,
+      description: appointment.out_book.description,
+      status: bookStatus[1]._id
+    }
 
-  //   const updatedOutBook = {
-  //     title: appointment.appointment.out_book.title,
-  //     author: appointment.appointment.out_book.author,
-  //     condition: appointment.appointment.out_book.condition,
-  //     location: appointment.appointment.out_book.location,
-  //     language: appointment.appointment.out_book.language,
-  //     img: appointment.appointment.out_book.img,
-  //     genre: appointment.appointment.out_book.genre,
-  //     description: appointment.appointment.out_book.description,
-  //     status: bookStatus[1]._id
-  //   }
+    const returnedOutBook = await fetch(`http://localhost:4001/books/${appointment.out_book._id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`,
+      },
+      body: JSON.stringify(updatedOutBook)
+    })
 
-  //   const returnedOutBook = await fetch(`http://localhost:4001/books/${appointment.appointment.out_book._id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`,
-  //     },
-  //     body: JSON.stringify(updatedOutBook)
-  //   })
+    const updatedAppointment = {
+      first_name: appointment.first_name,
+      last_name: appointment.last_name,
+      inc_book: appointment.inc_book,
+      out_book: appointment.out_book,
+      time: appointment.time,
+      date: appointment.date,
+      status: appointmentStatus[1],
+      location: appointment.location
+    }
 
-  //   const updatedAppointment = {
-  //     first_name: appointment.appointment.first_name,
-  //     last_name: appointment.appointment.last_name,
-  //     inc_book: appointment.appointment.inc_book,
-  //     out_book: appointment.appointment.out_book,
-  //     time: appointment.appointment.time,
-  //     date: appointment.appointment.date,
-  //     status: appointmentStatus[1],
-  //     location: appointment.appointment.location
-  //   }
+    const returnedAppointment = await fetch(`http://localhost:4001/appointments/${appointment._id}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
+      },
+      body: JSON.stringify(updatedAppointment)
+    })
 
-  //   const returnedAppointment = await fetch(`http://localhost:4001/appointments/${appointment._id}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
-  //     },
-  //     body: JSON.stringify(updatedAppointment)
-  //   })
+    updateBooks()
+    updateAppointments()
 
-  //   updateBooks()
-  //   updateAppointments()
-
-  // }
+  }
 
   const denyBooks = async (appointment) => {
 
@@ -412,7 +412,7 @@ const App = () => {
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login nav={nav} />} />
-          <Route path='/dashboard' element={ user ? <Dashboard appointments={appointments} appointmentStatus={appointmentStatus} denyBooks={denyBooks} pendingAppointments={pendingAppointments} updateBooks={updateBooks} updateAppointments={updateAppointments} bookStatus={bookStatus}/> : <Navigate to='/login'/>} />
+          <Route path='/dashboard' element={<Dashboard appointments={appointments} appointmentStatus={appointmentStatus} denyBooks={denyBooks} swapBooks={swapBooks} pendingAppointments={pendingAppointments} updateBooks={updateBooks} updateAppointments={updateAppointments} bookStatus={bookStatus}/> } />
           <Route path='*' element={<main><h1 className="my-5 text-center">Page not found!</h1></main>} />
         </Routes> :
         <main>
