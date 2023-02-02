@@ -1,14 +1,21 @@
 .out_book{
-    /* position: relative; */
+    position: relative;
     top: 5vh;
     left: 0;
+    
 }
-
-/* .form{
+.out_book.img{
+    position: absolute;
+    top: 10%;
+    right: 30%;
+    display: flex;
+    transform: scale(2)
+}
+.form{
     position: relative;
-    top: 10vh;
+    top: 5vh;
     right: 0;
-} */
+}
 /* 
 .submit{
     position: relative;
@@ -18,3 +25,13 @@
 .submit>p{
     font-weight: bold;
 } */
+
+@media screen and (max-width: 820px) {
+    .out_book.img{
+    }
+}
+
+
+@media screen and (max-width: 470px) {
+
+}

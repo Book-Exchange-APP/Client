@@ -40,7 +40,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
                     <p>We provide some latest and feature books for suggestion. If you want more information of each book, you can click for more details or click the 'Books' on the top right to have a look of all the books.</p>
                 </div>
                 <div id="side" className="d-flex">
-                    <div class="searchForm">
+                    <div className="searchForm">
                         <SearchForm locations={locations} languages={languages} conditions={conditions} genres={genres} />
                     </div>
                     <div id="address" className="nav p-3">

@@ -70,13 +70,15 @@ const ShowBook = ({ book, generateApp}) => {
         <main>
             <div className="out_book">
                 <h5><b>Title: {book.book.title}</b></h5>
+                <div className="img">
+                    <img src={`data:image/jpeg;base64, ${book.path}`} alt="Book image" />
+                </div>
                 <p>Author: {book.book.author}</p>
                 <p>Exchange Location: {book.book.location.location}</p>
                 <p>Book Condition: {book.book.condition.name}</p>
                 <p>Language: {book.book.language.name}</p>
                 <p>Genre: {book.book.genre.name}</p>
                 <p>Status: {book.book.status.name}</p>
-                <img src={`data:image/jpeg;base64, ${book.path}`} alt="Book image" />
             </div>
 
             <div className='form'>
