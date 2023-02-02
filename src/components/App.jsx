@@ -28,7 +28,7 @@ const App = () => {
   const [bookStatus, setBookStatus] = useState([])
   const [appointmentStatus, setAppointmentStatus] = useState([])
   const [appointment, setAppointment] = useState()
-  const [pendingAppointments, setPendingAppointments] = useState([])
+  const [pendingAppointments, setPendingAppointments] = useState(null)
 
 
   const nav = useNavigate()
@@ -413,7 +413,7 @@ const App = () => {
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login nav={nav} />} />
-          <Route path='/dashboard' element={ user && user.admin ? <Dashboard denyBooks={denyBooks} swapBooks={swapBooks} pendingAppointments={pendingAppointments} /> : <Unauthorised /> } />
+          <Route path='/dashboard' element={user ? user.admin ? <Dashboard denyBooks={denyBooks} swapBooks={swapBooks} pendingAppointments={pendingAppointments} /> : <Unauthorised /> : <main></main>} />
           <Route path='*' element={<main><h1 className="my-5 text-center">Page not found!</h1></main>} />
         </Routes> :
         <main>
