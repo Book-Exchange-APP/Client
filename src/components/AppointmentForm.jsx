@@ -36,12 +36,12 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
             author: author,
             condition: condition,
             language: language,
-            img:incBookImageId.id, 
+            img: incBookImageId.id,
             genre: genre,
             description: description
         }
 
-        const data = {            
+        const data = {
             first_name: first_name,
             last_name: last_name,
             date: startDate,
@@ -56,7 +56,7 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
             headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-              },
+            },
             body: JSON.stringify(data)
         })
         const json = await res.json()
@@ -67,54 +67,54 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
     }
 
     return (
-        <form id="Form" onSubmit={(evt) => submit(evt)} encType="multipart/form-data" className="d-grid">
-            <label htmlFor="first_name">First name: </label>
-            <input id="inputFirst" className="form-control mb-2" name="first_name" type="text" maxLength={50} placeholder="Please type in ..." value={first_name} onChange={(evt) => setFirstName(evt.target.value)} required/>
-            <label htmlFor="last_name">Last name: </label>
-            <input id="inputLast" name="last_name" className="form-control mb-2" type="text" maxLength={50} placeholder="Please type in ..." value={last_name} onChange={(evt) => setLastName(evt.target.value)} required/>
+        <form id="Form" role="form" onSubmit={(evt) => submit(evt)} encType="multipart/form-data" className="d-grid">
+            <label htmlFor="first_name" aria-label="label">First name: </label>
+            <input id="inputFirst" className="form-control mb-2" name="first_name" type="text" maxLength={50} placeholder="Please type in ..." value={first_name} onChange={(evt) => setFirstName(evt.target.value)} required />
+            <label htmlFor="last_name" aria-label="label">Last name: </label>
+            <input id="inputLast" name="last_name" className="form-control mb-2" type="text" maxLength={50} placeholder="Please type in ..." value={last_name} onChange={(evt) => setLastName(evt.target.value)} required />
             <div>
-                <p>Date</p>
+                <label htmlFor="date" aria-label="label">Date: </label>
                 <DatePicker name='date'
                     className="form-control mb-2"
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                 />
             </div>
-            <label htmlFor="time">Time: </label>
-            <input id="appt-time" type="time" name="time" min="08:30" max="18:00" onChange={(evt) => setTime(evt.target.value)} required/>
-            <label htmlFor="location">Location: </label>
-            <input id="location" name="location" className="form-control mb-2" type="text" value={book.book.location.location} disabled={true} required/>
+            <label htmlFor="time" aria-label="label">Time: </label>
+            <input id="appt-time" type="time" aria-label="time" name="time" min="08:30" max="18:00" onChange={(evt) => setTime(evt.target.value)} required />
+            <label htmlFor="location" aria-label="label">Location: </label>
+            <input id="location" name="location" className="form-control mb-2" type="text" value={book.book.location.location} disabled={true} required />
             <section className="incBookInfo">
                 <h2>Please provide your book's details:</h2>
-                <label htmlFor="title">Title: </label>
-                <input id="inputTitle" name="title" className="form-control mb-2" type="text" placeholder="Please type in ..." value={title} onChange={(evt) => setTitle(evt.target.value)} required/>
-                <label htmlFor="author">Author: </label>
-                <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Please type in ..." value={author} onChange={(evt) => setAuthor(evt.target.value)} required/>
-                <label htmlFor="language">Language: </label>
+                <label htmlFor="title" aria-label="label">Title: </label>
+                <input id="inputTitle" name="title" className="form-control mb-2" type="text" placeholder="Please type in ..." value={title} onChange={(evt) => setTitle(evt.target.value)} required />
+                <label htmlFor="author" aria-label="label">Author: </label>
+                <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Please type in ..." value={author} onChange={(evt) => setAuthor(evt.target.value)} required />
+                <label htmlFor="language" aria-label="label">Language: </label>
                 <select id="selectLanguage" name="language" className="form-select mb-2" defaultValue={""} value={language} onChange={(evt) => setLanguage(evt.target.value)} required>
                     <option value="">Select a language</option>
                     {languages.map((language, index) => (
                         <option key={index} value={language._id}>{language.name}</option>
                     ))}
                 </select>
-                <label htmlFor="genre">Genre: </label>
+                <label htmlFor="genre" aria-label="label">Genre: </label>
                 <select id="selectGenre" name="genre" className="form-select mb-2" defaultValue={""} value={genre} onChange={(evt) => setGenre(evt.target.value)} required>
                     <option value="">Select a genre</option>
                     {genres.map((genre, index) => (
                         <option key={index} value={genre._id}>{genre.name}</option>
                     ))}
                 </select>
-                <label htmlFor="condition">Condition: </label>
+                <label htmlFor="condition" aria-label="label">Condition: </label>
                 <select id="selectCondition" name="condition" className="form-select mb-2" defaultValue={""} value={condition} onChange={(evt) => setCondition(evt.target.value)} required>
                     <option value="">Select a condition</option>
                     {conditions.map((condition, index) => (
                         <option key={index} value={condition._id}>{condition.name}</option>
                     ))}
                 </select>
-                <label htmlFor="description">Description: </label>
-                <input name="description" className="form-control mb-2" type="text" maxLength={100} placeholder="Please type in ..." value={description} onChange={(evt) => setDescription(evt.target.value)} required/>
-                <label htmlFor="file">Upload book's cover: </label>
-                <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} required/>
+                <label htmlFor="description" aria-label="label">Description: </label>
+                <input name="description" className="form-control mb-2" type="text" maxLength={100} placeholder="Please type in ..." value={description} onChange={(evt) => setDescription(evt.target.value)} required />
+                <label htmlFor="file" aria-label="label">Upload book's cover: </label>
+                <input type="file" name="file" aria-label="File" onChange={(e) => { setImage(e.target.files[0]) }} required />
             </section>
             <button id="submit-btn" className="btn w-100 text-white btn-outline-success fs-6" type="submit">Submit The Appointment</button>
         </form>
