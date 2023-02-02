@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { useRegister } from "../auth/useRegister.jsx"
 import { Link } from "react-router-dom"
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
+import '../styles/Login.css'
 
 
 const Register = () => {
@@ -30,33 +31,33 @@ const Register = () => {
     }
 
     return (
-        <main>        
-        <form className="register" onSubmit= {handleSubmit}>
-            <h3>Register</h3>
-            <p>Already registered?</p>
-            <Link to='/login'>Login Here</Link>
-            <label>Name:</label>
-            <input 
-            type="text"
-            onChange={(e) => setName(e.target.value)}
-            value= { name }
-            />
-            <label>Email:</label>
-            <input 
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value= { email }
-            />
-            <label>Password:</label>
-            <input 
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value= { password }
-            />
+        <main id="main">        
+            <form className="login" onSubmit= {handleSubmit}>
+                <h3 className="login-title">Register</h3>
+                <p>Already registered?</p>
+                <Link to='/login'>Login Here</Link>
+                <label>Name:</label>
+                <input 
+                type="text"
+                onChange={(e) => setName(e.target.value)}
+                value= { name }
+                />
+                <label>Email:</label>
+                <input 
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value= { email }
+                />
+                <label>Password:</label>
+                <input 
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value= { password }
+                />
 
-            <button disabled={isLoading}>Submit</button>
-            {error && <div className="error">{error}</div>}
-        </form> 
+                <button className="submit-button" disabled={isLoading}>Submit</button>
+                {error && <div className="error">{error}</div>}
+            </form> 
         </main>
     )
 }
