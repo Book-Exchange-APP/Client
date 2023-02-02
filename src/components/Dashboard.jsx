@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import '../styles/Dashboard.css'
 
 const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
-
     const approveExchange = (appointment) => {
         swapBooks(appointment)
     }
@@ -10,25 +9,33 @@ const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
     const denyExchange = (appointment) => {
         denyBooks(appointment)
     }
-    
-    return    (    
-    <main id="main">
-        <div id ="dashboard-container">
-            <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3">Admin Dashboard</h1>
-            {pendingAppointments.length > 0 ? pendingAppointments.map((appointment, index) => (
-                <div key={appointment.appointment._id} id="appointment-container">
+
+    if (!pendingAppointments) {
+        return (
+            <main>
+                <h2 className='text-center px-3 pt-5'>Loading appointments...</h2>
+            </main>
+        )
+    }
+
+    return (
+        <main id="main">
+            <div id="dashboard-container">
+                <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3">Admin Dashboard</h1>
+                {pendingAppointments.length > 0 ? pendingAppointments.map((appointment, index) => (
+                    <div key={appointment.appointment._id} id="appointment-container">
                         <div className="appointment-card">
                             <h3>Incoming Book</h3>
                             <img src={`data:image/jpeg;base64, ${appointment.incPath}`} alt="Book image" />
                             <p>Title: {appointment.appointment.inc_book.title}</p>
                             <p>Author: {appointment.appointment.inc_book.author}</p>
-                            
+
                         </div>
                         <div className="appointment-card">
                             <h3>Outgoing book</h3>
                             <img src={`data:image/jpeg;base64, ${appointment.outPath}`} alt="Book image" />
                             <p>Title: {appointment.appointment.out_book.title}</p>
-                            <p>Author: {appointment.appointment.inc_book.author}</p>
+                            <p>Author: {appointment.appointment.out_book.author}</p>
 
                         </div>
                         <div className="appointment-card">
@@ -40,16 +47,16 @@ const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
 
                         </div>
                         <div className="button-container">
-                            <button onClick ={() => {approveExchange(appointment.appointment)} }>Approve</button>
-                            <button onClick ={() => {denyExchange(appointment.appointment)} }>Deny</button>
+                            <button onClick={() => { approveExchange(appointment.appointment) }}>Approve</button>
+                            <button onClick={() => { denyExchange(appointment.appointment) }}>Deny</button>
                         </div>
-                </div>
-                )): <h2 className='text-center px-3 pt-5 text-danger'>No Pending Appointments Found!</h2>}
-                
-        </div>
-    </main>
+                    </div>
+                )) : <h2 className='text-center px-3 pt-5 text-danger'>No Pending Appointments Found!</h2>}
+
+            </div>
+        </main>
     )
-    }
+}
 
 
 
