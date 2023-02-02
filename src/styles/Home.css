@@ -138,4 +138,8 @@
     #side {
         flex-direction: column;
     }
+
+    #address {
+        border-left: 0px;
+    }
 }

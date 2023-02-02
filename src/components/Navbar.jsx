@@ -9,7 +9,7 @@ const Navbar = () => {
 
     const { logout } = useLogout()
 
-    const handleClick = () => { 
+    const handleClick = () => {
         logout()
     }
 
@@ -19,28 +19,28 @@ const Navbar = () => {
     return (
         <>
             <nav className="navbar navbar-expand bg-gradient sticky-top">
-                <div  className="m-1">
+                <div className="m-1">
                     <Link className="nav-brand" to="/">
-                        <img id='logo' src={logo} alt="Logo"/>
+                        <img id='logo' src={logo} alt="Logo" />
                     </Link>
                 </div>
                 <div id="navbarNav" className="nav container-fluid">
-                    <Link to="/books" className="nav-link fs-4 text-center">Books</Link>
-                    <Link to="/contact" className="nav-link fs-4 text-center">Contact</Link>
-                
-                {user && user.admin && (
-                
-                    <Link to="/dashboard" className="nav-link fs-4 text-center">Dashboard</Link>
-                
-                )}
-                {!user && (
-                    <Link to="/login" className="nav-link fs-4 text-center">Login</Link>         
-                )}
-                {user && (
-                    <button onClick={handleClick}>LogOut</button>
-                )}
+                    <Link to="/books" className="nav-link text-center">Books</Link>
+                    <Link to="/contact" className="nav-link text-center">Contact</Link>
+
+                    {user && user.admin && (
+
+                        <Link to="/dashboard" className="nav-link text-center">Dashboard</Link>
+
+                    )}
+                    {!user && (
+                        <Link to="/login" className="nav-link text-center">Login</Link>
+                    )}
+                    {user && (
+                        <Link className="nav-link text-center" onClick={handleClick}>Logout</Link>
+                    )}
                 </div>
-                
+
             </nav>
         </>
     )

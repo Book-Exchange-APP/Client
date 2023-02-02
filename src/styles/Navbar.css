@@ -6,6 +6,7 @@
 .nav-link {
     --bs-nav-link-color: white;
     --bs-nav-link-hover-color: #d4af37;
+    font-size: 1.5rem;
 }
 
 #logo {
@@ -16,13 +17,24 @@
     justify-content: end;
 }
 
+@media screen and (max-width: 530px) {
+    #logo {
+        width: 4rem;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+        padding: 8px;
+    }
+}
+
 @media screen and (max-width: 420px) {
     #logo {
         width: 4rem;
     }
 
     .nav-link {
-        font-size: 12px;
+        font-size: 0.8rem;
         padding: 8px;
     }
 }
