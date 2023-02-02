@@ -24,7 +24,7 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
             <div className="out_book">
                 <h5><b>Title: {book.book.title}</b></h5>
                 <p><strong>Author:</strong> {book.book.author}</p>
-                <p><strong>Exchange Location:</strong> {book.book.location.location}</p>
+                
                 <p><strong>Book Condition:</strong> {book.book.condition.name}</p>
                 <p><strong>Language:</strong> {book.book.language.name}</p>
                 <p><strong>Genre:</strong> {book.book.genre.name}</p>
@@ -37,7 +37,10 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
             <div className="submit">
                 {book.book.status.name === "Pending" ?
                     <p>This book is pending for an exchange!</p> :
-                    <AppointmentForm book={book} generateApp={generateApp} languages={languages} conditions={conditions} genres={genres} />
+                    <section name="appointmentForm">
+                        <h1>Appointment Form</h1>
+                        <AppointmentForm book={book} generateApp={generateApp} languages={languages} conditions={conditions} genres={genres} />
+                    </section>
                 }
             </div>
 
