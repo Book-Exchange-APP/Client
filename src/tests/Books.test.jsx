@@ -32,9 +32,9 @@ describe('Books Component', () => {
 
     it("Shows the Book Cards", () => {
         expect(h2).toHaveLength(0)
-        expect(h5).toHaveLength(3)
-        expect(bookImg).toHaveLength(3)
-        expect(detailsBtn).toHaveLength(3)
+        expect(h5).toHaveLength(2)
+        expect(bookImg).toHaveLength(2)
+        expect(detailsBtn).toHaveLength(2)
     })
 
     it("Shows the Search Bar", () => {

@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
 import Confirmation from "../components/confirmation"
-import { appointment } from "../mocks/handlers"
+import { newAppointment } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 
 
@@ -15,7 +15,7 @@ describe('Confirmation Component', () => {
     let cell
 
     beforeEach(function () {
-        render(<BrowserRouter><AuthContextProvider><Confirmation appointment={appointment}/></AuthContextProvider></BrowserRouter>)
+        render(<BrowserRouter><AuthContextProvider><Confirmation appointment={newAppointment}/></AuthContextProvider></BrowserRouter>)
         h1 = screen.getAllByRole('heading', { level: 1 })
         backToHome = screen.getAllByText('Return to Home')
         table = screen.getAllByRole('table')
