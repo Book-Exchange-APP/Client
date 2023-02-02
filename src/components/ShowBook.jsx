@@ -21,18 +21,19 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
             <div className="out_book">
                 <h5><b>Title: {book.book.title}</b></h5>
                 <p>Author: {book.book.author}</p>
-                <p>Exchange Location: {book.book.location.location}</p>
                 <p>Book Condition: {book.book.condition.name}</p>
                 <p>Language: {book.book.language.name}</p>
                 <p>Genre: {book.book.genre.name}</p>
-                <p>Status: {book.book.status.name}</p>
                 <img src={`data:image/jpeg;base64, ${book.path}`} alt="Book image" />
             </div>
 
             <div className="submit">
                 {book.book.status.name === "Pending" ?
                     <p>This book is pending for an exchange!</p> :
-                    <AppointmentForm book={book} generateApp={generateApp} languages={languages} conditions={conditions} genres={genres} />
+                    <section name="appointmentForm">
+                        <h1>Appointment Form</h1>
+                        <AppointmentForm book={book} generateApp={generateApp} languages={languages} conditions={conditions} genres={genres} />
+                    </section>
                 }
             </div>
 
