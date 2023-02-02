@@ -76,10 +76,11 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
 
     return (
         <form id="Form" onSubmit={(evt) => submit(evt)} encType="multipart/form-data">
+            <label>
             <input id="inputFirst" className="form-control mb-2" name="first_name" type="text" placeholder="First name" value={first_name} onChange={(evt) => setFirstName(evt.target.value)} />
             <input id="inputLast" name="last_name" className="form-control mb-2" type="text" placeholder="Last name" value={last_name} onChange={(evt) => setLastName(evt.target.value)} />
             <div>
-                <p>Date for Exchange</p>
+                <p><b>Date for Exchange</b></p>
                 <DatePicker name='date'
                     className="form-control mb-2"
                     selected={startDate}
@@ -113,6 +114,7 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
                 <input type="file" name="file" onChange={(e) => { setImage(e.target.files[0]) }} />
             </section>
             <button id="submit-btn" className="btn w-100 text-white btn-outline-success fs-6" type="submit">Submit The Appointment</button>
+            </label>
         </form>
     )
 }
