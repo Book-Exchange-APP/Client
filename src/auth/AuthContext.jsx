@@ -1,9 +1,9 @@
 import { createContext, useReducer } from 'react'
 import { useEffect } from 'react'
 
-// 
+// Create instance of context
 const AuthContext =  createContext()
-// 
+// Depending on state and action input return desired response
 const authReducer = (state, action) => {
   switch (action.type) {
     case 'LOGIN':
@@ -14,7 +14,7 @@ const authReducer = (state, action) => {
       return state
   }
 }
-// 
+// Provides constext to the application, provided in sesssionStorage and console
 const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null

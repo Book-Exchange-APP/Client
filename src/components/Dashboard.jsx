@@ -1,13 +1,169 @@
 import React, { useState } from 'react'
 import '../styles/Dashboard.css'
 
-const Dashboard = ({ swapBooks, denyBooks, pendingAppointments }) => {
-    const approveExchange = (appointment) => {
-        swapBooks(appointment)
+const Dashboard = ({ logout, nav, updateBooks, updateAppointments, user, pendingAppointments, bookStatus, appointmentStatus }) => {
+
+    const approveExchange = async (appointment) => {
+        // If user context is present
+      if (user) {
+        // Update Incoming book status to 'Available'
+        const updatedIncBook = {
+          title: appointment.inc_book.title,
+          author: appointment.inc_book.author,
+          condition: appointment.inc_book.condition,
+          location: appointment.inc_book.location,
+          language: appointment.inc_book.language,
+          img: appointment.inc_book.img,
+          genre: appointment.inc_book.genre,
+          description: appointment.inc_book.description,
+          status: bookStatus[0]._id
+        }
+        // Update incoming book document in DB
+        const returnedIncBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.inc_book._id}`, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
+          },
+          body: JSON.stringify(updatedIncBook)
+        })
+        // If Token has expired redirect user to login
+        if (returnedIncBook.status === 401 ){
+          console.log('Error: Token Expired')
+          logout()
+          nav('/login')
+
+          return
+        }
+        
+        // Update Outgoing book status to 'Unavailable'
+        const updatedOutBook = {
+          title: appointment.out_book.title,
+          author: appointment.out_book.author,
+          condition: appointment.out_book.condition,
+          location: appointment.out_book.location,
+          language: appointment.out_book.language,
+          img: appointment.out_book.img,
+          genre: appointment.out_book.genre,
+          description: appointment.out_book.description,
+          status: bookStatus[1]._id
+        }
+
+        // Update Outgoing book document in DB
+        const returnedOutBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.out_book._id}`, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`,
+          },
+          body: JSON.stringify(updatedOutBook)
+        })
+        // Update Appointment Status to 'Approved'
+        const updatedAppointment = {
+          first_name: appointment.first_name,
+          last_name: appointment.last_name,
+          inc_book: appointment.inc_book,
+          out_book: appointment.out_book,
+          time: appointment.time,
+          date: appointment.date,
+          status: appointmentStatus[1],
+          location: appointment.location
+        }
+        // Update appointment status in DB
+        const returnedAppointment = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments/${appointment._id}`, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
+          },
+          body: JSON.stringify(updatedAppointment)
+        })
+
+        // Update state of Books and Appointment
+        updateBooks()
+        updateAppointments()
+    }
     }
 
-    const denyExchange = (appointment) => {
-        denyBooks(appointment)
+    const denyExchange = async (appointment) => {
+        // Check if user is present in Auth Context
+    if (user) {
+        //Update Incoming book status to 'Unavailable'
+        const updatedIncBook = {
+          title: appointment.inc_book.title,
+          author: appointment.inc_book.author,
+          condition: appointment.inc_book.condition,
+          location: appointment.inc_book.location,
+          language: appointment.inc_book.language,
+          img: appointment.inc_book.img,
+          genre: appointment.inc_book.genre,
+          description: appointment.inc_book.description,
+          status: bookStatus[1]._id
+        }
+        //  Update incoming book document in DB
+        const returnedIncBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.inc_book._id}`, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
+          },
+          body: JSON.stringify(updatedIncBook)
+        })
+        // IF token is invalid redirect user to login page
+        if (returnedIncBook.status === 401 ){
+          console.log('Error: Token Expired')
+          logout()
+          nav('/login')
+    
+          return
+        }
+        // Update Outgoing book status to 'Available'
+        const updatedOutBook = {
+          title: appointment.out_book.title,
+          author: appointment.out_book.author,
+          condition: appointment.out_book.condition,
+          location: appointment.out_book.location,
+          language: appointment.out_book.language,
+          img: appointment.out_book.img,
+          genre: appointment.out_book.genre,
+          description: appointment.out_book.description,
+          status: bookStatus[0]._id
+        }
+        // Update document in Database
+        const returnedOutBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.out_book._id}`, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
+          },
+          body: JSON.stringify(updatedOutBook)
+        })
+    
+        // Update Apointment status to 'Denied'
+        const updatedAppointment = {
+          first_name: appointment.first_name,
+          last_name: appointment.last_name,
+          inc_book: appointment.inc_book,
+          out_book: appointment.out_book,
+          time: appointment.time,
+          date: appointment.date,
+          status: appointmentStatus[2],
+          location: appointment.location
+        }
+        // Update appointment document in database
+        const returnedAppointment = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments/${appointment._id}`, {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json", 'Authorization': `Bearer ${user.token}`
+          },
+          body: JSON.stringify(updatedAppointment)
+        })
+    
+        updateBooks()
+        updateAppointments()
+    
+      }
     }
 
     if (!pendingAppointments) {
