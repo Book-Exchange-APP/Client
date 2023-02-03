@@ -19,7 +19,7 @@ const Dashboard = ({ logout, nav, updateBooks, updateAppointments, user, pending
           status: bookStatus[0]._id
         }
         // Update incoming book document in DB
-        const returnedIncBook = await fetch(`http://localhost:4001/books/${appointment.inc_book._id}`, {
+        const returnedIncBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.inc_book._id}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
@@ -50,7 +50,7 @@ const Dashboard = ({ logout, nav, updateBooks, updateAppointments, user, pending
         }
 
         // Update Outgoing book document in DB
-        const returnedOutBook = await fetch(`http://localhost:4001/books/${appointment.out_book._id}`, {
+        const returnedOutBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.out_book._id}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
@@ -70,7 +70,7 @@ const Dashboard = ({ logout, nav, updateBooks, updateAppointments, user, pending
           location: appointment.location
         }
         // Update appointment status in DB
-        const returnedAppointment = await fetch(`http://localhost:4001/appointments/${appointment._id}`, {
+        const returnedAppointment = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments/${appointment._id}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
@@ -101,7 +101,7 @@ const Dashboard = ({ logout, nav, updateBooks, updateAppointments, user, pending
           status: bookStatus[1]._id
         }
         //  Update incoming book document in DB
-        const returnedIncBook = await fetch(`http://localhost:4001/books/${appointment.inc_book._id}`, {
+        const returnedIncBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.inc_book._id}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
@@ -130,7 +130,7 @@ const Dashboard = ({ logout, nav, updateBooks, updateAppointments, user, pending
           status: bookStatus[0]._id
         }
         // Update document in Database
-        const returnedOutBook = await fetch(`http://localhost:4001/books/${appointment.out_book._id}`, {
+        const returnedOutBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.out_book._id}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
@@ -151,7 +151,7 @@ const Dashboard = ({ logout, nav, updateBooks, updateAppointments, user, pending
           location: appointment.location
         }
         // Update appointment document in database
-        const returnedAppointment = await fetch(`http://localhost:4001/appointments/${appointment._id}`, {
+        const returnedAppointment = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments/${appointment._id}`, {
           method: "PUT",
           headers: {
             Accept: "application/json",
