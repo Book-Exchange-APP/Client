@@ -11,7 +11,6 @@ describe('Search Component', () => {
     let h1
     let h2
     let h5
-    let p
     let bookImg
     let detailsBtn
     let searchBar

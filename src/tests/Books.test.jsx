@@ -27,7 +27,6 @@ describe('Books Component', () => {
     it("Shows the Books heading", () => {
         expect(h1).toHaveLength(1)
         expect(h1[0]).toHaveTextContent('Books')
-
     })
 
     it("Shows the Book Cards", () => {
