@@ -1,20 +1,81 @@
+.img{
+    position: absolute;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.7);
+}
+
 .out_book{
-    /* position: relative; */
-    top: 5vh;
-    left: 0;
+    position: absolute;
+    margin-top: 40%;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    text-align: center;
+   
 }
 
-/* .form{
-    position: relative;
-    top: 10vh;
-    right: 0;
-} */
-/* 
 .submit{
+    margin-top: 5%;
+    margin-left: 65%;
     position: relative;
-    top: 50vh;
+    display: flex;
+    /* text-align: center; */
+    right: 100px;
+    padding: 0 2vw;
+    background-color: gray;
 }
 
-.submit>p{
+/* .title {
+    position: relative;;
+    top: 0;
+    border-bottom: solid 2px grey;
+    animation: flash 2s infinite alternate;
+    margin-left: 50%;
     font-weight: bold;
+    margin-top: 10rem;
+    background-color: grey;
+    padding: 10;
 } */
+
+
+@media screen and (max-width: 950px) {
+    .img{
+        transform: scale(1);
+        width: 50%;
+        position :relative; 
+        /* z-index : -99; */
+        margin-left: 25%;
+
+        
+
+    }
+    .out_book{
+        position :relative; 
+        /* z-index : -99  */
+        /* margin-right: 50; */
+    }
+    .submit{
+        position: relative;
+        margin-left: 30%;
+        text-align: center;
+    }
+
+}
+
+@media screen and (max-width: 470px) {
+    .img,
+    .out_book,
+    .submit{
+        position: relative;
+    }
+    .img{
+        width: 100%;
+        display: flex;
+        transform: scale(0.7);
+    }
+    .submit{
+    
+    }
+}

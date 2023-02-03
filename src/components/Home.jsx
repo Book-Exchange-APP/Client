@@ -32,7 +32,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
         <>
             <main className="Home">
                 <div className="banner text-center">
-                    <h1>How To Use</h1>
+                    <h1><b>How To Use</b></h1>
                 </div>
                 <div className="intro">
                     <p>This book exchange store is a not-for-profit community initiative allows readers to swap books at no cost, thereby promoting and increasing access to books and helping the environment at the same time.</p>

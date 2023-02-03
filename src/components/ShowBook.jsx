@@ -18,18 +18,24 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
 
     return (
         <main>
-            <div className="out_book">
-                <h5><b>Title: {book.book.title}</b></h5>
-                <p>Author: {book.book.author}</p>
-                <p>Book Condition: {book.book.condition.name}</p>
-                <p>Language: {book.book.language.name}</p>
-                <p>Genre: {book.book.genre.name}</p>
+            <div className="img">
                 <img src={`data:image/jpeg;base64, ${book.path}`} alt="Book image" />
             </div>
+            <div className="out_book">
+                <h1><b>Title: {book.book.title}</b></h1>
+                <p><strong>Author:</strong> {book.book.author}</p>               
+                <p><strong>Book Condition:</strong> {book.book.condition.name}</p>
+                <p><strong>Language:</strong> {book.book.language.name}</p>
+                <p><strong>Genre:</strong> {book.book.genre.name}</p>
+                <p><strong>Status:</strong> {book.book.status.name}</p>
+            </div>
 
+            {/* <div className="title text-center">
+                <h5><b>Appointment Form</b></h5>
+            </div> */}
             <div className="submit">
                 {book.book.status.name === "Pending" ?
-                    <p>This book is pending for an exchange!</p> :
+                    <p><b>This book is pending for an exchange!</b></p> :
                     <section name="appointmentForm">
                         <h1>Appointment Form</h1>
                         <AppointmentForm book={book} generateApp={generateApp} languages={languages} conditions={conditions} genres={genres} />
