@@ -15,7 +15,7 @@ export const useLogin = () => {
             password: password
           }
 
-        const response = await fetch('http://localhost:4001/users/login', {
+        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/login`, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
