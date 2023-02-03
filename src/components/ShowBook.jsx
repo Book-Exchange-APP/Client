@@ -10,7 +10,7 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
     }
     const book = books.find(book => book.book._id === id)
     if (!book) {
-        <main><h1 className="my-5 text-center">Book not found!</h1></main>
+        return <main><h1 className="my-5 text-center">Book not found!</h1></main>
     }
 
     return (

@@ -6,7 +6,28 @@ import { displayedBooks, generateApp, languages, conditions, genres } from "../m
 import { AuthContextProvider } from '../auth/AuthContext'
 import { vi } from 'vitest'
 
+// describe('ShowBook Component - no book found', () => {
+//     let h1
 
+//     beforeEach(function (){
+//         vi.mock('react-router-dom', async () => {
+//             const actual = await vi.importActual("react-router-dom")
+//             return {
+//               ...actual,
+//               useParams: () => {return {id: "test"}},
+//             }
+//           })
+
+//         render(<BrowserRouter><AuthContextProvider><ShowBook books={displayedBooks} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp}/></AuthContextProvider></BrowserRouter>)          
+//         h1 = screen.getAllByRole('heading', {level:1})
+//     })
+
+//     it("Shows Book not found heading", () => {
+//         expect(h1).toHaveLength(1)
+//         expect(h1[0]).toHaveTextContent('not found')
+
+//     })
+// })
 
 describe('ShowBook Component', () => {
     let h1
@@ -18,16 +39,15 @@ describe('ShowBook Component', () => {
     let pending
     let btn
 
-    beforeEach(function (){
+    beforeEach(async function (){
         vi.mock('react-router-dom', async () => {
             const actual = await vi.importActual("react-router-dom")
             return {
               ...actual,
               useParams: () => {return {id: "63d0c625189591d4b10b85b7"}},
-            };
-          });
+            }
+          })
     
-        // vi.mocked(useParams).mockReturnValue({id: "63d0c625189591d4b10b85b7"})
         render(<BrowserRouter><AuthContextProvider><ShowBook books={displayedBooks} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp}/></AuthContextProvider></BrowserRouter>)          
         h1 = screen.getAllByRole('heading', {level:1})
         bookImg = screen.getByRole('img')
@@ -40,8 +60,6 @@ describe('ShowBook Component', () => {
     })
 
     it("Shows book title and appointment form name", () => {
-        // vi.mock('react-router-dom')
-        // vi.mocked(useParams).mockReturnValue({id: "63d0c625189591d4b10b85b7"})
         expect(h1).toHaveLength(2)
         expect(h1[0]).toHaveTextContent('Test')
         expect(h1[1]).toHaveTextContent('Form')
@@ -53,3 +71,19 @@ describe('ShowBook Component', () => {
         expect(btn[0]).toHaveTextContent('Submit')
     })
 })
+
+describe('ShowBook Component - loading page', () => {
+    let h1
+
+    beforeEach(function (){
+        render(<BrowserRouter><AuthContextProvider><ShowBook books={null} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp}/></AuthContextProvider></BrowserRouter>)          
+        h1 = screen.getAllByRole('heading', {level:1})
+    })
+
+    it("Shows Loading... heading", () => {
+        expect(h1).toHaveLength(1)
+        expect(h1[0]).toHaveTextContent('Loading')
+
+    })
+})
+
