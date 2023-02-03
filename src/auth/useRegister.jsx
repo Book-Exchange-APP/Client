@@ -5,7 +5,8 @@ export const useRegister = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const   { dispatch } = useAuthContext()
-
+    // register handling function
+    // accept input of name, email password
     const register = async (name, email, password) => {
         setIsLoading(true)
         setError(null)
@@ -15,7 +16,7 @@ export const useRegister = () => {
             email: email,
             password: password
           }
-
+        // Post request to server
         const response = await fetch('http://localhost:4001/users', {
             method: 'POST',
             headers: {
@@ -26,7 +27,7 @@ export const useRegister = () => {
          })
 
         const json = await response.json()
-
+        //  Response handling
         if (!response.ok) {
             setIsLoading(false)
             setError(json.error)
