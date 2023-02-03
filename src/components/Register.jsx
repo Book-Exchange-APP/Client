@@ -34,27 +34,27 @@ const Register = () => {
         <main id="main">        
             <form className="login" onSubmit= {handleSubmit}>
                 <h3 className="login-title">Register</h3>
-                <p>Already registered?</p>
+                <p aria-label="register">Already registered?</p>
                 <Link to='/login'>Login Here</Link>
-                <label>Name:</label>
+                <label aria-label="label">Name:</label>
                 <input 
                 type="text"
                 onChange={(e) => setName(e.target.value)}
                 value= { name }
                 />
-                <label>Email:</label>
+                <label aria-label="label">Email:</label>
                 <input 
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value= { email }
                 />
-                <label>Password:</label>
+                <label aria-label="label">Password:</label>
                 <input 
                 type="password"
+                aria-label="password"
                 onChange={(e) => setPassword(e.target.value)}
                 value= { password }
                 />
-
                 <button className="submit-button" disabled={isLoading}>Submit</button>
                 {error && <div className="error">{error}</div>}
             </form> 

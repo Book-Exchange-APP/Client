@@ -30,17 +30,18 @@ const Login = ( ) => {
         <main id="main">
             <form className="login" onSubmit= {handleSubmit}>
                 <h3 className="login-title">Login</h3>
-                <p>Not Signed up?</p>
+                <p aria-label="signUp">Not Signed up?</p>
                 <Link to='/register'>Register Here</Link>
-                <label>Email:</label>
+                <label aria-label="label">Email:</label>
                 <input 
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
                     value= { email }
                 />
-                <label>Password:</label>
+                <label aria-label="label">Password:</label>
                 <input 
                     type="password"
+                    aria-label="password"
                     onChange={(e) => setPassword(e.target.value)}
                     value= { password }
                 />
