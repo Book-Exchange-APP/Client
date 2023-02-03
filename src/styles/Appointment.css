@@ -1,3 +1,4 @@
+
 .img{
     position: absolute;
     width: 25%;
@@ -18,17 +19,19 @@
 
 .submit{
     margin-top: 5%;
+    margin-bottom: 5%;
     margin-left: 65%;
+    margin-right: 5%;
     position: relative;
     display: flex;
-    right: 100px;
+    /* right: 100px; */
     padding: 0 2vw;
     background-color: gray;
 }
 
 
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1110px) {
     .img{
         transform: scale(1);
         width: 50%;
@@ -39,25 +42,34 @@
 
     }
     .out_book{
-        position :relative; 
+        position :relative;
+        margin-top: 10%;
+
     }
     .submit{
         position: relative;
-        margin-left: 30%;
-        text-align: center;
+        margin-left: 10%;
     }
 
 }
 
 @media screen and (max-width: 470px) {
-    .img,
-    .out_book,
-    .submit{
+    .out_book{
         position: relative;
     }
+
+    .submit{
+        transform: scale(0.8);
+        position: relative;
+
+    }
+
     .img{
-        width: 100%;
+        width: 70%;
         display: flex;
         transform: scale(0.7);
+        margin-left: 15%;
+        position: relative;
+
     }
 }
