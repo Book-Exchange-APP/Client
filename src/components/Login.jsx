@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { useLogin } from "../auth/useLogin"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import '../styles/Login.css'
 
-const Login = ( {nav} ) => {
+const Login = ( ) => {
+    const nav = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
@@ -29,17 +30,18 @@ const Login = ( {nav} ) => {
         <main id="main">
             <form className="login" onSubmit= {handleSubmit}>
                 <h3 className="login-title">Login</h3>
-                <p>Not Signed up?</p>
+                <p aria-label="signUp">Not Signed up?</p>
                 <Link to='/register'>Register Here</Link>
-                <label>Email:</label>
+                <label aria-label="label">Email:</label>
                 <input 
                     type="email"
                     onChange={(e) => setEmail(e.target.value)}
                     value= { email }
                 />
-                <label>Password:</label>
+                <label aria-label="label">Password:</label>
                 <input 
                     type="password"
+                    aria-label="password"
                     onChange={(e) => setPassword(e.target.value)}
                     value= { password }
                 />

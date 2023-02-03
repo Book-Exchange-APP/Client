@@ -54,3 +54,18 @@ describe('Confirmation Component', () => {
         expect(backToHome).toHaveLength(1)
     })
 })
+
+describe('Confirmation Component - no appointment', () => {
+    let h1
+
+    beforeEach(function () {
+        render(<BrowserRouter><AuthContextProvider><Confirmation appointment={null}/></AuthContextProvider></BrowserRouter>)
+        h1 = screen.getAllByRole('heading', { level: 1 })
+    })    
+
+    it("Shows the Redirecting heading", () => {
+        expect(h1).toHaveLength(1)
+        expect(h1[0]).toHaveTextContent('redirected')
+
+    })
+})

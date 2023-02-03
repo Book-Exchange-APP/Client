@@ -186,7 +186,84 @@ const appointment = [{
     outPath: imgString
 }]
 
-const generateApp = vi.fn()
+const pendingAppointments = [
+    {
+        appointment: {
+            _id: "63dc7e350e7231f37444d1a0",
+            first_name: "test",
+            last_name: "test",
+            inc_book: {
+                _id: "63dc7e350e7231f37444d19d",
+                title: "test",
+                author: "test",
+                condition: "63db85aafddfdc2a600277ed",
+                location: "63db85aafddfdc2a600277ff",
+                language: "63db85aafddfdc2a600277e8",
+                img: "63dc7e350e7231f37444d19a",
+                genre: "63db85aafddfdc2a600277f1",
+                description: "test",
+                time_stamp: 1675394613615,
+                status: "63db85aafddfdc2a600277f7",
+            },
+            out_book: {
+                _id: "63db85aafddfdc2a6002780e",
+                title: "Gardening for a Lifetime",
+                author: "Sydney Eddison",
+                condition: "63db85aafddfdc2a600277ef",
+                location: "63db85aafddfdc2a600277ff",
+                language: "63db85aafddfdc2a600277e8",
+                img: "63db85aafddfdc2a600277e7",
+                genre: "63db85aafddfdc2a600277f4",
+                description: "Presents practical advice for older people on ways to maintain gardening activities.",
+                time_stamp: 1675330985370,
+                status: "63db85aafddfdc2a600277f8",
+            },
+            time: "16:26",
+            date: "2023-02-09T03:23:02.000Z",
+            status: "63db85aafddfdc2a600277fa",
+            location: {
+                _id: "63db85aafddfdc2a600277ff",
+                location: "South Brisbane",
+                address: "10 Watson st, Acacia Ridge",
+                postcode: 4110,
+                phone: "0743214321",
+                email: "location2@bx.com",
+            }
+        },
+        outPath: imgString,
+        incPath: imgString
+    }
+]
+
+const bookStatus = [    {
+    _id: "63db85aafddfdc2a600277f6",
+    name: "Available",
+},
+{
+    _id: "63db85aafddfdc2a600277f7",
+    name: "Unavailable",
+},
+{
+    _id: "63db85aafddfdc2a600277f8",
+    name: "Pending",
+}
+
+]
+
+const appointmentStatus = [
+    {
+        _id: "63db85aafddfdc2a600277fa",
+        name: "Pending",
+    },
+    {
+        _id: "63db85aafddfdc2a600277fb",
+        name: "Approved",
+    },
+    {
+        _id: "63db85aafddfdc2a600277fc",
+        name: "Denied",
+    }
+]
 
 const newAppointment = {
         first_name: "Tom",
@@ -212,6 +289,13 @@ const newAppointment = {
         __v: 0
     }
 
+const generateApp = vi.fn()
+const logout = vi.fn()
+const nav = vi.fn()
+const updateBooks = vi.fn()
+const updateAppointments = vi.fn()
+const user = {admin: true}
+
 
 const handlers = [
     rest.get('http://localhost:4001/books', (req, res, ctx) => {
@@ -236,6 +320,4 @@ const handlers = [
 
 ]
 
-
-
-export { handlers, displayedBooks, locations, languages, conditions, genres, appointment, newAppointment, book, generateApp }
+export { updateAppointments, user, updateBooks, nav, logout, appointmentStatus, bookStatus, handlers, displayedBooks, locations, languages, conditions, genres, appointment, newAppointment, pendingAppointments, book, generateApp }
