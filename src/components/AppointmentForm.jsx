@@ -25,7 +25,7 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
 
         const img = new FormData()
         img.append('file', image)
-        const returnedData = await fetch('http://localhost:4001/upload', {
+        const returnedData = await fetch(`${import.meta.env.VITE_BASE_URL}/upload`, {
             method: 'POST',
             body: img
         })
@@ -51,7 +51,7 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
             out_book: book.book
         }
 
-        const res = await fetch('http://localhost:4001/appointments', {
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments`, {
             method: 'POST',
             headers: {
                 Accept: "application/json",
