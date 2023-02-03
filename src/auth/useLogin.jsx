@@ -5,7 +5,8 @@ export const useLogin = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
     const   { dispatch } = useAuthContext()
-
+    // Login function handling
+    // Take input of email and password 
     const login = async (email, password) => {
         setIsLoading(true)
         setError(null)
@@ -14,8 +15,8 @@ export const useLogin = () => {
             email: email,
             password: password
           }
-
-        const response = await fetch(`${import.meta.env.VITE_BASE_URL}/users/login`, {
+        // make post request to server
+        const response = await fetch('http://localhost:4001/users/login', {
             method: 'POST',
             headers: {
                 Accept: "application/json",
@@ -25,7 +26,7 @@ export const useLogin = () => {
          })
 
         const json = await response.json()
-
+        //  response handling
         if (!response.ok) {
             setIsLoading(false)
             setError(json.error)

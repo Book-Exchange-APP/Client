@@ -44,7 +44,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
                         <SearchForm locations={locations} languages={languages} conditions={conditions} genres={genres} />
                     </div>
                     <div id="address" className="nav p-3">
-                        <h4>Location</h4>
+                        <h4>Our Locations</h4>
                         <a className="loc-link" href="https://goo.gl/maps/pgYkj2yxUvoWddbH6" target="_blank">North Brisbane</a>
                         <a className="loc-link" href="https://goo.gl/maps/6jTQj1Qtzt2TG3ma7" target="_blank">Brisbane City</a>
                         <a className="loc-link" href="https://goo.gl/maps/UQCZn6yGuzx8Q6j1A" target="_blank">South Brisbane</a>
