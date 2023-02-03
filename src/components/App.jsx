@@ -154,7 +154,7 @@ const App = () => {
   // Update book state
   const updateBooks = async () => {
     // const res = await fetch('https://server-production-f312.up.railway.app/books')
-    const res = await fetch('http://localhost:4001/books')
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books`)
     const data = await res.json()
     setBooks(data)
   }
