@@ -1,9 +1,10 @@
 import { useState } from "react"
 import { useLogin } from "../auth/useLogin"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import '../styles/Login.css'
 
-const Login = ( {nav} ) => {
+const Login = ( ) => {
+    const nav = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
