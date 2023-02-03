@@ -30,9 +30,6 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
                 <p><strong>Status:</strong> {book.book.status.name}</p>
             </div>
 
-            {/* <div className="title text-center">
-                <h5><b>Appointment Form</b></h5>
-            </div> */}
             <div className="submit">
                 {book.book.status.name === "Pending" ?
                     <p><b>This book is pending for an exchange!</b></p> :
