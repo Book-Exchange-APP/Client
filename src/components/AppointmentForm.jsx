@@ -12,9 +12,9 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
     const [time, setTime] = useState('')
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
-    const [language, setLanguage] = useState('')
-    const [condition, setCondition] = useState('')
-    const [genre, setGenre] = useState('')
+    const [language, setLanguage] = useState({initial: ''})
+    const [condition, setCondition] = useState({initial: ''})
+    const [genre, setGenre] = useState({initial: ''})
     const [description, setDescription] = useState('')
     const [image, setImage] = useState(null)
 
@@ -34,10 +34,10 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
         const incBook = {
             title: title,
             author: author,
-            condition: condition,
-            language: language,
+            condition: condition.value,
+            language: language.value,
             img: incBookImageId.id,
-            genre: genre,
+            genre: genre.value,
             description: description
         }
 
@@ -91,21 +91,21 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
                 <label htmlFor="author" aria-label="label">Author: </label>
                 <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Please type in ..." value={author} onChange={(evt) => setAuthor(evt.target.value)} required />
                 <label htmlFor="language" aria-label="label">Language: </label>
-                <select id="selectLanguage" name="language" className="form-select mb-2" defaultValue={""} value={language} onChange={(evt) => setLanguage(evt.target.value)} required>
+                <select id="selectLanguage" name="language" className="form-select mb-2" defaultValue={language.initial} value={language.value} onChange={(evt) => setLanguage({intial: "", value: evt.target.value})} required>
                     <option value="">Select a language</option>
                     {languages.map((language, index) => (
                         <option key={index} value={language._id}>{language.name}</option>
                     ))}
                 </select>
                 <label htmlFor="genre" aria-label="label">Genre: </label>
-                <select id="selectGenre" name="genre" className="form-select mb-2" defaultValue={""} value={genre} onChange={(evt) => setGenre(evt.target.value)} required>
+                <select id="selectGenre" name="genre" className="form-select mb-2" defaultValue={genre.initial} value={genre.value} onChange={(evt) => setGenre({intial: "", value: evt.target.value})} required>
                     <option value="">Select a genre</option>
                     {genres.map((genre, index) => (
                         <option key={index} value={genre._id}>{genre.name}</option>
                     ))}
                 </select>
                 <label htmlFor="condition" aria-label="label">Condition: </label>
-                <select id="selectCondition" name="condition" className="form-select mb-2" defaultValue={""} value={condition} onChange={(evt) => setCondition(evt.target.value)} required>
+                <select id="selectCondition" name="condition" className="form-select mb-2" defaultValue={condition.initial} value={condition.value} onChange={(evt) => setCondition({intial: "", value: evt.target.value})} required>
                     <option value="">Select a condition</option>
                     {conditions.map((condition, index) => (
                         <option key={index} value={condition._id}>{condition.name}</option>
