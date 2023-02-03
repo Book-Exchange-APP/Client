@@ -30,7 +30,7 @@ describe("Submits the appointment info", () => {
 
     afterEach(() => {
         vi.restoreAllMocks();
-    });
+    })
 
     it("Shows one form, one heading, twelve labels, seven input fields, one date, one time, one file, three select fields, one submit button", () => {
         expect(form).toBeTruthy()

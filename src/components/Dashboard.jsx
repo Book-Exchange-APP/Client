@@ -179,27 +179,27 @@ const Dashboard = ({ logout, nav, updateBooks, updateAppointments, user, pending
             <div id="dashboard-container">
                 <h1 className="text-center border-bottom border-secondary border-3 w-100 p-3">Admin Dashboard</h1>
                 {pendingAppointments.length > 0 ? pendingAppointments.map((appointment, index) => (
-                    <div key={appointment.appointment._id} id="appointment-container">
+                    <div aria-label="container" key={appointment.appointment._id} id="appointment-container">
                         <div className="appointment-card">
                             <h3>Incoming Book</h3>
                             <img src={`data:image/jpeg;base64, ${appointment.incPath}`} alt="Book image" />
-                            <p>Title: {appointment.appointment.inc_book.title}</p>
-                            <p>Author: {appointment.appointment.inc_book.author}</p>
+                            <p aria-label="title">Title: {appointment.appointment.inc_book.title}</p>
+                            <p aria-label="author">Author: {appointment.appointment.inc_book.author}</p>
 
                         </div>
                         <div className="appointment-card">
                             <h3>Outgoing book</h3>
                             <img src={`data:image/jpeg;base64, ${appointment.outPath}`} alt="Book image" />
-                            <p>Title: {appointment.appointment.out_book.title}</p>
-                            <p>Author: {appointment.appointment.out_book.author}</p>
+                            <p aria-label="title">Title: {appointment.appointment.out_book.title}</p>
+                            <p aria-label="author">Author: {appointment.appointment.out_book.author}</p>
 
                         </div>
                         <div className="appointment-card">
                             <h3>Appointment Details</h3>
-                            <p>{appointment.appointment.date.slice(0, 10)}</p>
-                            <p>{appointment.appointment.time}</p>
-                            <p>Name: {appointment.appointment.first_name} {appointment.appointment.last_name}</p>
-                            <p>Location: {appointment.appointment.location.location}</p>
+                            <p aria-label="date">{appointment.appointment.date.slice(0, 10)}</p>
+                            <p aria-label="time">{appointment.appointment.time}</p>
+                            <p aria-label="name">Name: {appointment.appointment.first_name} {appointment.appointment.last_name}</p>
+                            <p aria-label="location">Location: {appointment.appointment.location.location}</p>
 
                         </div>
                         <div className="button-container">
