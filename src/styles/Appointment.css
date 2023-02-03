@@ -1,9 +1,9 @@
 .img{
     position: absolute;
-    width: 30%;
+    width: 25%;
     display: flex;
     flex-direction: column;
-    transform: scale(0.5);
+    transform: scale(0.7);
 }
 
 .out_book{
@@ -21,7 +21,7 @@
     margin-left: 65%;
     position: relative;
     display: flex;
-    flex-direction: column;
+    /* text-align: center; */
     right: 100px;
     padding: 0 2vw;
     background-color: gray;
@@ -40,12 +40,13 @@
 } */
 
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 950px) {
     .img{
         transform: scale(1);
+        width: 50%;
         position :relative; 
         /* z-index : -99; */
-        /* margin-left: 50%; */
+        margin-left: 25%;
 
         
 
@@ -57,14 +58,24 @@
     }
     .submit{
         position: relative;
-        border-left: 0px;
-        /* border-bottom: 0; */
-        margin-left: 0;
+        margin-left: 30%;
         text-align: center;
     }
 
 }
 
 @media screen and (max-width: 470px) {
-
+    .img,
+    .out_book,
+    .submit{
+        position: relative;
+    }
+    .img{
+        width: 100%;
+        display: flex;
+        transform: scale(0.7);
+    }
+    .submit{
+    
+    }
 }
