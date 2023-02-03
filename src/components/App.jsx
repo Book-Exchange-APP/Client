@@ -10,13 +10,10 @@ import Dashboard from './Dashboard'
 import Footer from './Footer'
 import ShowBook from './ShowBook'
 import Unauthorised from './Unauthorised'
-// import Appointment from './Appointment'
 import Search from './Search'
 import { useAuthContext } from '../auth/useAuthContext'
 import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom'
 import '../styles/App.css'
-
-
 
 const App = () => {
   const [books, setBooks] = useState(null)
@@ -30,7 +27,6 @@ const App = () => {
   const [appointment, setAppointment] = useState()
   const [pendingAppointments, setPendingAppointments] = useState(null)
 
-
   const nav = useNavigate()
   const { user } = useAuthContext()
   const [error, setError] = useState({ error: false })
@@ -39,7 +35,7 @@ const App = () => {
     async function fetchBooks() {
       try {
         // const res = await fetch('https://server-production-f312.up.railway.app/books')
-        const res = await fetch('http://localhost:4001/books')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books`)
         const data = await res.json()
         setBooks(data)
       } catch (err) {
@@ -53,7 +49,7 @@ const App = () => {
     async function fetchLocations() {
       try {
         // const res = await fetch('https://server-production-f312.up.railway.app/locations')
-        const res = await fetch('http://localhost:4001/locations')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/locations`)
         const data = await res.json()
         setLocations(data)
       } catch (err) {
@@ -67,7 +63,7 @@ const App = () => {
     async function fetchLanguages() {
       try {
         // const res = await fetch('https://server-production-f312.up.railway.app/languages')
-        const res = await fetch('http://localhost:4001/languages')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/languages`)
         const data = await res.json()
         setLanguages(data)
       } catch (err) {
@@ -81,7 +77,7 @@ const App = () => {
     async function fetchConditions() {
       try {
         // const res = await fetch('https://server-production-f312.up.railway.app/conditions')
-        const res = await fetch('http://localhost:4001/conditions')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/conditions`)
         const data = await res.json()
         setConditions(data)
       } catch (err) {
@@ -95,7 +91,7 @@ const App = () => {
     async function fetchGenres() {
       try {
         // const res = await fetch('https://server-production-f312.up.railway.app/genres')
-        const res = await fetch('http://localhost:4001/genres')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/genres`)
         const data = await res.json()
         setGenres(data)
       } catch (err) {
@@ -109,7 +105,7 @@ const App = () => {
     async function fetchAppointments() {
       try {
         // const res = await fetch('https://server-production-f312.up.railway.app/appointments')
-        const res = await fetch('http://localhost:4001/appointments')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments`)
         const data = await res.json()
         setAppointments(data)
       } catch (err) {
@@ -120,7 +116,7 @@ const App = () => {
     fetchAppointments()
     async function fetchBookStatus() {
       try {
-        const res = await fetch('http://localhost:4001/status/books')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/status/books`)
         const data = await res.json()
         setBookStatus(data)
       } catch (err) {
@@ -131,7 +127,7 @@ const App = () => {
 
     async function fetchAppointmentStatus() {
       try {
-        const res = await fetch('http://localhost:4001/status/appointments')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/status/appointments`)
         const data = await res.json()
         setAppointmentStatus(data)
       } catch (err) {
@@ -142,7 +138,7 @@ const App = () => {
 
     async function fetchPendingAppointments() {
       try {
-        const res = await fetch('http://localhost:4001/appointments/status/pending')
+        const res = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments/status/pending`)
         const data = await res.json()
         setPendingAppointments(data)
       } catch (err) {
@@ -227,13 +223,13 @@ const App = () => {
 
   const updateBooks = async () => {
     // const res = await fetch('https://server-production-f312.up.railway.app/books')
-    const res = await fetch('http://localhost:4001/books')
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books`)
     const data = await res.json()
     setBooks(data)
   }
 
   const updateAppointments = async () => {
-    const res = await fetch('http://localhost:4001/appointments/status/pending')
+    const res = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments/status/pending`)
     const data = await res.json()
     setPendingAppointments(data)
   }
@@ -259,7 +255,7 @@ const App = () => {
     }
 
     if (user) {
-      const returnedIncBook = await fetch(`http://localhost:4001/books/${appointment.inc_book._id}`, {
+      const returnedIncBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.inc_book._id}`, {
         method: "PUT",
         headers: {
           Accept: "application/json",
@@ -280,7 +276,7 @@ const App = () => {
       status: bookStatus[1]._id
     }
 
-    const returnedOutBook = await fetch(`http://localhost:4001/books/${appointment.out_book._id}`, {
+    const returnedOutBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.out_book._id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -300,7 +296,7 @@ const App = () => {
       location: appointment.location
     }
 
-    const returnedAppointment = await fetch(`http://localhost:4001/appointments/${appointment._id}`, {
+    const returnedAppointment = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments/${appointment._id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -333,7 +329,7 @@ const App = () => {
       status: bookStatus[1]._id
     }
 
-    const returnedIncBook = await fetch(`http://localhost:4001/books/${appointment.inc_book._id}`, {
+    const returnedIncBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.inc_book._id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -355,7 +351,7 @@ const App = () => {
       status: bookStatus[0]._id
     }
 
-    const returnedOutBook = await fetch(`http://localhost:4001/books/${appointment.out_book._id}`, {
+    const returnedOutBook = await fetch(`${import.meta.env.VITE_BASE_URL}/books/${appointment.out_book._id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
@@ -376,7 +372,7 @@ const App = () => {
       location: appointment.location
     }
 
-    const returnedAppointment = await fetch(`http://localhost:4001/appointments/${appointment._id}`, {
+    const returnedAppointment = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments/${appointment._id}`, {
       method: "PUT",
       headers: {
         Accept: "application/json",
