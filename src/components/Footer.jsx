@@ -7,7 +7,6 @@ import twitter from '../assets/twitter.svg'
 
 const Footer = () => {
     return (
-        // <div className="footer">
         <footer className="footer">
             <div className="container">
                 <div className="column">
@@ -38,7 +37,6 @@ const Footer = () => {
 
                 </div>
             </div>
-        {/* </div> */}
         </footer>
     )
 }

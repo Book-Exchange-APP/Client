@@ -13,8 +13,7 @@ import Unauthorised from './Unauthorised'
 import Search from './Search'
 import { useLogout } from '../auth/useLogout'
 import { useAuthContext } from '../auth/useAuthContext'
-import { Routes, Route, useNavigate, useParams, Navigate } from 'react-router-dom'
-import '../styles/App.css'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 
 const App = () => {
   const [books, setBooks] = useState(null)
@@ -37,7 +36,6 @@ const App = () => {
   useEffect(() => {
     async function fetchBooks() {
       try {
-        // const res = await fetch('https://server-production-f312.up.railway.app/books')
         const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books`)
         const data = await res.json()
         setBooks(data)
@@ -51,7 +49,6 @@ const App = () => {
   useEffect(() => {
     async function fetchLocations() {
       try {
-        // const res = await fetch('https://server-production-f312.up.railway.app/locations')
         const res = await fetch(`${import.meta.env.VITE_BASE_URL}/locations`)
         const data = await res.json()
         setLocations(data)
@@ -65,7 +62,6 @@ const App = () => {
   useEffect(() => {
     async function fetchLanguages() {
       try {
-        // const res = await fetch('https://server-production-f312.up.railway.app/languages')
         const res = await fetch(`${import.meta.env.VITE_BASE_URL}/languages`)
         const data = await res.json()
         setLanguages(data)
@@ -79,7 +75,6 @@ const App = () => {
   useEffect(() => {
     async function fetchConditions() {
       try {
-        // const res = await fetch('https://server-production-f312.up.railway.app/conditions')
         const res = await fetch(`${import.meta.env.VITE_BASE_URL}/conditions`)
         const data = await res.json()
         setConditions(data)
@@ -93,7 +88,6 @@ const App = () => {
   useEffect(() => {
     async function fetchGenres() {
       try {
-        // const res = await fetch('https://server-production-f312.up.railway.app/genres')
         const res = await fetch(`${import.meta.env.VITE_BASE_URL}/genres`)
         const data = await res.json()
         setGenres(data)
@@ -107,7 +101,6 @@ const App = () => {
   useEffect(() => {
     async function fetchAppointments() {
       try {
-        // const res = await fetch('https://server-production-f312.up.railway.app/appointments')
         const res = await fetch(`${import.meta.env.VITE_BASE_URL}/appointments`)
         const data = await res.json()
         setAppointments(data)
@@ -153,7 +146,6 @@ const App = () => {
 
   // Update book state
   const updateBooks = async () => {
-    // const res = await fetch('https://server-production-f312.up.railway.app/books')
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/books`)
     const data = await res.json()
     setBooks(data)
@@ -182,12 +174,12 @@ const App = () => {
           <Route path='/' element={<Home books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books' element={<Books books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
           <Route path='/books/search' element={<Search books={books} locations={locations} languages={languages} conditions={conditions} genres={genres} />} />
-          <Route path='/book/:id' element={<ShowBook books={books} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp}/>} />
+          <Route path='/book/:id' element={<ShowBook books={books} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp} />} />
           <Route path='/confirmation' element={<Confirmation appointment={appointment} />} />
           <Route path='/contact' element={<Contact locations={locations} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/dashboard' element={user ? user.admin ? <Dashboard logout= {logout} nav= {nav} updateBooks={updateBooks} updateAppointments={updateAppointments} user={user} pendingAppointments={pendingAppointments} bookStatus={bookStatus} appointmentStatus= {appointmentStatus}/> : <Unauthorised /> : <main></main>} />
+          <Route path='/dashboard' element={user ? user.admin ? <Dashboard logout={logout} nav={nav} updateBooks={updateBooks} updateAppointments={updateAppointments} user={user} pendingAppointments={pendingAppointments} bookStatus={bookStatus} appointmentStatus={appointmentStatus} /> : <Unauthorised /> : <main></main>} />
           <Route path='*' element={<main><h1 className="my-5 text-center">Page not found!</h1></main>} />
         </Routes> :
         <main>

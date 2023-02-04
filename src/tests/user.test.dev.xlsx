@@ -1,0 +1,51 @@
+page	description	status	expected results	actual results
+home	display	pass	navbar, search box with one search button and six input fields, how to use, four featured book, four latest books, three locations, footer with social media icons and copyright	as expected
+	display if there is no available books	pass	navbar, search box with one search button and six input fields, how to use, no available books statement, hree locations, footer with social media icons and copyright	as expected
+	click on Books	pass	show books page	as expected
+	click on Contact	pass	show contact page	as expected
+	click the logo	pass	show home page	as expected
+	click on Login	pass	show login page	as expected
+	click its view details button	pass	show book details page with appointment form	as expected
+	click the facebook icon	pass	open the facebook website in a new window	as expected
+	click the instagram icon	pass	open the instagram website in a new window	as expected
+	click the twitter icon	pass	open the twitter website in a new window	as expected
+	click the links in our location section	pass	exchange location is pointed in the map	as expected
+	search book by title with 'lifetime'	pass	show one book	as expected
+	search book by title with 'harry'	pass	show seven books	as expected
+	search book by author with 'j'	pass	show eight books 	as expected
+	search book by location with South Brisbane	pass	show eight books	as expected
+	search book by condition with Poor	pass	show six books	as expected
+	search book by language with French	pass	no books found	as expected
+	search book without any conditions	pass	show all of 13 books	as expected
+	search book by genre with Gardening	pass	show one book	as expected
+books	display	pass	navbar, search box with one search button and six input fields, books heading, 14 books, footer with social media icons and copyright	as expected
+	click its view details button	pass	show book details page without appointment form if the book status is pending	as expected
+	click its view details button	pass	show book details page with appointment form	as expected
+	click on Books	pass	show books page	as expected
+	click on Contact	pass	show contact page	as expected
+	click the logo	pass	show home page	as expected
+	click on Login	pass	show login page	as expected
+	search book by title with 'bfg	pass	show the bfg book in search page	as expected
+	search book by author with 'z'	pass	show no books found	as expected
+	search book by location with North Brisbane	pass	show two books	as expected
+	search book by condition with Good	pass	show four books	as expected
+	search book by language with Korean	pass	show one book	as expected
+	search book without any conditions	pass	show all of 13 books	as expected
+	search book by genre with Science Fiction	pass	show one book	as expected
+contact	display 	pass	navbar, contact us heading, three locations with name, address, phone and email individually, footer with social media icons and copyright	as expected
+Login	display	pass	login box with login heading, register link, email and password input fields and submit button	as expected
+	click on the register here link	pass	show register page	as expected
+	click submit button after entering the email and password	pass	redirect to home page if email or password is not correct	as expected
+	click submit button after entering the email and password	pass	redirect to home page, and login in navbar changed to logout and show dashboard in navbar  if email or password is correct	as expected
+available book	display	pass	navbar, book image and info, appointment form, footer with social media icons and copyright	as expected
+	submit the not fully filled appointment form	pass	point the missing places	as expected
+	submit the fully filled appointment form	pass	nav to confirmation page with appointment confirmation heading and appointment info and a return to home button	as expected
+	click books in navbar	pass	if the selected one is in feature books on home page, it will be hidden	as expected
+	click books in navbar	pass	the book selected for exchange becomes pending	as expected
+	click books in navbar	pass	if the selected one is in latest books on home page, it will be hidden	
+pending book	display	pass	navbar, book image and info, book pending statement instead,  footer with social media icons and copyright	as expected
+confirmation	click the return to home button	pass	nav to home 	as expected
+dashboard	display	pass	navbar, admin dashboard heading, three pending appointments,  footer with social media icons and copyright	as expected
+	click deny button of one appointment	pass	appointment is hidden and the outgoing book becomes available on books page	as expected
+	click approve button of one appointment	pass	appointment is hidden, and the outgoing book is hidden on books page and incoming book displayed on books page and on home page if meeting the requirements	as expected
+logout	click logout in navbar	pass	nav to home, dashboard and logout in navbar hidden, login displayed	as expected

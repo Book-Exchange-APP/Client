@@ -10,7 +10,6 @@ describe('Navbar component', () => {
     beforeEach(function () {
         render(<BrowserRouter><AuthContextProvider><Navbar /></AuthContextProvider></BrowserRouter>)
         links = screen.getAllByRole('link')
-
     })
 
     it("Shows four links", () => {
@@ -21,5 +20,4 @@ describe('Navbar component', () => {
         expect(links[3]).toHaveTextContent('Login')
         expect(links[2]).toHaveTextContent('Contact')
     })
-
 })

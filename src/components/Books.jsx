@@ -3,8 +3,6 @@ import '../styles/Showbooks.css'
 import ShowBooks from './ShowBooks'
 import SearchForm from './SearchForm'
 
-
-
 const Books = ({ books, locations, languages, conditions, genres }) => {
     let sortedBooks = null
     if (books) {

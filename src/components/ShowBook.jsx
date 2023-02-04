@@ -20,7 +20,7 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
             </div>
             <div className="out_book">
                 <h1><b>Title: {book.book.title}</b></h1>
-                <p aria-label="author"><strong>Author:</strong> {book.book.author}</p>               
+                <p aria-label="author"><strong>Author:</strong> {book.book.author}</p>
                 <p aria-label="condition"><strong>Book Condition:</strong> {book.book.condition.name}</p>
                 <p aria-label="language"><strong>Language:</strong> {book.book.language.name}</p>
                 <p aria-label="genre"><strong>Genre:</strong> {book.book.genre.name}</p>
@@ -34,12 +34,6 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
                     </section>
                 }
             </div>
-
-
-            {/* if user logged in
-                redirect to appointment page with book ID passed as params.
-                
-                if not logged in, redirect to login page. */}
         </main>
     )
 }

@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom'
-import { getByLabelText, render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
 import Login from "../components/Login"
-import {  } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 
 describe('Login Component', () => {
@@ -23,7 +22,7 @@ describe('Login Component', () => {
         email = screen.getAllByRole('textbox')
         btn = screen.getAllByRole('button')
         links = screen.getAllByRole('link')
-    })  
+    })
 
     it("Shows the Login heading", () => {
         expect(h3).toHaveTextContent('Login')
@@ -56,6 +55,6 @@ describe('Login Component', () => {
     })
 })
 
- 
+
 
 

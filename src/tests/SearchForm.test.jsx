@@ -103,7 +103,6 @@ describe("Submits the search conditions", () => {
                 condition: 'Good',
                 genre: 'Genre',
             })
-
     })
 
     it('Resets the form after submission', async () => {

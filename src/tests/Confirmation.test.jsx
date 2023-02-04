@@ -5,7 +5,6 @@ import Confirmation from "../components/confirmation"
 import { newAppointment } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 
-
 describe('Confirmation Component', () => {
     let h1
     let table
@@ -15,14 +14,14 @@ describe('Confirmation Component', () => {
     let cell
 
     beforeEach(function () {
-        render(<BrowserRouter><AuthContextProvider><Confirmation appointment={newAppointment}/></AuthContextProvider></BrowserRouter>)
+        render(<BrowserRouter><AuthContextProvider><Confirmation appointment={newAppointment} /></AuthContextProvider></BrowserRouter>)
         h1 = screen.getAllByRole('heading', { level: 1 })
         backToHome = screen.getAllByText('Return to Home')
         table = screen.getAllByRole('table')
         tableBody = screen.getAllByRole('rowgroup')
         rowHeader = screen.getAllByRole('rowheader')
         cell = screen.getAllByRole('cell')
-    })    
+    })
 
     it("Shows the Appointment Confirmation heading", () => {
         expect(h1).toHaveLength(1)
@@ -46,8 +45,6 @@ describe('Confirmation Component', () => {
         expect(cell[4]).toHaveTextContent('South Brisbane')
         expect(cell[5]).toHaveTextContent('BFG')
         expect(cell[6]).toHaveTextContent('Pooh')
-
-        
     })
 
     it("Shows the Return to Home button", () => {
@@ -59,13 +56,12 @@ describe('Confirmation Component - no appointment', () => {
     let h1
 
     beforeEach(function () {
-        render(<BrowserRouter><AuthContextProvider><Confirmation appointment={null}/></AuthContextProvider></BrowserRouter>)
+        render(<BrowserRouter><AuthContextProvider><Confirmation appointment={null} /></AuthContextProvider></BrowserRouter>)
         h1 = screen.getAllByRole('heading', { level: 1 })
-    })    
+    })
 
     it("Shows the Redirecting heading", () => {
         expect(h1).toHaveLength(1)
         expect(h1[0]).toHaveTextContent('redirected')
-
     })
 })

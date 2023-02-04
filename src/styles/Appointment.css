@@ -1,5 +1,4 @@
-
-.img{
+.img {
     position: absolute;
     width: 25%;
     display: flex;
@@ -7,24 +6,22 @@
     transform: scale(0.7);
 }
 
-.out_book{
+.out_book {
     position: absolute;
     margin-top: 40%;
     display: flex;
     flex-direction: column;
     z-index: 1;
     text-align: center;
-   
 }
 
-.submit{
+.submit {
     margin-top: 5%;
     margin-bottom: 5%;
     margin-left: 65%;
     margin-right: 5%;
     position: relative;
     display: flex;
-    /* right: 100px; */
     padding: 0 2vw;
     background-color: gray;
 }
@@ -32,21 +29,19 @@
 
 
 @media screen and (max-width: 1110px) {
-    .img{
+    .img {
         transform: scale(1);
         width: 50%;
-        position :relative; 
+        position: relative;
         margin-left: 25%;
-
-        
-
     }
-    .out_book{
-        position :relative;
+
+    .out_book {
+        position: relative;
         margin-top: 10%;
-
     }
-    .submit{
+
+    .submit {
         position: relative;
         margin-left: 10%;
     }
@@ -54,17 +49,17 @@
 }
 
 @media screen and (max-width: 470px) {
-    .out_book{
+    .out_book {
         position: relative;
     }
 
-    .submit{
+    .submit {
         transform: scale(0.8);
         position: relative;
 
     }
 
-    .img{
+    .img {
         width: 70%;
         display: flex;
         transform: scale(0.7);
