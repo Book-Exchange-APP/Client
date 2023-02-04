@@ -3,10 +3,6 @@ import React from 'react'
 import ShowBooks from './ShowBooks'
 import SearchForm from './SearchForm'
 
-
-
-
-
 const Home = ({ books, locations, languages, conditions, genres }) => {
     let featureBooks = null
     let latestBooks = null
@@ -26,6 +22,7 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
         featureBooks.push(availableBooks.find(book => book.book.genre.name === genres[1].name))
         featureBooks.push(availableBooks.find(book => book.book.genre.name === genres[2].name))
         featureBooks.push(availableBooks.find(book => book.book.genre.name === genres[3].name))
+        featureBooks = featureBooks.filter((book) => book && book)
         latestBooks = availableBooks.slice(0, 4)
     }
     return (
@@ -52,17 +49,13 @@ const Home = ({ books, locations, languages, conditions, genres }) => {
                 </div>
                 <div className="feature text-center">
                     <h1 className='Fbooks'>Featured Books</h1>
-                    {/* <a href="./books" className="book-link">See More</a> */}
                     <div className='fourbooks'>
-                        {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
-                        {!featureBooks ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : featureBooks.length > 0 ? <ShowBooks books={featureBooks} /> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
+                        {!featureBooks ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : featureBooks.length > 0 ? (console.log(featureBooks), <ShowBooks books={featureBooks} />) : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
                     </div>
                 </div>
                 <div className="latest text-center">
                     <h1 className='Lbooks'>Latest Book</h1>
-                    {/* <a href="./books" className="book-link">See More</a> */}
                     <div className='fourbooks'>
-                        {/* {books?.length>0 ? <ShowBooks books={books}/> : <h1 className='text-center pt-5 text-danger'>No Books Found!</h1>} */}
                         {!latestBooks ? <h2 className='text-center pt-5 px-3'>Loading Books...</h2> : latestBooks.length > 0 ? <ShowBooks books={latestBooks} /> : <h2 className='text-center px-3 pt-5 text-danger'>No Books Found!</h2>}
                     </div>
                 </div>
