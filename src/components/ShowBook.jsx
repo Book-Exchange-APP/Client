@@ -29,7 +29,7 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
                 {book.book.status.name === "Pending" ?
                     <p aria-label="pending"><b>This book is pending for an exchange!</b></p> :
                     <section name="appointmentForm">
-                        <h1>Appointment Form</h1>
+                        <h1 className='formTitle'>Appointment Form</h1>
                         <AppointmentForm book={book} generateApp={generateApp} languages={languages} conditions={conditions} genres={genres} />
                     </section>
                 }
