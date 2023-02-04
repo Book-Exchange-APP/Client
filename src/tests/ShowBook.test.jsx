@@ -2,31 +2,30 @@ import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
 import ShowBook from "../components/ShowBook"
-import { displayedBooks, generateApp, languages, conditions, genres } from "../mocks/handlers"
+import { displayedBooks, generateApp, languages, conditions, genres, book } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 import { vi } from 'vitest'
 
+
 // describe('ShowBook Component - no book found', () => {
 //     let h1
-
-//     beforeEach(function (){
+//     beforeEach(function () {
 //         vi.mock('react-router-dom', async () => {
 //             const actual = await vi.importActual("react-router-dom")
 //             return {
-//               ...actual,
-//               useParams: () => {return {id: "test"}},
+//                 ...actual,
+//                 useParams: () => { return { id: "test" } }
 //             }
-//           })
-
-//         render(<BrowserRouter><AuthContextProvider><ShowBook books={displayedBooks} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp}/></AuthContextProvider></BrowserRouter>)          
-//         h1 = screen.getAllByRole('heading', {level:1})
+//         })
+//         render(<BrowserRouter><AuthContextProvider><ShowBook books={displayedBooks} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp} /></AuthContextProvider></BrowserRouter>)
+//         h1 = screen.getAllByRole('heading', { level: 1 })
 //     })
 
 //     it("Shows Book not found heading", () => {
 //         expect(h1).toHaveLength(1)
 //         expect(h1[0]).toHaveTextContent('not found')
-
 //     })
+
 // })
 
 describe('ShowBook Component', () => {
@@ -39,17 +38,16 @@ describe('ShowBook Component', () => {
     let pending
     let btn
 
-    beforeEach(async function (){
+    beforeEach(async function () {
         vi.mock('react-router-dom', async () => {
             const actual = await vi.importActual("react-router-dom")
             return {
-              ...actual,
-              useParams: () => {return {id: "63d0c625189591d4b10b85b7"}},
+                ...actual,
+                useParams: () => { return { id: "63d0c625189591d4b10b85b7" } },
             }
-          })
-    
-        render(<BrowserRouter><AuthContextProvider><ShowBook books={displayedBooks} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp}/></AuthContextProvider></BrowserRouter>)          
-        h1 = screen.getAllByRole('heading', {level:1})
+        })
+        render(<BrowserRouter><AuthContextProvider><ShowBook books={displayedBooks} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp} /></AuthContextProvider></BrowserRouter>)
+        h1 = screen.getAllByRole('heading', { level: 1 })
         bookImg = screen.getByRole('img')
         author = screen.getByLabelText('author')
         condition = screen.getByLabelText('condition')
@@ -75,9 +73,9 @@ describe('ShowBook Component', () => {
 describe('ShowBook Component - loading page', () => {
     let h1
 
-    beforeEach(function (){
-        render(<BrowserRouter><AuthContextProvider><ShowBook books={null} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp}/></AuthContextProvider></BrowserRouter>)          
-        h1 = screen.getAllByRole('heading', {level:1})
+    beforeEach(function () {
+        render(<BrowserRouter><AuthContextProvider><ShowBook books={null} languages={languages} conditions={conditions} genres={genres} generateApp={generateApp} /></AuthContextProvider></BrowserRouter>)
+        h1 = screen.getAllByRole('heading', { level: 1 })
     })
 
     it("Shows Loading... heading", () => {
@@ -86,27 +84,3 @@ describe('ShowBook Component - loading page', () => {
 
     })
 })
-
-import '@testing-library/jest-dom'
-import { render, screen } from "@testing-library/react"
-import ShowBook from "../components/ShowBook"
-import { BrowserRouter } from 'react-router-dom'
-import { AuthContextProvider } from '../auth/AuthContext'
-import { book, generateApp, languages, conditions, genres } from "../mocks/handlers"
-
-
-
-describe('ShowBook Component', () => {
-    let h1
-
-    beforeEach(function () {
-        render(
-            <BrowserRouter>
-                <AuthContextProvider>
-                    <ShowBook />
-                </AuthContextProvider>
-            </BrowserRouter>
-        )
-        h1 = screen.getAllByRole('heading', { level: 1 })
-    })
-
