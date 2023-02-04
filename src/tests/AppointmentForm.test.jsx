@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import AppointmentForm from "../components/AppointmentForm"
 import { book, generateApp, languages, conditions, genres } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
-import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event'
 
 describe("Submits the appointment info", () => {
     let form

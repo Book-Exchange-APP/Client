@@ -43,5 +43,4 @@ describe('Home Component', () => {
     it('Show the search section', () => {
         expect(container.querySelector('form')).toBeTruthy()
     })
-
 })

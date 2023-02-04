@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
 import ShowBook from "../components/ShowBook"
-import { displayedBooks, generateApp, languages, conditions, genres, book } from "../mocks/handlers"
+import { displayedBooks, generateApp, languages, conditions, genres } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 import { vi } from 'vitest'
 

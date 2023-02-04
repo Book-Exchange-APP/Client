@@ -5,17 +5,17 @@ import Contact from "../components/Contact"
 import { locations } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 
-describe('Contact Component', () => {    
+describe('Contact Component', () => {
     let h1
     let h2
     let address
     let email
     let phone
 
-    beforeEach(function (){
-        render(<BrowserRouter><AuthContextProvider><Contact locations={locations}/></AuthContextProvider></BrowserRouter>)          
-        h1 = screen.getAllByRole('heading', {level:1})
-        h2 = screen.getAllByRole('heading', {level:2})
+    beforeEach(function () {
+        render(<BrowserRouter><AuthContextProvider><Contact locations={locations} /></AuthContextProvider></BrowserRouter>)
+        h1 = screen.getAllByRole('heading', { level: 1 })
+        h2 = screen.getAllByRole('heading', { level: 2 })
         address = screen.getAllByText(/Address:/)
         email = screen.getAllByText(/Email:/)
         phone = screen.getAllByText(/Phone:/)

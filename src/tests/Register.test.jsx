@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom'
-import { getByLabelText, render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import { BrowserRouter } from 'react-router-dom'
 import Register from "../components/Register"
-import {  } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
 
 describe('Register Component', () => {
@@ -24,7 +23,7 @@ describe('Register Component', () => {
         inputs = screen.getAllByRole('textbox')
         password = screen.getAllByLabelText('password')
         btn = screen.getAllByRole('button')
-    })  
+    })
 
     it("Shows the Register heading", () => {
         expect(h3).toHaveTextContent('Register')

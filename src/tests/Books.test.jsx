@@ -15,14 +15,14 @@ describe('Books Component', () => {
     let searchBar
 
     beforeEach(function () {
-        render(<BrowserRouter><AuthContextProvider><Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres}/></AuthContextProvider></BrowserRouter>)
+        render(<BrowserRouter><AuthContextProvider><Books books={displayedBooks} locations={locations} languages={languages} conditions={conditions} genres={genres} /></AuthContextProvider></BrowserRouter>)
         h1 = screen.getAllByRole('heading', { level: 1 })
         h2 = screen.queryAllByRole('heading', { level: 2 })
         h5 = screen.getAllByRole('heading', { level: 5 })
         bookImg = screen.getAllByRole('img')
         detailsBtn = screen.getAllByText('View details')
         searchBar = screen.getAllByRole('search')
-    })    
+    })
 
     it("Shows the Books heading", () => {
         expect(h1).toHaveLength(1)
@@ -39,7 +39,5 @@ describe('Books Component', () => {
     it("Shows the Search Bar", () => {
         expect(searchBar).toHaveLength(1)
     })
-
-    
 })
 

@@ -23,7 +23,6 @@ const Register = () => {
         const book = JSON.parse(sessionStorage.getItem('book'))
 
         if (book) {
-            // nav('/appointment')
             nav(`/book/${book._id}`)
         } else {
             nav('/')

@@ -25,3 +25,5 @@ dist-ssr
 
 coverage
 .env
+package-lock.json
+package_test.json

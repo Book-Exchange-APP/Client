@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import DatePicker from "react-datepicker";
+import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
-
-
 
 const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) => {
     const [first_name, setFirstName] = useState('')
@@ -12,9 +10,9 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
     const [time, setTime] = useState('')
     const [title, setTitle] = useState('')
     const [author, setAuthor] = useState('')
-    const [language, setLanguage] = useState({initial: ''})
-    const [condition, setCondition] = useState({initial: ''})
-    const [genre, setGenre] = useState({initial: ''})
+    const [language, setLanguage] = useState({ initial: '' })
+    const [condition, setCondition] = useState({ initial: '' })
+    const [genre, setGenre] = useState({ initial: '' })
     const [description, setDescription] = useState('')
     const [image, setImage] = useState(null)
 
@@ -91,21 +89,21 @@ const AppointmentForm = ({ book, generateApp, languages, conditions, genres }) =
                 <label htmlFor="author" aria-label="label">Author: </label>
                 <input id="inputAuthor" name="author" className="form-control mb-2" type="text" placeholder="Please type in ..." value={author} onChange={(evt) => setAuthor(evt.target.value)} required />
                 <label htmlFor="language" aria-label="label">Language: </label>
-                <select id="selectLanguage" name="language" className="form-select mb-2" defaultValue={language.initial} value={language.value} onChange={(evt) => setLanguage({intial: "", value: evt.target.value})} required>
+                <select id="selectLanguage" name="language" className="form-select mb-2" defaultValue={language.initial} value={language.value} onChange={(evt) => setLanguage({ intial: "", value: evt.target.value })} required>
                     <option value="">Select a language</option>
                     {languages.map((language, index) => (
                         <option key={index} value={language._id}>{language.name}</option>
                     ))}
                 </select>
                 <label htmlFor="genre" aria-label="label">Genre: </label>
-                <select id="selectGenre" name="genre" className="form-select mb-2" defaultValue={genre.initial} value={genre.value} onChange={(evt) => setGenre({intial: "", value: evt.target.value})} required>
+                <select id="selectGenre" name="genre" className="form-select mb-2" defaultValue={genre.initial} value={genre.value} onChange={(evt) => setGenre({ intial: "", value: evt.target.value })} required>
                     <option value="">Select a genre</option>
                     {genres.map((genre, index) => (
                         <option key={index} value={genre._id}>{genre.name}</option>
                     ))}
                 </select>
                 <label htmlFor="condition" aria-label="label">Condition: </label>
-                <select id="selectCondition" name="condition" className="form-select mb-2" defaultValue={condition.initial} value={condition.value} onChange={(evt) => setCondition({intial: "", value: evt.target.value})} required>
+                <select id="selectCondition" name="condition" className="form-select mb-2" defaultValue={condition.initial} value={condition.value} onChange={(evt) => setCondition({ intial: "", value: evt.target.value })} required>
                     <option value="">Select a condition</option>
                     {conditions.map((condition, index) => (
                         <option key={index} value={condition._id}>{condition.name}</option>

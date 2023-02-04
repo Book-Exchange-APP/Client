@@ -16,11 +16,11 @@ describe('Dashboard Component', () => {
     let locations
     let btns
     let appointments
-    let dates 
+    let dates
     let times
 
     beforeEach(function () {
-        render(<BrowserRouter><AuthContextProvider><Dashboard logout={logout} nav= {nav} updateBooks={updateBooks} updateAppointments={updateAppointments} user={user} pendingAppointments={pendingAppointments} bookStatus={bookStatus} appointmentStatus= {appointmentStatus}/></AuthContextProvider></BrowserRouter>)
+        render(<BrowserRouter><AuthContextProvider><Dashboard logout={logout} nav={nav} updateBooks={updateBooks} updateAppointments={updateAppointments} user={user} pendingAppointments={pendingAppointments} bookStatus={bookStatus} appointmentStatus={appointmentStatus} /></AuthContextProvider></BrowserRouter>)
         h1 = screen.getAllByRole('heading', { level: 1 })
         h2 = screen.queryAllByRole('heading', { level: 2 })
         h3 = screen.getAllByRole('heading', { level: 3 })
@@ -34,7 +34,7 @@ describe('Dashboard Component', () => {
         times = screen.getAllByLabelText('time')
         btns = screen.getAllByRole('button')
     })
-    
+
     it("Shows the Admin Dashboard heading", () => {
         expect(h1).toHaveLength(1)
         expect(h1[0]).toHaveTextContent('Dashboard')
@@ -69,5 +69,4 @@ describe('Dashboard Component', () => {
         expect(btns[0]).toHaveTextContent('Approve')
         expect(btns[1]).toHaveTextContent('Deny')
     })
-
 })
