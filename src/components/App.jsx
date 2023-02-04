@@ -14,7 +14,6 @@ import Search from './Search'
 import { useLogout } from '../auth/useLogout'
 import { useAuthContext } from '../auth/useAuthContext'
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import '../styles/App.css'
 
 const App = () => {
   const [books, setBooks] = useState(null)
