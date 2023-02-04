@@ -33,8 +33,11 @@
 
 .intro {
     margin-left: 20%;
-    /* animation: flash 2s infinite alternate; */
     margin-top: 2%;
+}
+
+.alert {
+    margin-left: 20%;
 }
 
 .Fbooks {
@@ -58,7 +61,6 @@
 .book-link {
     float: right;
     padding: 1rem;
-    /* background-color: #32522f; */
     color: black;
     font-weight: bold;
 }
@@ -66,14 +68,6 @@
 .book-link:hover {
     color: #d4af37;
 }
-
-/* form {
-    position: absolute;
-    top: 120px;
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-} */
 
 #address {
     position: absolute;
@@ -115,7 +109,8 @@
     .feature,
     .Fbooks,
     .Lbooks,
-    .latest {
+    .latest,
+    .alert {
         margin-left: 0;
     }
 
