@@ -9,6 +9,7 @@ export default defineConfig({
     globals: true,
     coverage: {
       reporter: ['text', 'json', 'html'],
+      exclude: ['src/auth/*', 'src/mocks/*', 'src/tests/*']
     },    
   },   
   preview: {

@@ -298,23 +298,23 @@ const user = {admin: true}
 
 
 const handlers = [
-    rest.get('http://localhost:4001/books', (req, res, ctx) => {
+    rest.get(`${import.meta.env.VITE_BASE_URL}/books`, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(displayedBooks))
     }),
 
-    rest.get('http://localhost:4001/locations', (req, res, ctx) => {
+    rest.get(`${import.meta.env.VITE_BASE_URL}/locations`, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(locations))
     }),
 
-    rest.get('http://localhost:4001/languages', (req, res, ctx) => {
+    rest.get(`${import.meta.env.VITE_BASE_URL}/languages`, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(languages))
     }),
 
-    rest.get('http://localhost:4001/conditions', (req, res, ctx) => {
+    rest.get(`${import.meta.env.VITE_BASE_URL}/conditions`, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(conditions))
     }),
 
-    rest.get('http://localhost:4001/genres', (req, res, ctx) => {
+    rest.get(`${import.meta.env.VITE_BASE_URL}/genres`, (req, res, ctx) => {
         return res(ctx.status(200), ctx.json(genres))
     }),
 

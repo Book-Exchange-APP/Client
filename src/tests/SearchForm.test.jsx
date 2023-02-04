@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import SearchForm from "../components/SearchForm"
 import { locations, languages, conditions, genres } from "../mocks/handlers"
 import { AuthContextProvider } from '../auth/AuthContext'
-import userEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event'
 
 describe("Submits the search conditions", () => {
     let form
@@ -22,7 +22,7 @@ describe("Submits the search conditions", () => {
 
     afterEach(() => {
         vi.restoreAllMocks();
-    });
+    })
 
     it("Shows two input fields, four select fields, one submit button", () => {
         expect(inputs).toHaveLength(2)
