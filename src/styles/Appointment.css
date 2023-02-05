@@ -1,87 +1,69 @@
-.img {
-    position: absolute;
-    width: 30%;
-    display: flex;
+.bookImage {
+    height: 300px;
+}
+
+.singleBook {
+    width: 50%;
     flex-direction: column;
-    transform: scale(0.7);
-    /* margin-left: %; */
-
+    margin: 4rem auto 2rem 2rem;
 }
 
-.out_book {
-    position: absolute;
-    margin-top: 40%;
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-    text-align: center;
+.outBook{
+    margin-top: 2rem;
+    margin-right: 1rem;
 }
 
-.submit {
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left: 65%;
-    margin-right: 5%;
-    position: relative;
-    display: flex;
-    padding: 0 2vw;
-    background-color: gray;
+.fileInput {
+    padding-left: 0px;
 }
 
-
-
-@media screen and (max-width: 1150px) {
-    .img {
-        transform: scale(1);
-        width: 50%;
-        position: relative;
-        margin-left: 25%;
-    }
-
-    .out_book {
-        position: relative;
-        margin-top: 10%;
-    }
-    .out_book>h1 {
-        border-bottom: solid 2px grey;
-
-    }
-
-    .submit {
-        position: relative;     
-        margin: 0;
-        background-color: white;
-        margin-top: 5%;
-        margin-bottom: 5%;
-        margin-left: 25%;
-
-    }
-    .formTitle{
-        text-align: center;
-        font-weight: bold;
-        border-bottom: solid 2px grey;
-
-    }
-
+.formTitle {
+    border-bottom: solid 1px black;
 }
 
-@media screen and (max-width: 470px) {
-    .out_book {
-        position: relative;
+@media screen and (max-width: 820px) {
+    .showBook {
+        flex-direction: column;
     }
 
-    .submit {
-        transform: scale(0.8);
-        position: relative;
-
+    .outBook {
+        width: 90%;
     }
-
-    .img {
-        width: 70%;
+    .singleBook {
         display: flex;
-        transform: scale(0.7);
-        margin-left: 15%;
-        position: relative;
+        width: 100%;
+        flex-direction: row;
+        margin: 1rem;
+    }
 
+    .bookImage {
+        height: 200px;
+    }
+
+    .outBook {
+        margin-left: 2rem;
+        margin-top: 0px;
+    }
+
+    .appointmentForm {
+        margin-top: 0px !important;
+    }
+
+    .formTitle {
+        border-top: solid 1px black;
+        padding-top: 1rem;        
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .singleBook {
+        flex-direction: column;
+        align-items: center;
+        margin: 1rem;
+    }
+
+    .outBook {
+        margin-left: 0;
+        margin-top: 2rem;
     }
 }
