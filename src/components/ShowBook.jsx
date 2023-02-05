@@ -15,6 +15,7 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
 
     return (
         <main className="d-flex showBook">
+            <div className="d-flex showBook-container">
             <section className="singleBook d-flex">
                 <div className="img">
                     <img className="bookImage" src={`data:image/jpeg;base64, ${book.path}`} alt="Book image" />
@@ -29,12 +30,15 @@ const ShowBook = ({ books, generateApp, languages, conditions, genres }) => {
             </section>
             <div className="appointmentForm m-5">
                 {book.book.status.name === "Pending" ?
-                    <p aria-label="pending"><b>This book is pending for an exchange!</b></p> :
+                    <div className="pendingBook">
+                    <p aria-label="pending"><b>This book is pending for an exchange!</b></p>
+                    </div> :
                     <section name="appointmentForm">
                         <h1 className='formTitle pb-2 text-center'>Appointment Form</h1>
                         <AppointmentForm book={book} generateApp={generateApp} languages={languages} conditions={conditions} genres={genres} />
                     </section>
                 }
+            </div>
             </div>
         </main>
     )
