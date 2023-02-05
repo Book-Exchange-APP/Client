@@ -1,9 +1,11 @@
 .img {
     position: absolute;
-    width: 25%;
+    width: 30%;
     display: flex;
     flex-direction: column;
     transform: scale(0.7);
+    /* margin-left: %; */
+
 }
 
 .out_book {
@@ -28,7 +30,7 @@
 
 
 
-@media screen and (max-width: 1110px) {
+@media screen and (max-width: 1150px) {
     .img {
         transform: scale(1);
         width: 50%;
@@ -40,10 +42,25 @@
         position: relative;
         margin-top: 10%;
     }
+    .out_book>h1 {
+        border-bottom: solid 2px grey;
+
+    }
 
     .submit {
-        position: relative;
-        margin-left: 10%;
+        position: relative;     
+        margin: 0;
+        background-color: white;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        margin-left: 25%;
+
+    }
+    .formTitle{
+        text-align: center;
+        font-weight: bold;
+        border-bottom: solid 2px grey;
+
     }
 
 }
