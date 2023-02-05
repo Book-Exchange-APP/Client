@@ -2,10 +2,26 @@
     height: 300px;
 }
 
+.showBook {
+    justify-content: center;
+}
+
+.showBook-container {
+    width:75%;
+}
+
 .singleBook {
     width: 50%;
     flex-direction: column;
     margin: 4rem auto 2rem 2rem;
+    align-items: center;
+    text-align: center;
+}
+
+.appointmentForm {
+    display: flex;
+    justify-content: center;
+    margin-top: 0px !important;
 }
 
 .outBook{
@@ -21,8 +37,22 @@
     border-bottom: solid 1px black;
 }
 
+.pendingBook {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+    width:30rem;
+}
+
+.pendingBook p {
+    padding:1rem;
+    border-radius:5%;
+    border:solid 5px red;
+}
+
 @media screen and (max-width: 820px) {
-    .showBook {
+    .showBook-container {
         flex-direction: column;
     }
 
@@ -32,7 +62,7 @@
     .singleBook {
         display: flex;
         width: 100%;
-        flex-direction: row;
+        flex-direction: column;
         margin: 1rem;
     }
 
@@ -46,6 +76,8 @@
     }
 
     .appointmentForm {
+        display: flex;
+        justify-content: center;
         margin-top: 0px !important;
     }
 
