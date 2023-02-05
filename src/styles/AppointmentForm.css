@@ -1,0 +1,14 @@
+.date {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.appointmentForm {
+    margin: 0px 1rem !important;
+}
+
+@media screen and (max-width: 450px) {
+    .appointmentInputs {
+        margin-left: 0.5rem;
+    }
+}
